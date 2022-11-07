@@ -1,0 +1,117 @@
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+#outercontainer {
+    background-color: black;
+    height: 2100px;
+}
+#bgimage {
+    height: 1194px;
+    position: absolute;
+    opacity: 80%;
+}
+@font-face {
+    font-family: stretch;
+    src: url(StretchPro.otf);
+}
+#navbar {
+    height: 150px;
+    font-family: stretch;
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 1100px;
+    word-spacing: 40px;
+}
+#middletext {
+    font-family: stretch;
+    font-size: 80px;
+    color: white;
+    position: absolute;
+    text-align: center;
+    margin-top: 430px;
+    margin-left: 300px;
+}
+#logoimage {
+    position: absolute;
+    width: 250px;
+    float: left;
+}
+#searchbar {
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 630px;
+}
+#quote {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    margin-left: 350px;
+    text-align: center;
+    margin-top: 930px;
+}
+#featuredtools {
+    position: absolute;
+    margin-top: 1250px;
+    text-align: center;
+    margin-left: 620px;
+    font-family: stretch;
+    font-size: 30px;
+    color: white;
+}
+#toolimage1 {
+    position: absolute;
+    margin-top: 1400px;
+    margin-left: 200px;
+    margin-right: 50px;
+    float: left;
+    width: 400px;
+}
+#toolimage2 {
+    position: absolute;
+    margin-top: 1400px;
+    margin-left: 700px;
+    margin-right: 50px;
+    float: left;
+    width: 400px;
+}
+#toolimage2 {
+    position: absolute;
+    margin-top: 1400px;
+    margin-right: 50px;
+    float: left;
+    width: 400px;
+}
+#toolimage3 {
+    position: absolute;
+    margin-top: 1400px;
+    margin-left: 1200;
+    margin-right: 50px;
+    width: 400px;
+    height: 400px;
+}
+#description1 {
+    position: absolute;
+    margin-top: 1820px;
+    color: white;
+    margin-left: 200px;
+    font-size: 20px;
+}
+#description2 {
+    position: absolute;
+    margin-top: 1820px;
+    color: white;
+    margin-left: 700px;
+    font-size: 20px;
+}
+#description3 {
+    position: absolute;
+    margin-top: 1820px;
+    color: white;
+    margin-left: 1200px;
+    font-size: 20px;
+}
