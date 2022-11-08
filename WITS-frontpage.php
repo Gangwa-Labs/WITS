@@ -34,7 +34,7 @@
     }
 
     #outercontainer {
-        background-color: black;
+        background-color: #202020;
         height: 2100px;
     }
 
@@ -53,7 +53,7 @@
         height: 150px;
         font-family: stretch;
         font-size: 16px;
-        color: white;
+        color: #F0F0F0;
         position: absolute;
         margin-top: 30px;
         margin-left: 1100px;
@@ -63,7 +63,7 @@
     #middletext {
         font-family: stretch;
         font-size: 80px;
-        color: white;
+        color: #FFCC00;
         position: absolute;
         text-align: center;
         margin-top: 430px;
@@ -84,7 +84,7 @@
 
     #quote {
         position: absolute;
-        color: white;
+        color: #F0F0F0;
         font-size: 20px;
         margin-left: 350px;
         text-align: center;
@@ -98,7 +98,7 @@
         margin-left: 620px;
         font-family: stretch;
         font-size: 30px;
-        color: white;
+        color: #F0F0F0;
     }
 
     #toolimage1 {
@@ -139,7 +139,7 @@
     #description1 {
         position: absolute;
         margin-top: 1820px;
-        color: white;
+        color: #F0F0F0;
         margin-left: 200px;
         font-size: 20px;
     }
@@ -147,7 +147,7 @@
     #description2 {
         position: absolute;
         margin-top: 1820px;
-        color: white;
+        color: #F0F0F0;
         margin-left: 700px;
         font-size: 20px;
     }
@@ -155,7 +155,7 @@
     #description3 {
         position: absolute;
         margin-top: 1820px;
-        color: white;
+        color: #F0F0F0;
         margin-left: 1200px;
         font-size: 20px;
     }
