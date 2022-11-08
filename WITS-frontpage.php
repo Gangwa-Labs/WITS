@@ -38,7 +38,7 @@ if($mysql -> errno){
         WHHAT AREE YOU <br> LOOKINNG FORR?
     </div>
 
-    <form id="searchbar" action="WITS-results.php">
+    <form id="searchbar" action="WITSresults.php">
         <input style=
                "width: 800px;
                     height: 40px;

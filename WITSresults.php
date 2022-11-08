@@ -5,6 +5,32 @@ $userid = "ebird_JimJobBob";
 $userpw = "Treesap3#";
 $db = "ebird_WITS1";
 
+$mysql = new mysqli(
+    $host,
+    $userid,
+    $userpw,
+    $db
+);
+
+if($mysql -> errno){
+    echo "DB Connection Error <br>";
+    echo $mysql -> connect_error;
+    exit();
+}
+if(empty($_REQUEST["search"])){
+    header("Location: http://webdev.iyaclasses.com/~ebird/WITS/WITS-frontpage.php");
+}
+$sql = "SELECT toolName FROM allTools WHERE toolName like '%".$_REQUEST["search"]."%'";
+$results = $mysql -> query($sql);
+
+if(!$results){
+    echo "DB Query Problem <hr>";
+    echo $mysql -> error;
+    exit();
+}
+
+
+
 
 ?>
 <html>
@@ -16,25 +42,28 @@ $db = "ebird_WITS1";
 </head>
 
 <style>
-    *
-    {
+    * {
         margin: 0px;
         padding: 0px;
     }
+
     #outercontainer {
         background-color: #202020;
         height: 3500px;
         font-family: 'Lora';
     }
+
     #bgimage {
         height: 1194px;
         position: absolute;
         opacity: 80%;
     }
+
     @font-face {
         font-family: 'Stretch Pro';
 
     }
+
     #navbar {
         height: 150px;
         font-family: 'Stretch Pro';
@@ -45,6 +74,7 @@ $db = "ebird_WITS1";
         margin-left: 1100px;
         word-spacing: 40px;
     }
+
     #middletext {
         font-family: 'Stretch Pro';
         font-size: 80px;
@@ -54,16 +84,19 @@ $db = "ebird_WITS1";
         margin-top: 430px;
         margin-left: 300px;
     }
+
     #logoimage {
         position: absolute;
         width: 250px;
         float: left;
     }
+
     #searchbar {
         position: absolute;
         margin-left: 500px;
         margin-top: 630px;
     }
+
     #quote {
         position: absolute;
         color: #F0F0F0;
@@ -72,6 +105,7 @@ $db = "ebird_WITS1";
         text-align: center;
         margin-top: 930px;
     }
+
     #yourresultsfor {
         position: absolute;
         margin-top: 250px;
@@ -81,7 +115,8 @@ $db = "ebird_WITS1";
         font-size: 30px;
         color: #F0F0F0;
     }
-    #toolbox{
+
+    #toolbox {
         width: 1371px;
         height: 750px;
         left: 08%;
@@ -93,23 +128,26 @@ $db = "ebird_WITS1";
         flex-wrap: wrap;
 
     }
-    #tooltitle{
+
+    #tooltitle {
         font-size: 40px;
-        color:#F0F0F0;
-        padding:5px;
+        color: #F0F0F0;
+        padding: 5px;
         position: relative;
-       margin-left: 30%;
+        margin-left: 30%;
         margin-top: 5%;
 
     }
-    #tooldescription{
+
+    #tooldescription {
         font-size: 20px;
-        color:#F0F0F0;
+        color: #F0F0F0;
         padding: 25px;
         position: relative;
         margin: auto;
 
     }
+
     #toolimage {
         position: relative;
         width: 380px;
@@ -117,10 +155,11 @@ $db = "ebird_WITS1";
         background: #5B5B5B;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
-        margin:30px;
-       float: right;
+        margin: 30px;
+        float: right;
 
     }
+
     #notwhatyouwere {
         position: absolute;
         width: 1198px;
@@ -135,6 +174,7 @@ $db = "ebird_WITS1";
         text-align: center;
         color: #FFCC00;
     }
+
     #toolimage2 {
         position: absolute;
         margin-top: 1400px;
@@ -142,6 +182,7 @@ $db = "ebird_WITS1";
         float: left;
         width: 400px;
     }
+
     #ineed {
         position: absolute;
         width: 300px;
@@ -155,6 +196,7 @@ $db = "ebird_WITS1";
         line-height: 40px;
         color: #F0F0F0;
     }
+
     #material {
         position: absolute;
         width: 450px;
@@ -168,7 +210,8 @@ $db = "ebird_WITS1";
         line-height: 40px;
         color: #F0F0F0;
     }
-    #process{
+
+    #process {
         position: absolute;
         width: 363px;
         height: 49px;
@@ -182,6 +225,7 @@ $db = "ebird_WITS1";
         text-align: center;
         color: #F0F0F0;
     }
+
     #location {
         position: absolute;
         width: 388px;
@@ -196,8 +240,9 @@ $db = "ebird_WITS1";
         text-align: center;
         color: #F0F0F0;
     }
-    #buttonbox{
-        display:flex;
+
+    #buttonbox {
+        display: flex;
         box-sizing: border-box;
         position: absolute;
         width: 477px;
@@ -206,7 +251,8 @@ $db = "ebird_WITS1";
         top: 1529px;
         border: 1px solid #000000;
     }
-    #describebuttons{
+
+    #describebuttons {
         box-sizing: border-box;
         width: 212px;
         height: 54px;
@@ -214,14 +260,16 @@ $db = "ebird_WITS1";
         filter: drop-shadow(0px 4px 4px #000000);
         border-radius: 15px;
     }
-    #searchresult{
+
+    #searchresult {
         position: absolute;
         margin-top: 290px;
         color: #FFCC00;
         margin-left: 710px;
         font-size: 50px;
     }
-    #rect{
+
+    #rect {
         position: absolute;
         width: 100%;
         height: 229px;
@@ -229,7 +277,8 @@ $db = "ebird_WITS1";
         top: 0px;
         background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 95.14%);
     }
-    #rect2{
+
+    #rect2 {
         position: absolute;
         width: 100%;
         height: 229px;
@@ -238,7 +287,8 @@ $db = "ebird_WITS1";
         background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 95.14%);
         transform: rotate(-180deg);
     }
-    #rect3{
+
+    #rect3 {
         position: absolute;
         width: 831px;
         height: 1634px;
@@ -248,12 +298,14 @@ $db = "ebird_WITS1";
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         border-radius: 10px;
     }
-    hr{
+
+    hr {
         color: #FFCC00;
     }
 
 
 </style>
+
 
 <body>
 
@@ -263,27 +315,19 @@ $db = "ebird_WITS1";
 
     <img id="logoimage" src="witslogo.png">
     <div id="navbar">
-account edit contact catalog search
+        account edit contact catalog search
     </div>
-        <div id="yourresultsfor"> YOUR RESSULTS FFOR...</div>
-         <div id="searchresult">"orbital sander"</div>
+    <div id="yourresultsfor"> YOUR RESSULTS FFOR...</div>
+    <div id="searchresult">" <?php echo $_REQUEST["search"]?> "</div>
 
     <div id="toolbox">
-<div id="toolimage" style="order:1" >
-    <div id="tooltitle" style="margin-left: 20%">Belt Sander</div>
-    <!-- this is to be incorporated with j-query (like on hover, reveal the product description).
-    <div id="tooldescription">This text will mainly be used to emphasize the fact that I have nothing to say. What more can really be said about this situation? I really do not have an answer.</div>
--->
-</div>
-    <div id="toolimage" style="order:2">
-        <div id="tooltitle" style="margin-left: 20%">Disc Sander</div>
+        <?php
+        while($currentRow = mysqli_fetch_array($results)){
+            echo "<div id='toolimage'><div id='tooltitle'>".$currentRow["toolName"]."</div><div id='tooldescription'></div></div>";
+        }
+        ?>
+        <div id="notwhatyouwere"> Not what you were looking for? Check our catalog for a more detailed search!</div>
     </div>
-        <div id="toolimage">
-            <div id="tooltitle">Orbital Sander</div>
-
-    </div>
-<div id="notwhatyouwere"> Not what you were looking for? Check our catalog for a more detailed search! </div>
-</div>
     <hr>
     <br><br>
 
@@ -291,7 +335,7 @@ account edit contact catalog search
     <div id="material">MATEERIAL</div>
     <div id="process">PRROCESS</div>
     <div id="location">LOCCATION</div>
-<div id="rect3"></div>
+    <div id="rect3"></div>
 </div>
 </body>
 
