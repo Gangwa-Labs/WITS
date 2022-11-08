@@ -1,326 +1,298 @@
+<?php
+
+$host = "webdev.iyaclasses.com";
+$userid = "ebird_JimJobBob";
+$userpw = "Treesap3#";
+$db = "ebird_WITS1";
+
+
+?>
 <html>
 <head>
-<title>WITSresults.php</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #cc7832;}
-.s1 { color: #a9b7c6;}
-.s2 { color: #9876aa;}
-.s3 { color: #6a8759;}
-.s4 { color: #a9b7c6;}
-.s5 { color: #e8bf6a;}
-.s6 { color: #bababa;}
-.s7 { color: #a5c261;}
-.s8 { color: #6897bb;}
-.s9 { color: #cc7832;}
-.s10 { color: #6a8759;}
-.s11 { color: #808080;}
-</style>
+    <link href="https://fonts.cdnfonts.com/css/stretch-pro" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+
+    <title>WITSResults</title>
 </head>
-<body bgcolor="#2b2b2b">
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-WITSresults.php</font>
-</center></td></tr></table>
-<pre><span class="s0">&lt;?php</span>
 
-<span class="s2">$host </span><span class="s1">= </span><span class="s3">&quot;webdev.iyaclasses.com&quot;</span><span class="s0">;</span>
-<span class="s2">$userid </span><span class="s1">= </span><span class="s3">&quot;ebird_JimJobBob&quot;</span><span class="s0">;</span>
-<span class="s2">$userpw </span><span class="s1">= </span><span class="s3">&quot;Treesap3#&quot;</span><span class="s0">;</span>
-<span class="s2">$db </span><span class="s1">= </span><span class="s3">&quot;ebird_WITS1&quot;</span><span class="s0">;</span>
+<style>
+    *
+    {
+        margin: 0px;
+        padding: 0px;
+    }
+    #outercontainer {
+        background-color: #202020;
+        height: 3500px;
+        font-family: 'Lora';
+    }
+    #bgimage {
+        height: 1194px;
+        position: absolute;
+        opacity: 80%;
+    }
+    @font-face {
+        font-family: 'Stretch Pro';
 
+    }
+    #navbar {
+        height: 150px;
+        font-family: 'Stretch Pro';
+        font-size: 16px;
+        color: #F0F0F0;
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 1100px;
+        word-spacing: 40px;
+    }
+    #middletext {
+        font-family: 'Stretch Pro';
+        font-size: 80px;
+        color: #F0F0F0;
+        position: absolute;
+        text-align: center;
+        margin-top: 430px;
+        margin-left: 300px;
+    }
+    #logoimage {
+        position: absolute;
+        width: 250px;
+        float: left;
+    }
+    #searchbar {
+        position: absolute;
+        margin-left: 500px;
+        margin-top: 630px;
+    }
+    #quote {
+        position: absolute;
+        color: #F0F0F0;
+        font-size: 20px;
+        margin-left: 350px;
+        text-align: center;
+        margin-top: 930px;
+    }
+    #yourresultsfor {
+        position: absolute;
+        margin-top: 250px;
+        text-align: center;
+        margin-left: 620px;
+        font-family: 'Stretch Pro';
+        font-size: 30px;
+        color: #F0F0F0;
+    }
+    #toolbox{
+        width: 1371px;
+        height: 750px;
+        left: 08%;
+        top: 393px;
+        /*border: 1px solid #000000;*/
+        position: absolute;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
 
-<span class="s0">?&gt;</span>
-<span class="s5">&lt;html&gt;</span>
-<span class="s5">&lt;head&gt;</span>
-    <span class="s5">&lt;link </span><span class="s6">href</span><span class="s7">=&quot;https://fonts.cdnfonts.com/css/stretch-pro&quot; </span><span class="s6">rel</span><span class="s7">=&quot;stylesheet&quot;</span><span class="s5">&gt;</span>
-    <span class="s5">&lt;link </span><span class="s6">href</span><span class="s7">='https://fonts.googleapis.com/css?family=Lora' </span><span class="s6">rel</span><span class="s7">='stylesheet'</span><span class="s5">&gt;</span>
+    }
+    #tooltitle{
+        font-size: 40px;
+        color:#F0F0F0;
+        padding:5px;
+        position: relative;
+       margin-left: 30%;
+        margin-top: 5%;
 
-    <span class="s5">&lt;title&gt;</span><span class="s4">WITSResults</span><span class="s5">&lt;/title&gt;</span>
-<span class="s5">&lt;/head&gt;</span>
+    }
+    #tooldescription{
+        font-size: 20px;
+        color:#F0F0F0;
+        padding: 25px;
+        position: relative;
+        margin: auto;
 
-<span class="s5">&lt;style&gt;</span>
-    <span class="s5">*</span>
-    <span class="s4">{</span>
-        <span class="s6">margin</span><span class="s4">: </span><span class="s8">0</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">padding</span><span class="s4">: </span><span class="s8">0</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#outercontainer </span><span class="s4">{</span>
-        <span class="s6">background-color</span><span class="s4">: </span><span class="s8">#202020</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">3500</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Lora'</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#bgimage </span><span class="s4">{</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">1194</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">opacity</span><span class="s4">: </span><span class="s8">80</span><span class="s4">%</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s9">@font-face </span><span class="s4">{</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
+    }
+    #toolimage {
+        position: relative;
+        width: 380px;
+        height: 500px;
+        background: #5B5B5B;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        margin:30px;
+       float: right;
 
-    <span class="s4">}</span>
-    <span class="s5">#navbar </span><span class="s4">{</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">150</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">16</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">30</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">margin-left</span><span class="s4">: </span><span class="s8">1100</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">word-spacing</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#middletext </span><span class="s4">{</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">80</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">text-align</span><span class="s4">: </span><span class="s7">center</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">430</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">margin-left</span><span class="s4">: </span><span class="s8">300</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#logoimage </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">250</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">float</span><span class="s4">: </span><span class="s7">left</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#searchbar </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">margin-left</span><span class="s4">: </span><span class="s8">500</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">630</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#quote </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">20</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">margin-left</span><span class="s4">: </span><span class="s8">350</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">text-align</span><span class="s4">: </span><span class="s7">center</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">930</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#yourresultsfor </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">250</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">text-align</span><span class="s4">: </span><span class="s7">center</span><span class="s9">;</span>
-        <span class="s6">margin-left</span><span class="s4">: </span><span class="s8">620</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">30</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#toolbox</span><span class="s4">{</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">1371</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">750</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">08</span><span class="s4">%</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">393</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s11">/*border: 1px solid #000000;*/</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">flex-direction</span><span class="s4">: </span><span class="s7">column</span><span class="s9">;</span>
-        <span class="s6">justify-content</span><span class="s4">: </span><span class="s7">center</span><span class="s9">;</span>
-        <span class="s6">flex-wrap</span><span class="s4">: </span><span class="s7">wrap</span><span class="s9">;</span>
-
-    <span class="s4">}</span>
-    <span class="s5">#tooltitle</span><span class="s4">{</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">:</span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-        <span class="s6">padding</span><span class="s4">:</span><span class="s8">5</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">relative</span><span class="s9">;</span>
-       <span class="s6">margin-left</span><span class="s4">: </span><span class="s8">30</span><span class="s4">%</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">5</span><span class="s4">%</span><span class="s9">;</span>
-
-    <span class="s4">}</span>
-    <span class="s5">#tooldescription</span><span class="s4">{</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">20</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">:</span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-        <span class="s6">padding</span><span class="s4">: </span><span class="s8">25</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">relative</span><span class="s9">;</span>
-        <span class="s6">margin</span><span class="s4">: </span><span class="s7">auto</span><span class="s9">;</span>
-
-    <span class="s4">}</span>
-    <span class="s5">#toolimage </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">relative</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">380</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">500</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">background</span><span class="s4">: </span><span class="s8">#5B5B5B</span><span class="s9">;</span>
-        <span class="s6">box-shadow</span><span class="s4">: </span><span class="s8">0</span><span class="s7">px </span><span class="s8">4</span><span class="s7">px </span><span class="s8">4</span><span class="s7">px </span><span class="s5">rgba</span><span class="s4">(</span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0.25</span><span class="s4">)</span><span class="s9">;</span>
-        <span class="s6">border-radius</span><span class="s4">: </span><span class="s8">20</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">margin</span><span class="s4">:</span><span class="s8">30</span><span class="s7">px</span><span class="s9">;</span>
-       <span class="s6">float</span><span class="s4">: </span><span class="s7">right</span><span class="s9">;</span>
-
-    <span class="s4">}</span>
-    <span class="s5">#notwhatyouwere </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">1198</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">49</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">170</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">920</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Lora'</span><span class="s9">;</span>
-        <span class="s6">font-style</span><span class="s4">: </span><span class="s7">normal</span><span class="s9">;</span>
-        <span class="s6">font-weight</span><span class="s4">: </span><span class="s8">400</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">25</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">line-height</span><span class="s4">: </span><span class="s8">32</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">text-align</span><span class="s4">: </span><span class="s7">center</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#FFCC00</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#toolimage2 </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">1400</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">margin-right</span><span class="s4">: </span><span class="s8">50</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">float</span><span class="s4">: </span><span class="s7">left</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">400</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#ineed </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">300</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">171</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">1481</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
-        <span class="s6">font-style</span><span class="s4">: </span><span class="s7">normal</span><span class="s9">;</span>
-        <span class="s6">font-weight</span><span class="s4">: </span><span class="s8">400</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">line-height</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#material </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">450</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">168</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">1742</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
-        <span class="s6">font-style</span><span class="s4">: </span><span class="s7">normal</span><span class="s9">;</span>
-        <span class="s6">font-weight</span><span class="s4">: </span><span class="s8">400</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">line-height</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#process</span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">363</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">49</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">168</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">2006</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
-        <span class="s6">font-style</span><span class="s4">: </span><span class="s7">normal</span><span class="s9">;</span>
-        <span class="s6">font-weight</span><span class="s4">: </span><span class="s8">400</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">line-height</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">text-align</span><span class="s4">: </span><span class="s7">center</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#location </span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">388</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">49</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">159</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">2272</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-family</span><span class="s4">: </span><span class="s10">'Stretch Pro'</span><span class="s9">;</span>
-        <span class="s6">font-style</span><span class="s4">: </span><span class="s7">normal</span><span class="s9">;</span>
-        <span class="s6">font-weight</span><span class="s4">: </span><span class="s8">400</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">line-height</span><span class="s4">: </span><span class="s8">40</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">text-align</span><span class="s4">: </span><span class="s7">center</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#buttonbox</span><span class="s4">{</span>
-        <span class="s6">display</span><span class="s4">:</span><span class="s7">flex</span><span class="s9">;</span>
-        <span class="s6">box-sizing</span><span class="s4">: </span><span class="s7">border-box</span><span class="s9">;</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">477</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">162</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">155</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">1529</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">border</span><span class="s4">: </span><span class="s8">1</span><span class="s7">px solid </span><span class="s8">#000000</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#describebuttons</span><span class="s4">{</span>
-        <span class="s6">box-sizing</span><span class="s4">: </span><span class="s7">border-box</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">212</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">54</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">border</span><span class="s4">: </span><span class="s8">3</span><span class="s7">px solid </span><span class="s8">#F0F0F0</span><span class="s9">;</span>
-        <span class="s6">filter</span><span class="s4">: </span><span class="s5">drop-shadow</span><span class="s4">(</span><span class="s8">0</span><span class="s7">px </span><span class="s8">4</span><span class="s7">px </span><span class="s8">4</span><span class="s7">px </span><span class="s8">#000000</span><span class="s4">)</span><span class="s9">;</span>
-        <span class="s6">border-radius</span><span class="s4">: </span><span class="s8">15</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#searchresult</span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">margin-top</span><span class="s4">: </span><span class="s8">290</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#FFCC00</span><span class="s9">;</span>
-        <span class="s6">margin-left</span><span class="s4">: </span><span class="s8">710</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">font-size</span><span class="s4">: </span><span class="s8">50</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#rect</span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">100</span><span class="s4">%</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">229</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">0</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">0</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">background</span><span class="s4">: </span><span class="s5">linear-gradient</span><span class="s4">(</span><span class="s8">180</span><span class="s7">deg</span><span class="s9">, </span><span class="s8">#000000 0</span><span class="s4">%</span><span class="s9">, </span><span class="s5">rgba</span><span class="s4">(</span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s4">) </span><span class="s8">95.14</span><span class="s4">%)</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#rect2</span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">100</span><span class="s4">%</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">229</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">0</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">1000</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">background</span><span class="s4">: </span><span class="s5">linear-gradient</span><span class="s4">(</span><span class="s8">180</span><span class="s7">deg</span><span class="s9">, </span><span class="s8">#000000 0</span><span class="s4">%</span><span class="s9">, </span><span class="s5">rgba</span><span class="s4">(</span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s4">) </span><span class="s8">95.14</span><span class="s4">%)</span><span class="s9">;</span>
-        <span class="s6">transform</span><span class="s4">: </span><span class="s5">rotate</span><span class="s4">(-</span><span class="s8">180</span><span class="s7">deg</span><span class="s4">)</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">#rect3</span><span class="s4">{</span>
-        <span class="s6">position</span><span class="s4">: </span><span class="s7">absolute</span><span class="s9">;</span>
-        <span class="s6">width</span><span class="s4">: </span><span class="s8">831</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">height</span><span class="s4">: </span><span class="s8">1634</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">left</span><span class="s4">: </span><span class="s8">781</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">top</span><span class="s4">: </span><span class="s8">1484</span><span class="s7">px</span><span class="s9">;</span>
-        <span class="s6">background</span><span class="s4">: </span><span class="s5">linear-gradient</span><span class="s4">(</span><span class="s8">180</span><span class="s7">deg</span><span class="s9">, </span><span class="s8">#5B5B5B 13.53</span><span class="s4">%</span><span class="s9">, </span><span class="s5">rgba</span><span class="s4">(</span><span class="s8">91</span><span class="s9">, </span><span class="s8">91</span><span class="s9">, </span><span class="s8">91</span><span class="s9">, </span><span class="s8">0</span><span class="s4">) </span><span class="s8">108.48</span><span class="s4">%)</span><span class="s9">;</span>
-        <span class="s6">filter</span><span class="s4">: </span><span class="s5">drop-shadow</span><span class="s4">(</span><span class="s8">0</span><span class="s7">px </span><span class="s8">4</span><span class="s7">px </span><span class="s8">4</span><span class="s7">px </span><span class="s5">rgba</span><span class="s4">(</span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0</span><span class="s9">, </span><span class="s8">0.25</span><span class="s4">))</span><span class="s9">;</span>
-        <span class="s6">border-radius</span><span class="s4">: </span><span class="s8">10</span><span class="s7">px</span><span class="s9">;</span>
-    <span class="s4">}</span>
-    <span class="s5">hr</span><span class="s4">{</span>
-        <span class="s6">color</span><span class="s4">: </span><span class="s8">#FFCC00</span><span class="s9">;</span>
-    <span class="s4">}</span>
+    }
+    #notwhatyouwere {
+        position: absolute;
+        width: 1198px;
+        height: 49px;
+        left: 170px;
+        top: 920px;
+        font-family: 'Lora';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFCC00;
+    }
+    #toolimage2 {
+        position: absolute;
+        margin-top: 1400px;
+        margin-right: 50px;
+        float: left;
+        width: 400px;
+    }
+    #ineed {
+        position: absolute;
+        width: 300px;
+        height: 40px;
+        left: 171px;
+        top: 1481px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        color: #F0F0F0;
+    }
+    #material {
+        position: absolute;
+        width: 450px;
+        height: 40px;
+        left: 168px;
+        top: 1742px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        color: #F0F0F0;
+    }
+    #process{
+        position: absolute;
+        width: 363px;
+        height: 49px;
+        left: 168px;
+        top: 2006px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #F0F0F0;
+    }
+    #location {
+        position: absolute;
+        width: 388px;
+        height: 49px;
+        left: 159px;
+        top: 2272px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #F0F0F0;
+    }
+    #buttonbox{
+        display:flex;
+        box-sizing: border-box;
+        position: absolute;
+        width: 477px;
+        height: 162px;
+        left: 155px;
+        top: 1529px;
+        border: 1px solid #000000;
+    }
+    #describebuttons{
+        box-sizing: border-box;
+        width: 212px;
+        height: 54px;
+        border: 3px solid #F0F0F0;
+        filter: drop-shadow(0px 4px 4px #000000);
+        border-radius: 15px;
+    }
+    #searchresult{
+        position: absolute;
+        margin-top: 290px;
+        color: #FFCC00;
+        margin-left: 710px;
+        font-size: 50px;
+    }
+    #rect{
+        position: absolute;
+        width: 100%;
+        height: 229px;
+        left: 0px;
+        top: 0px;
+        background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 95.14%);
+    }
+    #rect2{
+        position: absolute;
+        width: 100%;
+        height: 229px;
+        left: 0px;
+        top: 1000px;
+        background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 95.14%);
+        transform: rotate(-180deg);
+    }
+    #rect3{
+        position: absolute;
+        width: 831px;
+        height: 1634px;
+        left: 781px;
+        top: 1484px;
+        background: linear-gradient(180deg, #5B5B5B 13.53%, rgba(91, 91, 91, 0) 108.48%);
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 10px;
+    }
+    hr{
+        color: #FFCC00;
+    }
 
 
-<span class="s5">&lt;/style&gt;</span>
+</style>
 
-<span class="s5">&lt;body&gt;</span>
+<body>
 
-<span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;outercontainer&quot;</span><span class="s5">&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;rect&quot;</span><span class="s5">&gt;&lt;/div&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;rect2&quot;</span><span class="s5">&gt;&lt;/div&gt;</span>
+<div id="outercontainer">
+    <div id="rect"></div>
+    <div id="rect2"></div>
 
-    <span class="s5">&lt;img </span><span class="s6">id</span><span class="s7">=&quot;logoimage&quot; </span><span class="s6">src</span><span class="s7">=&quot;witslogo.png&quot;</span><span class="s5">&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;navbar&quot;</span><span class="s5">&gt;</span>
-<span class="s4">account edit contact catalog search</span>
-    <span class="s5">&lt;/div&gt;</span>
-        <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;yourresultsfor&quot;</span><span class="s5">&gt; </span><span class="s4">YOUR RESSULTS FFOR...</span><span class="s5">&lt;/div&gt;</span>
-         <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;searchresult&quot;</span><span class="s5">&gt;</span><span class="s4">&quot;orbital sander&quot;</span><span class="s5">&lt;/div&gt;</span>
+    <img id="logoimage" src="witslogo.png">
+    <div id="navbar">
+account edit contact catalog search
+    </div>
+        <div id="yourresultsfor"> YOUR RESSULTS FFOR...</div>
+         <div id="searchresult">"orbital sander"</div>
 
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;toolbox&quot;</span><span class="s5">&gt;</span>
-<span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;toolimage&quot; </span><span class="s6">style</span><span class="s7">=&quot;</span><span class="s6">order</span><span class="s4">:</span><span class="s8">1</span><span class="s7">&quot; </span><span class="s5">&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;tooltitle&quot; </span><span class="s6">style</span><span class="s7">=&quot;</span><span class="s6">margin-left</span><span class="s4">: </span><span class="s8">20</span><span class="s4">%</span><span class="s7">&quot;</span><span class="s5">&gt;</span><span class="s4">Belt Sander</span><span class="s5">&lt;/div&gt;</span>
-    <span class="s11">&lt;!-- this is to be incorporated with j-query (like on hover, reveal the product description). 
-    &lt;div id=&quot;tooldescription&quot;&gt;This text will mainly be used to emphasize the fact that I have nothing to say. What more can really be said about this situation? I really do not have an answer.&lt;/div&gt; 
---&gt;</span>
-<span class="s5">&lt;/div&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;toolimage&quot; </span><span class="s6">style</span><span class="s7">=&quot;</span><span class="s6">order</span><span class="s4">:</span><span class="s8">2</span><span class="s7">&quot;</span><span class="s5">&gt;</span>
-        <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;tooltitle&quot; </span><span class="s6">style</span><span class="s7">=&quot;</span><span class="s6">margin-left</span><span class="s4">: </span><span class="s8">20</span><span class="s4">%</span><span class="s7">&quot;</span><span class="s5">&gt;</span><span class="s4">Disc Sander</span><span class="s5">&lt;/div&gt;</span>
-    <span class="s5">&lt;/div&gt;</span>
-        <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;toolimage&quot;</span><span class="s5">&gt;</span>
-            <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;tooltitle&quot;</span><span class="s5">&gt;</span><span class="s4">Orbital Sander</span><span class="s5">&lt;/div&gt;</span>
+    <div id="toolbox">
+<div id="toolimage" style="order:1" >
+    <div id="tooltitle" style="margin-left: 20%">Belt Sander</div>
+    <!-- this is to be incorporated with j-query (like on hover, reveal the product description).
+    <div id="tooldescription">This text will mainly be used to emphasize the fact that I have nothing to say. What more can really be said about this situation? I really do not have an answer.</div>
+-->
+</div>
+    <div id="toolimage" style="order:2">
+        <div id="tooltitle" style="margin-left: 20%">Disc Sander</div>
+    </div>
+        <div id="toolimage">
+            <div id="tooltitle">Orbital Sander</div>
 
-    <span class="s5">&lt;/div&gt;</span>
-<span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;notwhatyouwere&quot;</span><span class="s5">&gt; </span><span class="s4">Not what you were looking for? Check our catalog for a more detailed search! </span><span class="s5">&lt;/div&gt;</span>
-<span class="s5">&lt;/div&gt;</span>
-    <span class="s5">&lt;hr&gt;</span>
-    <span class="s5">&lt;br&gt;&lt;br&gt;</span>
+    </div>
+<div id="notwhatyouwere"> Not what you were looking for? Check our catalog for a more detailed search! </div>
+</div>
+    <hr>
+    <br><br>
 
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;ineed&quot;</span><span class="s5">&gt;</span><span class="s4">I NEEED</span><span class="s5">&lt;/div&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;material&quot;</span><span class="s5">&gt;</span><span class="s4">MATEERIAL</span><span class="s5">&lt;/div&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;process&quot;</span><span class="s5">&gt;</span><span class="s4">PRROCESS</span><span class="s5">&lt;/div&gt;</span>
-    <span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;location&quot;</span><span class="s5">&gt;</span><span class="s4">LOCCATION</span><span class="s5">&lt;/div&gt;</span>
-<span class="s5">&lt;div </span><span class="s6">id</span><span class="s7">=&quot;rect3&quot;</span><span class="s5">&gt;&lt;/div&gt;</span>
-<span class="s5">&lt;/div&gt;</span>
-<span class="s5">&lt;/body&gt;</span>
-
-<span class="s5">&lt;/html&gt;</span>
-</pre>
+    <div id="ineed">I NEEED</div>
+    <div id="material">MATEERIAL</div>
+    <div id="process">PRROCESS</div>
+    <div id="location">LOCCATION</div>
+<div id="rect3"></div>
+</div>
 </body>
+
 </html>
