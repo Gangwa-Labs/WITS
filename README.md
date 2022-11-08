@@ -1,2 +1,4 @@
-# WITS
-What's in the shop Dev 2
+### WITS
+What's in the shop
+# An Interactive Workshop Catalog for IYH
+
