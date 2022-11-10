@@ -20,7 +20,7 @@ if($mysql -> errno){
 if(empty($_REQUEST["search"])){
     header("Location: http://webdev.iyaclasses.com/~ebird/WITS/WITS-frontpage.php");
 }
-$sql = "SELECT toolName FROM allTools WHERE toolName like '%".$_REQUEST["search"]."%'";
+$sql = "SELECT toolName, location, material FROM allTools WHERE toolName like '%".$_REQUEST["search"]."%'";
 $results = $mysql -> query($sql);
 
 if(!$results){
@@ -134,7 +134,7 @@ if(!$results){
         color: #F0F0F0;
         padding: 5px;
         position: relative;
-        margin-left: 30%;
+        margin-left: 20%;
         margin-top: 5%;
 
     }
@@ -323,7 +323,8 @@ if(!$results){
     <div id="toolbox">
         <?php
         while($currentRow = mysqli_fetch_array($results)){
-            echo "<div id='toolimage'><div id='tooltitle'>".$currentRow["toolName"]."</div><div id='tooldescription'></div></div>";
+            echo "<div id='toolimage'><div id='tooltitle'>".$currentRow["toolName"]."</div>
+                    <div id='tooldescription'> Location: ".$currentRow["location"]."<br>Material: ".$currentRow["material"]."</div></div>";
         }
         ?>
         <div id="notwhatyouwere"> Not what you were looking for? Check our catalog for a more detailed search!</div>
