@@ -79,6 +79,10 @@ if($mysql -> errno){
         Brand: Dewalt <br>
         Location: The cage <br>
     </div>
+    
+    <div id="featuredtools"> CATEGOORIES</div>
+    
+    <div id="categorycon">
 
 
 </div>
