@@ -41,11 +41,11 @@ if($_REQUEST["conf"] != "yes"){
     <input type="hidden" name="conf" value="yes">
     <input type="hidden" name="toolID" value="<?php echo $_REQUEST["toolID"]?>">
     toolName:
-    <input name="toolName" type="text" value=<?php echo $allTools["toolName"]; ?>><br><br>
+    <input name="toolName" type="text" value=<?php echo "'".$allTools["toolName"]."'"; ?>><br><br>
     Quantity:
     <input name="quantity" type="number" value=<?php echo $allTools["quantity"]; ?>><br><br>
     Details:
-    <input name="details" type="text" value=<?php echo $allTools["details"]; ?>><br><br>
+    <input name="details" type="text" value=<?php echo "'" . $allTools["details"] . "'"; ?>><br><br>
     Location:
     <select name="locationID">
         <?php
@@ -59,7 +59,7 @@ if($_REQUEST["conf"] != "yes"){
         }
         while ($currentRow = $results->fetch_assoc()) {
             if ($allTools["locationID"] == $currentRow["locationID"]) {
-                echo "<option value='" . $currentRow["locationID"] . "'selected>" . $currentRow["location"] . "</option>";
+                echo "<option value='" . $currentRow["locationID"] . "' selected>" . $currentRow["location"] . "</option>";
             } else {
                 echo "<option value='" . $currentRow["locationID"] . "'>" . $currentRow["location"] . "</option>";
             }
@@ -79,7 +79,7 @@ if($_REQUEST["conf"] != "yes"){
         }
         while ($currentRow = $results->fetch_assoc()) {
             if ($allTools["materialID"] == $currentRow["materialID"]) {
-                echo "<option value='" . $currentRow["materialID"] . "'selected>" . $currentRow["material"] . "</option>";
+                echo "<option value='" . $currentRow["materialID"] . "' selected>" . $currentRow["material"] . "</option>";
             } else {
                 echo "<option value='" . $currentRow["materialID"] . "'>" . $currentRow["material"] . "</option>";
             }
@@ -99,7 +99,7 @@ if($_REQUEST["conf"] != "yes"){
         }
         while ($currentRow = $results->fetch_assoc()) {
             if ($allTools["typeID"] == $currentRow["typeID"]) {
-                echo "<option value='" . $currentRow["typeID"] . "'selected>" . $currentRow["toolType"] . "</option>";
+                echo "<option value='" . $currentRow["typeID"] . "' selected>" . $currentRow["toolType"] . "</option>";
             } else {
                 echo "<option value='" . $currentRow["typeID"] . "'>" . $currentRow["toolType"] . "</option>";
             }

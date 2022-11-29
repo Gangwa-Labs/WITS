@@ -37,7 +37,7 @@ if ($_REQUEST["error"] == null) {
     $email = $_REQUEST["email"];
     $user = $_REQUEST["username"];
     $pass = $_REQUEST["password"];
-    $dupCheck = "SELECT userID FROM user WHERE email = '".$email."'";
+    $dupCheck = "SELECT userID FROM user WHERE email = '" . $email . "'";
     echo $dupCheck;
     $results = $mysql->query($dupCheck);
     if (!$results) {
@@ -46,11 +46,22 @@ if ($_REQUEST["error"] == null) {
         exit();
     } else {
         $dupErrorCheck = $results->fetch_assoc();
-        if($dupErrorCheck["userID"] == null){
-            echo "account not found";
+        if ($dupErrorCheck["userID"] == null) {
+            $newAccount = "INSERT INTO user (email, username, password, typeID) VALUES ('" . $email . "','" . $user . "','" . $pass . "','1')";
+            echo $newAccount;
+            $newAccountResults = $mysql->query($newAccount);
+            if (!$newAccountResults) {
+                echo "DB Query Problem <hr>";
+                echo $db->error;
+                exit();
+            } else {
+                echo "account created with Username: " . $_REQUEST["username"];
+            }
+        } else {
+            echo "account already associated with email: " . $_REQUEST["email"];
         }
+
     }
-    //}
 }
 
 
