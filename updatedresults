@@ -1,0 +1,447 @@
+<?php
+
+    $host = "webdev.iyaclasses.com";
+    $userid = "ebird_JimJobBob";
+    $userpw = "Treesap3#";
+    $db = "ebird_WITS1";
+
+
+?>
+<html>
+<head>
+    <link href="https://fonts.cdnfonts.com/css/stretch-pro" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+
+    <title>WITSResults</title>
+</head>
+
+<style>
+    *
+    {
+        margin: 0px;
+        padding: 0px;
+    }
+    #outercontainer {
+        background-color: #202020;
+        height: 3500px;
+        font-family: 'Lora';
+    }
+    #bgimage {
+        height: 1194px;
+        position: absolute;
+        opacity: 80%;
+    }
+    @font-face {
+        font-family: 'Stretch Pro';
+
+    }
+    #navbar {
+        height: 150px;
+        font-family: 'Stretch Pro';
+        font-size: 16px;
+        color: #F0F0F0;
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 1100px;
+        word-spacing: 40px;
+    }
+    #middletext {
+        font-family: 'Stretch Pro';
+        font-size: 80px;
+        color: #F0F0F0;
+        position: absolute;
+        text-align: center;
+        margin-top: 430px;
+        margin-left: 300px;
+    }
+    #logoimage {
+        position: absolute;
+        width: 250px;
+        float: left;
+    }
+    #searchbar {
+        position: absolute;
+        margin-left: 500px;
+        margin-top: 630px;
+    }
+    #quote {
+        position: absolute;
+        color: #F0F0F0;
+        font-size: 20px;
+        margin-left: 350px;
+        text-align: center;
+        margin-top: 930px;
+    }
+    #yourresultsfor {
+        position: absolute;
+        margin-top: 250px;
+        text-align: center;
+        margin-left: 620px;
+        font-family: 'Stretch Pro';
+        font-size: 30px;
+        color: #F0F0F0;
+    }
+    #notwhatyouwere {
+        position: absolute;
+        width: 1198px;
+        height: 49px;
+        left: 17%;
+        top: 1320px;
+        font-family: 'Lora';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFCC00;
+    }
+
+    #ineed {
+        position: absolute;
+        width: 300px;
+        height: 40px;
+        left: 171px;
+        top: 1481px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        color: #F0F0F0;
+    }
+    #material {
+        position: absolute;
+        width: 450px;
+        height: 40px;
+        left: 168px;
+        top: 1742px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        color: #F0F0F0;
+    }
+    #process{
+        position: absolute;
+        width: 363px;
+        height: 49px;
+        left: 168px;
+        top: 2006px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #F0F0F0;
+    }
+    #location {
+        position: absolute;
+        width: 388px;
+        height: 49px;
+        left: 159px;
+        top: 2272px;
+        font-family: 'Stretch Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #F0F0F0;
+    }
+    #buttonbox1{
+        display:flex;
+        box-sizing: border-box;
+        position: absolute;
+        width: 477px;
+        height: 162px;
+        left: 155px;
+        top: 1529px;
+        border: 1px solid #000000;
+        flex-wrap: wrap;
+        margin: 5px;
+
+    }
+    #buttonbox2{
+        display:flex;
+        box-sizing: border-box;
+        position: absolute;
+        width: 477px;
+        height: 162px;
+        left: 155px;
+        top: 1790px;
+        border: 1px solid #000000;
+        flex-wrap: wrap;
+        margin: 5px;
+
+    }
+    #buttonbox3{
+        display:flex;
+        box-sizing: border-box;
+        position: absolute;
+        width: 477px;
+        height: 162px;
+        left: 155px;
+        top: 2051px;
+        border: 1px solid #000000;
+        flex-wrap: wrap;
+        margin: 5px;
+
+    }
+    #buttonbox4{
+        display:flex;
+        box-sizing: border-box;
+        position: absolute;
+        width: 477px;
+        height: 162px;
+        left: 155px;
+        top: 2312px;
+        border: 1px solid #000000;
+        flex-wrap: wrap;
+        margin: 5px;
+
+    }
+    .describebutton{
+        box-sizing: border-box;
+        width: 212px;
+        height: 54px;
+        border: 3px solid #F0F0F0;
+        filter: drop-shadow(0px 4px 4px #000000);
+        border-radius: 15px;
+        margin: 10px;
+        font-family: 'Lora';
+        font-size: 25px;
+        color: #F0F0F0;
+        text-align: center;
+        padding: 7px;
+    }
+    .describebutton.active{
+        transition:.7s;
+        background-color:#FFCC00;
+        color: #202020;
+        border: 3px #FFCC00 solid;
+        padding:7px;
+
+    }
+    .describebutton:hover{
+        transition: all .4s;
+        cursor: pointer;
+        color:#FFCC00;
+        border: 3px solid #FFCC00;
+
+    }
+
+    #searchresult{
+        position: absolute;
+        margin-top: 290px;
+        color: #FFCC00;
+        margin-left: 720px;
+        font-size: 50px;
+    }
+    #rect{
+        position: absolute;
+        width: 100%;
+        height: 229px;
+        left: 0px;
+        top: 0px;
+        background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 95.14%);
+    }
+    #rect2{
+        position: absolute;
+        width: 100%;
+        height: 229px;
+        left: 0px;
+        top: 1000px;
+        background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 95.14%);
+        transform: rotate(-180deg);
+    }
+    #rect3{
+        position: absolute;
+        width: 831px;
+        height: 1634px;
+        left: 781px;
+        top: 1484px;
+        background: linear-gradient(180deg, #5B5B5B 13.53%, rgba(91, 91, 91, 0) 108.48%);
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 10px;
+    }
+    hr{
+        color: #FFCC00;
+    }
+    #container{
+        width: 1430px;
+        height: 725px;
+        display: flex;
+        margin-top: 370px;
+        margin-left: 9%;
+        padding: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        position:absolute;
+
+    }
+    .child{
+        background-color: #5B5B5B;
+        width: 300px;
+        height: 350px;
+        margin: 10px;
+        box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        box-sizing: border-box;
+        font-size: 20px;
+        text-align: left;
+        color: #F0F0F0;
+        padding: 10px;
+        display:flex;
+        align-content: center;
+    }
+    /*tool description + title to be displayed on item hover (jquery)*/
+.child:hover{
+    height: 500px;
+    transition: .7s;
+}
+    .tooltitle{
+        font-size: 15px;
+        color:#F0F0F0;
+        margin-top: 270px;
+        margin-left: -250px;
+        padding: 10px;
+        width: 230px;
+        height: 50px;
+        text-align: center;
+
+    }
+    .tooldesc{
+        color: #F0F0F0;
+        font-size: 15px;
+        margin-top: 400px;
+        margin-left:-190px;
+        display:none;
+    }
+    .toolimage {
+        width: 250px;
+        height: 250px ;
+        border-radius: 15px;
+        margin-top: 15px;
+        margin-left:15px;
+        box-shadow: 1px 3px 3px rgba(0,0,0,0.25);
+        display: flex;
+        justify-content: center;
+    }
+    /*.toolimage:hover{
+        opacity: 20%;
+        transitions: all .7s;
+    }
+
+
+
+</style>
+
+<body>
+
+<div id="outercontainer">
+    <!-- gradient effect-->
+    <div id="rect"></div>
+    <div id="rect2"></div>
+
+        <img id="logoimage" src="witslogo.png">
+        <div id="navbar">
+            account edit contact catalog search
+        </div>
+            <div id="yourresultsfor"> YOUR RESSULTS FFOR...</div>
+             <div id="searchresult">
+
+                 "orbital sander"</div>
+<!-- tool results-->
+    <div id="container">
+        <div class="child">
+            <img class="toolimage" src="orbital.png">
+            <div class="tooltitle"> <h1>Orbital Sander</h1> </div>
+            <div class="tooldesc">This is a detailed description of the orbital sander. </div>
+
+        </div>
+        <div class="child">
+            <img class="toolimage" src="beltsand.jpg">
+            <div class="tooltitle"> <h1>Belt Sander</h1> </div>
+            </div>
+        <div class="child">
+            <img class="toolimage" src="disc.png">
+            <div class="tooltitle"> <h1>Disc Sander</h1> </div>
+        </div>
+        <div class="child">
+            <img class="toolimage" src="sandpap.jpeg">
+            <div class="tooltitle"> <h1> Sand Paper</h1> </div>
+        </div>
+    </div>
+
+    <!-- this is to be incorporated with j-query (like on hover, reveal the product description).
+    <div id="tooldescription">This text will mainly be used to emphasize the fact that I have nothing to say. What more can really be said about this situation? I really do not have an answer.</div>
+-->
+
+
+<div id="notwhatyouwere"> Not what you were looking for? Check our catalog for a more detailed search! </div>
+</div>
+    <hr>
+    <br><br>
+<!-- use forms to automatically submit values (materials, tools, printing) to a submit button, which you can then hide later on!-->
+    <div id="ineed">I NEEED</div>
+    <div id="material">MATEERIAL</div>
+    <div id="process">PRROCESS</div>
+    <div id="location">LOCCATION</div>
+<div id="rect3"></div>
+    <!-- "I Need..."-->
+    <div id="buttonbox1">
+        <div class="describebutton" id="1">MATERIALS</div>
+        <div class="describebutton" id="2">TOOLS</div>
+        <div class="describebutton" id="3"> PRINTING</div>
+        <div class="describebutton" id="3" style="font-size: 20px; padding:10px;"> PROJECT HELP</div>
+
+        <form>
+            <input type="text">
+
+        </form>
+        <!--<div class="describebutton"></div>-->
+        <!-- "Material..."-->
+    </div>
+    <div id="buttonbox2">
+        <div class="describebutton" id="4">LUMBER</div>
+        <div class="describebutton" id="5">METAL</div>
+        <div class="describebutton" id="6">FABRIC</div>
+        <div class="describebutton" id="7">PLASTIC</div>
+        <!-- "Process..."-->
+    </div>
+    <div id="buttonbox3">
+        <div class="describebutton" id="8">CUT</div>
+        <div class="describebutton" id="9">DRILL</div>
+        <div class="describebutton" id="10">SAND</div>
+        <div class="describebutton" id="11">SOLDER</div>
+        <!-- "Location..."-->
+    </div>
+    <div id="buttonbox4">
+        <div class="describebutton" id="12">WOODSHOP</div>
+        <div class="describebutton" id="13">CAGE</div>
+        <div class="describebutton" id="14">PRINT LAB</div>
+        <div class="describebutton" id="15" style="font-size:20px; padding:10px; " >FINISHING ROOM</div>
+
+    </div>
+
+</div>
+</body>
+<script src="http://iyawebdev.com/jquery.js"></script>
+<script>
+// find a way to turn all the buttons off when one button is clicked using the "this" function thingy
+        // when a description button is pressed, change the infill of the button. this can be used in combo w/ data to show catalog results
+        // make a constant for description button
+        const DBUT = $(".describebutton")
+        $(this).on("click", function () {
+            DBUT.toggleClass('active');
+        })
+        const TOOLICON = $(".toolimage")
+        const TOOLCAP = $(".tooldesc")
+        TOOLICON.mouseover()
+
+
+</script>
+
+</html>
