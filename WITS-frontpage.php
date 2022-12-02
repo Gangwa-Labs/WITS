@@ -29,10 +29,9 @@ if($mysql -> errno){
 
     <img id="bgimage" src="makerspace1.png">
     <img id="logoimage" src="witslogo.png">
-
-    <div id="navbar">
-        account edit contact catalog search
-    </div>
+    <?php
+    include "header.php"
+    ?>
 
     <div id="middletext">
         WHHAT AREE YOU <br> LOOKINNG FORR?
