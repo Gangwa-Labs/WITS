@@ -38,7 +38,7 @@ if($mysql -> errno){
         WHHAT AREE YOU <br> LOOKINNG FORR?
     </div>
 
-    <form id="searchbar" action="WITS-results.php">
+    <form id="searchbar" action="WITSresults.php">
         <input style=
                "width: 800px;
                     height: 40px;
@@ -78,6 +78,18 @@ if($mysql -> errno){
         Tool name: Power Drill <br>
         Brand: Dewalt <br>
         Location: The cage <br>
+    </div>
+    
+    <div id="featuredtools" style="margin-top:2332px"> CATEGOORIES</div>
+    
+    <div id="categorycon">
+        <div id="catbox"></div>
+        <div id="catbox" style="left:939px;top:2362px;"></div>
+        <div id="catbox" style="left: 295px;top:2362px;"></div>
+        <div id="catbox" style="left: 163px;top: 2382px;"></div>
+        <div id="catbox" style="left: 1114px;top: 2382px;"></div>
+    
+    
     </div>
 
 
