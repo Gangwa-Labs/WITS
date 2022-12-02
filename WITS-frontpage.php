@@ -17,17 +17,40 @@ if($mysql -> errno){
 }
 
 ?>
+
 <html>
 <head>
     <title>WITS Frontpage</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        #outercontainer{
+            width:100%;
+            background-image: url("makerspace1.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        #logoimage {
+            position: absolute;
+            width: 250px;
+            float: left;
+        }
+        #navbar {
+            height: 150px;
+            font-family: stretch;
+            font-size: 16px;
+            color: #F0F0F0;
+            position: absolute;
+            margin-top: 30px;
+            margin-left: 1100px;
+            word-spacing: 40px;
+        }
+        
+    </style>
 </head>
 
 <body>
 
 <div id="outercontainer">
 
-    <img id="bgimage" src="makerspace1.png">
     <img id="logoimage" src="witslogo.png">
 
     <div id="navbar">
@@ -35,7 +58,7 @@ if($mysql -> errno){
     </div>
 
     <div id="middletext">
-        WHHAT AREE YOU <br> LOOKINNG FORR?
+        WHHAT AREE YOU <br> L00KINNG FORR?
     </div>
 
     <form id="searchbar" action="WITSresults.php">
@@ -48,15 +71,7 @@ if($mysql -> errno){
                type="text" name="search" placeholder="  search...">
     </form>
 
-    <div id="quote">
-        The wealth of tools in the maker spaces are intended to enable undirected creative experimentation, not merely
-        facilitate a specific <br> class project or research. “I think that a program that attracts makers and doers
-        like the Academy must commit to making the act of <br> creation accessible,” said Surovsky. “Having a space to
-        make a mess, explore, and experiment is essential for the pursuit of innovation.” <br>
-        <br> <strong>Scroll below to check out our growing catalogue of tools!</strong>
-    </div>
-
-    <div id="featuredtools"> FEEATUURED T00LLS</div>
+    <div id="featuredtools"> POPPULAR T00LLS</div>
 
     <img id="toolimage1" src="orbital.jpeg">
     <img id="toolimage2" src="jigsaw.jpeg">

@@ -9,7 +9,7 @@
 }
 
 #bgimage {
-    height: 1194px;
+    width: 100%;
     position: absolute;
     opacity: 80%;
 }
@@ -33,7 +33,7 @@
 #middletext {
     font-family: stretch;
     font-size: 80px;
-    color: #FFCC00;
+    color: #FFFFFF;
     position: absolute;
     text-align: center;
     margin-top: 430px;
@@ -75,35 +75,33 @@
     position: absolute;
     margin-top: 1400px;
     margin-left: 200px;
-    margin-right: 50px;
+    margin-right: 29px;
     float: left;
     width: 400px;
+    border-radius: 21px;
+    border: #5B5B5B 20px solid;
 }
 
 #toolimage2 {
     position: absolute;
     margin-top: 1400px;
     margin-left: 700px;
-    margin-right: 50px;
+    margin-right: 29px;
     float: left;
     width: 400px;
-}
-
-#toolimage2 {
-    position: absolute;
-    margin-top: 1400px;
-    margin-right: 50px;
-    float: left;
-    width: 400px;
+    border-radius: 21px;
+    border: #5B5B5B 20px solid;
 }
 
 #toolimage3 {
     position: absolute;
     margin-top: 1400px;
     margin-left: 1200px;
-    margin-right: 50px;
+    margin-right: 29px;
     width: 400px;
     height: 400px;
+    border-radius: 21px;
+    border: #5B5B5B 20px solid;
 }
 
 #description1 {
