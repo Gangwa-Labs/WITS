@@ -133,7 +133,7 @@ if($mysql -> errno){
                     margin-top: 700px;
                     margin-left: 520px;
                     background-color: #FFDD00FF;"
-           name="createAccount" placeholder="create account"
+           name="createAccount" 
            
 </div>
 
