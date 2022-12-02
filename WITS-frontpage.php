@@ -27,23 +27,73 @@ if($mysql -> errno){
             background-image: url("makerspace1.png");
             background-size: 100%;
             background-repeat: no-repeat;
+            margin-left: -10px;
+            margin-top: -10px;
+            padding-right:20px;
+            background-color: black;
         }
         #logoimage {
             position: absolute;
             width: 250px;
             float: left;
         }
-        #navbar {
-            height: 150px;
-            font-family: stretch;
-            font-size: 16px;
-            color: #F0F0F0;
-            position: absolute;
-            margin-top: 30px;
-            margin-left: 1100px;
-            word-spacing: 40px;
+        #middletext {
+            font-family: "Stretch Pro";
+            font-size: 80px;
+            color: #FFFFFF;
+            text-align: center;
+            margin: auto;
+            padding-top:20%;
         }
-        
+        #searchbar{
+            margin: auto;
+            align-content: center;
+            text-align: center;
+            padding-bottom: 340px;
+
+        }
+
+        #featuredtools{
+            font-family: "Stretch Pro";
+            font-size: 30px;
+            color: #FFCC00;
+            align-content: center;
+            text-align: center;
+            background-color: black;
+            height: 100%;
+            margin-left: -10px;
+            margin-bottom: -10px;
+            margin-right:-10px;
+            padding-top:20px;
+            padding-bottom: 30px;
+        }
+        .toolimage {
+            font-family: "Lora";
+            width: 29%;
+            margin:2%;
+            text-align: center;
+            align-content: center;
+            color: #FFFFFF;
+            float:left;
+
+        }
+        .toolimageimage {
+            width: 400px;
+            height:500px;
+            border-radius: 21px;
+            border: #5B5B5B 20px solid;
+        }
+        #footer{
+            background-color: #5B5B5B;
+            text-align: center;
+            font-family: "Stretch Pro";
+            font-size: 12pt;
+            height:45px;
+            margin-left: -10px;
+            margin-bottom: -10px;
+            margin-right:-10px;
+            color:white;
+        }
     </style>
 </head>
 
@@ -53,62 +103,51 @@ if($mysql -> errno){
 
     <img id="logoimage" src="witslogo.png">
     <?php
-    include "header.php"
+    include ('header.php');
     ?>
-
     <div id="middletext">
-        WHHAT AREE YOU <br> L00KINNG FORR?
+        WHHAT IS IN THEE SSHOP?
     </div>
-
-    <form id="searchbar" action="WITSresults.php">
-        <input style=
-               "width: 800px;
-                    height: 40px;
-                    font-size: 25px;
-                    border-radius: 20px;
-                    opacity: 80%;"
-               type="text" name="search" placeholder="  search...">
-    </form>
-
-    <div id="featuredtools"> POPPULAR T00LLS</div>
-
-    <img id="toolimage1" src="orbital.jpeg">
-    <img id="toolimage2" src="jigsaw.jpeg">
-    <img id="toolimage3" src="drill.jpg">
-
-    <div id="description1">
-        Tool name: Orbital Sander <br>
-        Brand: Dewalt <br>
-        Location: The cage <br>
+    <div id="searchbar">
+        <form action="WITSresults.php">
+            <input style=
+                   "width: 800px;
+                        height: 50px;
+                        font-size: 25px;
+                        border-radius: 25px;
+                        opacity: 80%;"
+                   type="text" name="search" >
+            <input style="width: 100px;
+            height:50px;
+            font-size:25px;
+            border-radius: 25px;
+            background-color: FFCC00;
+"                            type="submit" name="submit">
+        </form>
     </div>
-
-    <div id="description2">
-        Tool name: Jigsaw <br>
-        Brand: Dewalt <br>
-        Location: The cage <br>
-    </div>
-
-    <div id="description3">
-        Tool name: Power Drill <br>
-        Brand: Dewalt <br>
-        Location: The cage <br>
-    </div>
-    
-    <div id="featuredtools" style="margin-top:2332px"> CATEGOORIES</div>
-    
-    <div id="categorycon">
-        <div id="catbox"></div>
-        <div id="catbox" style="left:939px;top:2362px;"></div>
-        <div id="catbox" style="left: 295px;top:2362px;"></div>
-        <div id="catbox" style="left: 163px;top: 2382px;"></div>
-        <div id="catbox" style="left: 1114px;top: 2382px;"></div>
-    
-    
-    </div>
-
-
 </div>
 
+<div id="featuredtools"> POPPULAR T00LLS<br>
+    <div class="toolimage">
+        <img class="toolimageimage" src="orbital.jpeg"><br>
+        <h2>Orbital Sander</h2><br>
+        This text will mainly be used to emphasize the fact that I have nothing to say. What more can really be said about this situation? I really do not have an answer.
+    </div>
+    <div class="toolimage">
+        <img class="toolimageimage" src="jigsaw.jpeg"><br>
+        <h2>Disc Sander</h2><br>
+        This text will mainly be used to emphasize the fact that I have nothing to say. What more can really be said about this situation? I really do not have an answer.
+    </div>
+    <div class="toolimage">
+        <img class="toolimageimage" src="drill.jpg"><br>
+        <h2>Belt Sander</h2><br>
+        This text will mainly be used to emphasize the fact that I have nothing to say. What more can really be said about this situation? I really do not have an answer.
+    </div>
+</div>
+<div id="footer">
+    <br>
+    this site is powered by the graciousness of cohort 8
+</div>
 </body>
 
 
