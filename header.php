@@ -16,6 +16,7 @@
 
         #navList {
             list-style-type: none;
+            margin: 0;
         }
 
         .navItem {
