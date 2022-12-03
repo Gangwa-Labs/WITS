@@ -19,7 +19,7 @@ if ($mysql->errno) {
 ?>
 <html>
 <head>
-    <title>Log in</title>
+    <title>Create an Account</title>
     <style>
         #displayUsername{
             background-color: black;
@@ -139,30 +139,37 @@ if ($mysql->errno) {
             </form>
             <?php
         } else {
-            if($_REQUEST["username"] != null && $_REQUEST["password"] != null){
-                $sql = "SELECT * FROM user WHERE username = '". $_REQUEST["username"] ."' AND password = '".$_REQUEST["password"]."'";
-                $results = $mysql -> query($sql);
-                if(!$results){
-                    echo "DB Query Problem <hr>";
-                    echo $db -> error;
-                    exit();
+            $email = $_REQUEST["email"];
+            $user = $_REQUEST["username"];
+            $pass = $_REQUEST["password"];
+            $dupCheck = "SELECT userID FROM user WHERE email = '" . $email . "'";
+            echo $dupCheck;
+            $results = $mysql->query($dupCheck);
+            if (!$results) {
+                echo "DB Query Problem <hr>";
+                echo $db->error;
+                exit();
+            } else {
+                $dupErrorCheck = $results->fetch_assoc();
+                if ($dupErrorCheck["userID"] == null) {
+                    $newAccount = "INSERT INTO user (email, username, password, typeID) VALUES ('" . $email . "','" . $user . "','" . $pass . "','1')";
+                    echo $newAccount;
+                    $newAccountResults = $mysql->query($newAccount);
+                    if (!$newAccountResults) {
+                        echo "DB Query Problem <hr>";
+                        echo $db->error;
+                        exit();
+                    } else {
+                        echo "account created with Username: " . $_REQUEST["username"];
+                    }
+                } else {
+                    echo "account already associated with email: " . $_REQUEST["email"];
                 }
-                $currentRow = $results->fetch_assoc();
-                if($currentRow["userID"] == null){
-                    echo "user not found";
-                }else{
-                    echo "user Id found<br><br>";
-                    $_SESSION["username"] = $currentRow["username"];
-                    $_SESSION["sessionID"] = $currentRow["userID"];
-                    echo $_SESSION["sessionID"];
-                }
-            }
-            if($_SESSION["username"] != null) {
-                $login =  "logged in as: " . $_SESSION["username"];
 
-                echo "<div id='displayUsername'>".$login."</div>";
             }
         }
+
+
         ?>
     </div>
 </div>
