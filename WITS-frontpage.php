@@ -107,7 +107,6 @@ if ($mysql->errno) {
 <body style="margin: 0px;">
 
 <div id="outercontainer">
-
     <?php
     include('header.php');
     ?>
