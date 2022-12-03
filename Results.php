@@ -1,9 +1,39 @@
+<?php
+
+$host = "webdev.iyaclasses.com";
+$userid = "ebird_JimJobBob";
+$userpw = "Treesap3#";
+$db = "ebird_WITS1";
+
+$mysql = new mysqli(
+    $host,
+    $userid,
+    $userpw,
+    $db
+);
+
+if ($mysql->errno) {
+    echo "DB Connection Error <br>";
+    echo $mysql->connect_error;
+    exit();
+}
+$sql = "SELECT * FROM allTools WHERE toolName like '%" . $_REQUEST["search"] . "%'";
+$results = $mysql->query($sql);
+
+if (!$results) {
+    echo "DB Query Problem <hr>";
+    echo $mysql->error;
+    exit();
+}
+?>
 <html>
 <head>
     <title>results</title>
     <style>
         #mainContainer {
             background-color: #202020;
+            height: 100%;
+            margin: 0;
         }
 
         div {
@@ -184,7 +214,8 @@
             background-size: auto;
             background-position: center;
         }
-        #searchForm{
+
+        #searchForm {
             font-size: 25pt;
             border-radius: 40px;
             opacity: 80%;
@@ -192,19 +223,21 @@
             height: inherit;
             border: none;
         }
-        #searchFormDiv{
+
+        #searchFormDiv {
             width: 100%;
             height: 100%;
 
         }
-        #pageSelect{
+
+        #pageSelect {
             position: relative;
             display: flex;
             height: 65px;
-
             gap: 35px;
         }
-        .pageButton{
+
+        .pageButton {
             background-color: white;
             font-size: 25pt;
             display: flex;
@@ -216,9 +249,14 @@
             justify-content: center;
             border-radius: 20px;
         }
-        .pageButton:hover{
+
+        .pageButton:hover {
             background-color: #FFCC00;
             color: white;
+        }
+        #pageSelect a{
+            text-decoration: none;
+            color: black;
         }
     </style>
 </head>
@@ -226,13 +264,13 @@
 <?php include('header.php') ?>
 <form>
 
-<div id="searchContainer">
+    <div id="searchContainer">
         <div id="searchBar">
             <div id="searchFormDiv"><input type="text" id="searchForm" name="search"></div>
         </div>
         <button id="searchButton" type="submit">
         </button>
-</div>
+    </div>
 </form>
 
 <div id="result">
@@ -240,33 +278,72 @@
         YOUR RESSULTS FFOR...
     </div>
     <div id="searchedTool">
-        “orbiter power sander”
+        <?php echo '"' . $_REQUEST['search'] . '"' ?>
     </div>
     <div id="searchSide">
-        <div class="toolSearchResult">
-            <div class="toolTitle">Drill</div>
-            <div class="toolDetails">
-                <div class="toolPic"></div>
-                <div class="toolInfo">
-                    <p>Location: Cage
-                    </p>
-                    <p>Tool Type: Powered Hand Tool
-                    </p>
-                    <p>Material: Wood
-                    </p>
-                    <p> Quantity: 3
-                    </p>
-                    <p>Description: Bruh it’s a drill how
-                        the fuck could you not know how
-                        to use one</p>
-                </div>
+        <?php
+        if (empty($_REQUEST["start"])) {
+            $start = 1;
+        } else {
+            $start = $_REQUEST["start"];
+        }
+        $end = $start + 2;
+        if ($results->num_rows < $end) {
+            $end = $results->num_rows;
+        }
+        $counter = $start;
+        $results->data_seek($start - 1);
+        $searchstring = "&search=" . $_REQUEST["search"];
+        while ($currentrow = $results->fetch_assoc()) {
+        if ($counter > $end) {
+            break;
+        }
+        echo "<div class ='toolSearchResult'>";
+        echo "<div class ='toolTitle'>";
+        echo $currentrow["toolName"];
+        ?>
+    </div>
+        <div class="toolDetails">
+            <div class="toolPic"></div>
+            <div class="toolInfo">
+                <?php
+                echo "<p>Location:'" . $currentrow["location"] . "'</p>";
+                echo "<p>Tool Type:'" . $currentrow["toolType"] . "'</p>";
+                echo "<p>Material:'" . $currentrow["material"] . "'</p>";
+                echo "<p>Quantity:'" . $currentrow["quantity"] . "'</p>";
+                echo "<p>Description:'" . $currentrow["details"] . "'</p>";
+                ?>
             </div>
         </div>
-        <div id="pageSelect">
-            <div class="pageButton"><div><</div></div>
-            <div class="pageButton"><div>></div></div>
-        </div>
     </div>
+
+    <?php
+    $counter++;
+    }
+    ?>
+<div id="pageSelect">
+    <?php
+    if ($start != 1) {
+        echo "<a href='Results.php?start=" . ($start - 3) .
+            $searchstring .
+            "'><div class='pageButton'>
+                <div><</div>
+            </div></a>";
+    }
+    ?>
+    <?php
+    if ($end < $results->num_rows) {
+        echo "<a href='Results.php?start=" . ($start + 3) .
+            $searchstring .
+            "'><div class='pageButton'>
+                <div>></div>
+            </div></a>";
+    }
+    ?>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="filters">
     <div class="filterCategory">

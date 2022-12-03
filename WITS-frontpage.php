@@ -108,7 +108,7 @@ if ($mysql->errno) {
         WHHAT IS IN THEE SSHOP?
     </div>
     <div id="searchbar">
-        <form action="WITSresults.php">
+        <form action="Results.php">
             <input style=
                    "width: 800px;
                         height: 50px;
