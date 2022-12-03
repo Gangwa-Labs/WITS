@@ -32,15 +32,7 @@ if ($mysql->errno) {
             background-image: url("makerspace1.png");
             background-size: 100%;
             background-repeat: no-repeat;
-            margin-left: -10px;
-            margin-top: -10px;
-            padding-right:20px;
             background-color: black;
-        }
-        #logoimage {
-            position: absolute;
-            width: 250px;
-            float: left;
         }
         #logintext {
             font-family: "Stretch Pro";
@@ -62,9 +54,6 @@ if ($mysql->errno) {
             font-family: "Stretch Pro";
             font-size: 12pt;
             height:45px;
-            margin-left: -10px;
-            margin-bottom: -10px;
-            margin-right:-10px;
             color:white;
         }
         #columnholder{
@@ -87,7 +76,7 @@ if ($mysql->errno) {
 
     </style>
 </head>
-<body>
+<body style="margin: 0">
 
 
 <div id="outercontainer">
@@ -103,8 +92,6 @@ if ($mysql->errno) {
         if($_REQUEST["loggedIn"] != "1"){
             echo "log in please";
             ?>
-
-
             <form>
                 <input type="hidden" name="loggedIn" value="1">
                 <input  style=
@@ -156,7 +143,7 @@ if ($mysql->errno) {
         ?>
     </div>
     <div id="columnholder">
-<a href="WITS-frontpage.php" target="_new">create an account</a>
+<a href="create-account.php" target="_new">create an account</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="WITS-frontpage.php" target="_new">forgot password?</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
