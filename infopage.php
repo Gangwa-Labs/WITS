@@ -27,9 +27,7 @@ if($mysql -> errno){
             background-image: url("ourgoal1.png");
             background-size: 100%;
             background-repeat: no-repeat;
-            margin-left: -10px;
-            margin-top: -10px;
-            padding-right:20px;
+            margin: 0;
             background-color: black;
         }
 
@@ -56,18 +54,18 @@ if($mysql -> errno){
     </style>
 </head>
 
-<body>
+<body style="margin: 0">
 
 <div id="outercontainer">
-
-
     <?php
     include ('header.php');
     ?>
+
+
     <div id="middletext">
         OUR GOOAL
 
-        <p style="font-family: Times; font-size: 20;">What’s In The Shop is here to remind Iovine & Young students to Use Their WITS™. Before you <br>
+        <p style="font-family: Times; font-size: 20pt;">What’s In The Shop is here to remind Iovine & Young students to Use Their WITS™. Before you <br>
             even need to enter the makerspace, take the chance to peruse our catalogues and check the <br>
             availability of tools and devices. We hope to make your maker-experience more convenient and <br>
             streamlined, opening up different opportunities for you to develop as a disruptive innovator. </p>

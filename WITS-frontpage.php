@@ -27,9 +27,6 @@ if ($mysql->errno) {
             background-image: url("makerspace1.png");
             background-size: 100%;
             background-repeat: no-repeat;
-            margin-left: -10px;
-            margin-top: -10px;
-            padding-right: 20px;
             background-color: black;
         }
 
@@ -43,11 +40,12 @@ if ($mysql->errno) {
         }
 
         #searchbar {
-            margin: auto;
-            align-content: center;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding-bottom: 340px;
-
+            flex-direction: row;
+            gap: 15px;
         }
 
         #featuredtools {
@@ -89,10 +87,19 @@ if ($mysql->errno) {
             font-family: "Stretch Pro";
             font-size: 12pt;
             height: 45px;
-            margin-left: -10px;
-            margin-bottom: -10px;
-            margin-right: -10px;
             color: white;
+        }
+
+        #searchButton {
+            background-color: #FFCC00;
+            width: 120px;
+            height: 50px;
+            border-radius: 25px;
+            border: none;
+            background-image: url("search.svg");
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: center;
         }
     </style>
 </head>
@@ -107,19 +114,16 @@ if ($mysql->errno) {
     <div id="middletext">
         WHHAT IS IN THEE SSHOP?
     </div>
-    <div id="searchbar">
-        <form action="Results.php">
-            <input style=
-                   "width: 800px;
-                        height: 50px;
-                        font-size: 25px;
-                        border-radius: 25px;
-                        opacity: 80%;"
-                   type="text" name="search">
-            <input style="width: 100px;height:50px;font-size:25px;border-radius: 25px;background-color: #FFCC00;"
-            type="submit" name="submit">
-        </form>
-    </div>
+    <form action="Results.php" style="list-style-type:none; margin: 0">
+        <div id="searchbar">
+            <div><input style="width: 680px;height: 50px;font-size: 25px; border-radius: 25px;opacity: 80%;"
+                        type="text" name="search">
+            </div>
+            <div>
+                <button id="searchButton" type="submit"></button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div id="featuredtools"> POPPULAR T00LLS<br>

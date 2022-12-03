@@ -36,9 +36,9 @@ if (!$results) {
             margin: 0;
         }
 
-        div {
-            border: 1px solid red;
-        }
+        /*div {*/
+        /*    border: 1px solid red;*/
+        /*}*/
 
         #result {
             width: 50%;
@@ -117,6 +117,7 @@ if (!$results) {
             justify-content: center;
             align-items: center;
             color: #F0F0F0;
+            background-color: #202020;
             border: 3px solid #F0F0F0;
             filter: drop-shadow(0px 4px 4px #000000);
             border-radius: 15px;
@@ -263,7 +264,6 @@ if (!$results) {
 <body id="mainContainer">
 <?php include('header.php') ?>
 <form>
-
     <div id="searchContainer">
         <div id="searchBar">
             <div id="searchFormDiv"><input type="text" id="searchForm" name="search"></div>
@@ -307,11 +307,11 @@ if (!$results) {
             <div class="toolPic"></div>
             <div class="toolInfo">
                 <?php
-                echo "<p>Location:'" . $currentrow["location"] . "'</p>";
-                echo "<p>Tool Type:'" . $currentrow["toolType"] . "'</p>";
-                echo "<p>Material:'" . $currentrow["material"] . "'</p>";
-                echo "<p>Quantity:'" . $currentrow["quantity"] . "'</p>";
-                echo "<p>Description:'" . $currentrow["details"] . "'</p>";
+                echo "<p>Location: " . $currentrow["location"] . "</p>";
+                echo "<p>Tool Type: " . $currentrow["toolType"] . "</p>";
+                echo "<p>Material: " . $currentrow["material"] . "</p>";
+                echo "<p>Quantity: " . $currentrow["quantity"] . "</p>";
+                echo "<p>Description: " . $currentrow["details"] . "</p>";
                 ?>
             </div>
         </div>
@@ -346,22 +346,27 @@ if (!$results) {
 </div>
 </div>
 <div id="filters">
+    <form id="filterForm">
+    </form>
     <div class="filterCategory">
         I REQUUIRE...
+
         <div class="filterType">
-            <div class="filterOption">
+            <button type="button" class="filterOption" name = "tools" form="filterForm">
                 <div>TOOLS</div>
-            </div>
-            <div class="filterOption">
+            </button>
+            <button type="button" class="filterOption" name="printing">
                 <div>PRINTING</div>
-            </div>
-            <div class="filterOption">
+            </button>
+            <button type="button" class="filterOption" name="materials">
                 <div>MATERIALS</div>
-            </div>
-            <div class="filterOption">
+            </button>
+            <button type="button" class="filterOption" name = "help">
                 <div>HELP</div>
-            </div>
+            </button>
+
         </div>
+
     </div>
     <div class="filterCategory">
         MATEERIAL

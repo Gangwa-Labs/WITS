@@ -47,17 +47,17 @@
 
 <ul id="navList">
     <div id="navbar">
-        <div class="navItem">
-            <li><a href="about:blank">INFO</a></li>
+        <div class="navItem" >
+            <li><a href="WITS-frontpage.php">SEARCH</a></li>
         </div>
         <div class="navItem">
-            <li><a href="about:blank">CATALOG</a></li>
+            <li><a href="Results.php">CATALOG</a></li>
         </div>
         <div class="navItem">
-            <li><a href="about:blank">ACCOUNT</a></li>
+            <li><a href="account-info.php">ACCOUNT</a></li>
         </div>
         <div class="navItem" style="padding-right: 20px">
-            <li><a href="about:blank">SEARCH</a></li>
+            <li><a href="infopage.php">INFO</a></li>
         </div>
     </div>
 </ul>
