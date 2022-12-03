@@ -6,9 +6,9 @@
             background-color: #202020;
         }
 
-        /*div {*/
-        /*    border: 1px solid red;*/
-        /*}*/
+        div {
+            border: 1px solid red;
+        }
 
         #result {
             width: 50%;
@@ -320,6 +320,7 @@
             </div>
         </div>
     </div>
+    <div class="FilterCategory" style="margin-top: 50px; text-align: center;">MAP</div>
 
 </div>
 </body>
