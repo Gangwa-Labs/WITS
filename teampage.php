@@ -24,6 +24,7 @@ if($mysql -> errno){
     <style>
         #outercontainer{
             width:100%;
+            height: 1000px;
             background-image: url("ourgoal1.png");
             background-size: 100%;
             background-repeat: no-repeat;
@@ -42,25 +43,49 @@ if($mysql -> errno){
             padding-top:20%;
         }
 
-        #teamimage {
-            font-family: Times;
-            text-align: center;
-            width: 200px;
-            height: 200px;
-            border-radius: 100px;
+        #teamimage1 {
+            height: 350px;
+            width: 350px;
+            margin-left: 450px;
+            margin-top: 200px;
+            float: left;
         }
 
-        #footer{
-            background-color: #5B5B5B;
-            text-align: center;
-            font-family: "Stretch Pro";
-            font-size: 12pt;
-            height:45px;
-            margin-left: -10px;
-            margin-bottom: -10px;
-            margin-right:-10px;
-            color:white;
+        #teamimage2 {
+            height: 350px;
+            width: 350px;
+            margin-right: 450px;
+            margin-top: 200px;
+            float: right;
         }
+
+        #teamimage3 {
+            height: 350px;
+            width: 350px;
+            margin-left: 230px;
+            margin-top: 50px;
+            float: left;
+        }
+
+        #teamimage4 {
+            height: 350px;
+            width: 350px;
+            margin-left: 130px;
+            margin-top: 50px;
+            float: left;
+        }
+
+        #teamimage5 {
+            height: 350px;
+            width: 350px;
+            margin-right: 230px;
+            margin-top: 50px;
+            float: right;
+        }
+
+
+
+
     </style>
 </head>
 
@@ -68,25 +93,18 @@ if($mysql -> errno){
 
 <div id="outercontainer">
 
-
     <?php
     include ('header.php');
     ?>
-    <div id="middletext">
 
-        <img id="teamimage" src="ezra.png">
-        <p style="font-family: Times; font-size: 40px">Ezra Bird</p>
-        <img id="teamimage" src="michael.png">
-        <p style="font-family: Times; font-size: 40px">Michael Steele</p>
-
-
-    </div>
+    <img id="teamimage1" src="teamezra.png">
+    <img id="teamimage2" src="teammichael.png">
+    <img id="teamimage3" src="teamaustin.png">
+    <img id="teamimage4" src="teammarcos.png">
+    <img id="teamimage4" src="teamjames.png">
 
 
-    <div id="footer">
-        <br>
-        this site is powered by the graciousness of cohort 8
-    </div>
+
 </body>
 
 
