@@ -24,7 +24,7 @@
 
         .navItem:hover {
             color: #FFCC00;
-            transition: 1s;
+
         }
 
         .navItem a {

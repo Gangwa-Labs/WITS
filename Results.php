@@ -185,7 +185,7 @@ if (!$results) {
 
         #searchContainer {
             width: 45%;
-            height: 75px;
+            height: 50px;
             margin: auto;
             margin-bottom: 70px;
             margin-top: 40px;
@@ -198,7 +198,7 @@ if (!$results) {
             background-color: rgb(202, 202, 202);
             width: 85%;
             height: 100%;
-            border-radius: 40px;
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -208,14 +208,16 @@ if (!$results) {
             background-color: #FFCC00;
             width: 15%;
             height: 100%;
-            border-radius: 40px;
+            border-radius: 25px;
             border: none;
             background-image: url("search.svg");
             background-repeat: no-repeat;
             background-size: auto;
             background-position: center;
         }
-
+        #searchButton:hover{
+            background-color: white;
+        }
         #searchForm {
             font-size: 25pt;
             border-radius: 40px;
