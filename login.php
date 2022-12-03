@@ -54,7 +54,6 @@ if ($mysql->errno) {
             margin: auto;
             align-content: center;
             text-align: center;
-            padding-bottom: 340px;
 
         }
         #footer{
@@ -68,10 +67,24 @@ if ($mysql->errno) {
             margin-right:-10px;
             color:white;
         }
-        #columns{
-            column-count: 3;
-            column-gap: 30px;
+        #columnholder{
+            height:50px;
+            text-align: center ;
+            padding-bottom: 340px;
+            color: white;
         }
+        #columnholder a{
+            text-decoration: underline;
+            list-style-type: none;
+            color: inherit;
+        }
+        #columnholder a:hover{
+            text-decoration: underline;
+            list-style-type: none;
+            color: #FFCC00;
+        }
+
+
     </style>
 </head>
 <body>
@@ -143,12 +156,12 @@ if ($mysql->errno) {
         }
         ?>
     </div>
-    <div id="columns">
+    <div id="columnholder">
 <a href="WITS-frontpage.php" target="_new">create an account</a>
-<a href="WITS-frontpage.php" target="_new">create an account</a>
-<a href="WITS-frontpage.php" target="_new">create an account</a>
-
-
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="WITS-frontpage.php" target="_new">forgot password?</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="WITS-frontpage.php" target="_new">admin login</a>
     </div>
 </div>
 <div id="footer">
