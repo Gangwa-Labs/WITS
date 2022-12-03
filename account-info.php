@@ -20,149 +20,107 @@ if($mysql -> errno){
 
 <html>
 <head>
-    <title>Account info</title>
+    <title>Info page</title>
+    <style>
+        #outercontainer{
+            width:100%;
+            height: 1000px;
+            background-image: url("makerspace1.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            margin-left: -10px;
+            margin-top: -10px;
+            padding-right:20px;
+            background-color: black;
+        }
+
+        #middletext {
+            font-family: "Stretch Pro";
+            font-size: 80px;
+            color: #FFFFFF;
+            text-align: center;
+            margin: auto;
+            padding-top:20%;
+        }
+
+        #footer{
+            background-color: #5B5B5B;
+            text-align: center;
+            font-family: "Stretch Pro";
+            font-size: 12pt;
+            height:45px;
+            margin-left: -10px;
+            margin-bottom: -10px;
+            margin-right:-10px;
+            color:white;
+        }
+
+
+    </style>
 </head>
-
-<style>
-    *
-    {
-        margin: 0px;
-        padding: 0px;
-    }
-
-    #outercontainer {
-        background-color: black;
-        height: 1200px;
-    }
-
-    #bgimage {
-        height: 1194px;
-        position: absolute;
-        opacity: 60%;
-    }
-
-    @font-face {
-        font-family: stretch;
-        src: url(StretchPro.otf);
-    }
-
-    #navbar {
-        height: 150px;
-        font-family: stretch;
-        font-size: 16px;
-        color: white;
-        position: absolute;
-        margin-top: 30px;
-        margin-left: 1200px;
-        word-spacing: 40px;
-    }
-
-    #middletext {
-        font-family: stretch;
-        font-size: 60px;
-        color: white;
-        position: absolute;
-        text-align: center;
-        margin-top: 330px;
-        margin-left: 220px;
-    }
-
-    #middletext2 {
-        font-family: stretch;
-        font-size: 20px;
-        color: #ffdd00;
-        position: absolute;
-        text-align: center;
-        margin-top: 460px;
-        margin-left: 520px;
-    }
-
-
-    #logoimage {
-        position: absolute;
-        width: 250px;
-        float: left;
-    }
-
-    #username {
-        position: absolute;
-        margin-left: 520px;
-        margin-top: 510px;
-    }
-
-    #email {
-        position: absolute;
-        margin-left: 520px;
-        margin-top: 570px;
-    }
-
-    #password {
-        position: absolute;
-        margin-left: 520px;
-        margin-top: 630px;
-    }
-
-</style>
 
 <body>
 
 <div id="outercontainer">
 
-    <img id="bgimage" src="makerspace1.png">
 
-    <div id="navbar">
-        account info catalog search
-    </div>
-
-
+    <?php
+    include ('header.php');
+    ?>
     <div id="middletext">
-        ACCOUNNT INFOORMATION
-    </div>
-    <div id="middletext2">
-        update any of your account information bellow:
+        EDIT DETAILLS
+        <p style="font-size: 20px; color: #FFCC00">update any of your account information bellow:</p>
     </div>
 
-    <form id="username" action = "">
+    <form action="">
         <input style =
                "width: 400px;
                     height: 40px;
                     font-size: 25px;
                     border-radius: 10px;
-                    opacity: 80%;"
+                    opacity: 80%;
+                    margin-left: 690px;"
                type="text" name="usernameUpdate" placeholder="  username">
-    </form>
 
-    <form id="email" action = "">
         <input style =
                "width: 400px;
                     height: 40px;
                     font-size: 25px;
                     border-radius: 10px;
-                    opacity: 80%;"
+                    opacity: 80%;
+                    margin-left: 690px;
+                    margin-top: 20px;"
                type="text" name="emailUpdate" placeholder="  email">
-    </form>
 
-    <form id="password" action = "">
         <input style =
                "width: 400px;
                     height: 40px;
                     font-size: 25px;
                     border-radius: 10px;
-                    opacity: 80%;"
+                    opacity: 80%;
+                    margin-left: 690px;
+                    margin-top: 20px;"
                type="text" name="passwordUpdate" placeholder="  password">
     </form>
 
-    <input type="submit" value="update account" style =
-    "width: 200px;
+    <form  action="">
+        <input  type="submit" value="update account" style =
+        "width: 200px;
                     height: 40px;
                     font-size: 20px;
                     border-radius: 20px;
                     opacity: 95%;
-                    margin-top: 700px;
-                    margin-left: 520px;
+                    margin-top: 20px;
+                    margin-left: 690px;
                     background-color: #FFDD00FF;"
-           name="updateAccount"
+               name="updateAccount"
+    </form>
 
-</div>
+
+
+
 
 </body>
+
+
+</html>
