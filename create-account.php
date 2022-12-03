@@ -32,9 +32,6 @@ if ($mysql->errno) {
             background-image: url("makerspace1.png");
             background-size: 100%;
             background-repeat: no-repeat;
-            margin-left: -10px;
-            margin-top: -10px;
-            padding-right:20px;
             background-color: black;
             height:100%;
         }
@@ -64,9 +61,6 @@ if ($mysql->errno) {
             font-family: "Stretch Pro";
             font-size: 12pt;
             height:45px;
-            margin-left: -10px;
-            margin-bottom: -10px;
-            margin-right:-10px;
             color:white;
         }
         #columnholder{
@@ -89,7 +83,7 @@ if ($mysql->errno) {
 
     </style>
 </head>
-<body>
+<body style="margin: 0">
 
 
 <div id="outercontaineraccount">

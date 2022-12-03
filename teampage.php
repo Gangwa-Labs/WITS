@@ -24,13 +24,10 @@ if($mysql -> errno){
     <style>
         #outercontainer{
             width:100%;
-            height: 1000px;
+            height: 100%;
             background-image: url("ourgoal1.png");
             background-size: 100%;
             background-repeat: no-repeat;
-            margin-left: -10px;
-            margin-top: -10px;
-            padding-right:20px;
             background-color: black;
         }
 
@@ -89,7 +86,7 @@ if($mysql -> errno){
     </style>
 </head>
 
-<body>
+<body style="margin: 0">
 
 <div id="outercontainer">
 
