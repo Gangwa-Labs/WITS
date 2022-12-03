@@ -101,7 +101,6 @@ if($mysql -> errno){
 
 <div id="outercontainer">
 
-    <img id="logoimage" src="witslogo.png">
     <?php
     include ('header.php');
     ?>

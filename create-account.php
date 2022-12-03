@@ -87,7 +87,6 @@ if($mysql -> errno){
 <div id="outercontainer">
     <?php include('header.php'); ?>
     <img id="bgimage" src="makerspace1.png">
-    <img id="logoimage" src="witslogo.png">
 
 
     <div id="middletext">

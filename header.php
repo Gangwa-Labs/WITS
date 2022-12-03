@@ -36,6 +36,7 @@
             width: 250px;
             float: left;
             top: 0;
+            z-index: 1;
         }
 
     </style>

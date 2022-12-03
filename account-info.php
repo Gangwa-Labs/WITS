@@ -109,7 +109,6 @@ if($mysql -> errno){
 <div id="outercontainer">
 
     <img id="bgimage" src="makerspace1.png">
-    <img id="logoimage" src="witslogo.png">
 
     <div id="navbar">
         account info catalog search
