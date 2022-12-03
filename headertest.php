@@ -1,5 +1,8 @@
 <html>
 <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <style>
         body{
             background-color: black;
@@ -37,16 +40,30 @@
         }
         #logoimage {
             position: absolute;
-            width: 250px;
+            width: 500px;
             float: left;
-            top: 0;
+            left: -180px;
+            top: -180px;
             z-index: 1;
         }
+        #logoimagediv{
 
+        }
     </style>
 </head>
 <body>
-<img id="logoimage" src="witslogo.png">
+
+<script>
+    $(document).ready(function(){
+        $("#logoimagediv").onclick(function(){
+            $(this).rotate(90);
+        });
+    });
+</script>
+
+<div id="logoimagediv">
+    <img id="logoimage" src="fogo.svg">
+</div>
 
 <ul id="navList">
     <div id="navbar">
