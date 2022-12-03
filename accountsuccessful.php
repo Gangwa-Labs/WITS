@@ -27,7 +27,7 @@ if ($mysql->errno) {
             color: white;
             float: right;
         }
-        #outercontaineraccount{
+        #outercontaineraccountconfirm{
             width:100%;
             background-image: url("makerspace1.png");
             background-size: 100%;
@@ -43,13 +43,13 @@ if ($mysql->errno) {
             width: 250px;
             float: left;
         }
-        #createtext {
+        #createtextconfirm {
             font-family: "Stretch Pro";
             font-size: 60px;
             color: #FFFFFF;
             text-align: center;
             margin: auto;
-            padding-top:15%;
+            padding-top:20%;
             width:50%;
         }
         #searchbar{
@@ -92,46 +92,23 @@ if ($mysql->errno) {
 <body>
 
 
-<div id="outercontaineraccount">
+<div id="outercontaineraccountconfirm">
 
     <?php
     include ('header.php');
     ?>
-    <div id="createtext">
-        CRREATE AN ACCOUNNT
+    <div id="createtextconfirm">
+        ACCOUNT CCONFIRRMED!
     </div>
     <div id="searchbar">
         <?php
         if($_REQUEST["loggedIn"] != "1"){
             echo " ";
             ?>
-
-        <br><br>
+            <br>
             <form>
                 <input type="hidden" name="loggedIn" value="1">
-                <input  style=
-                        "width: 350px;
-                        height: 30px;
-                        font-size: 15px;
-                        border-radius: 25px;
-                        opacity: 80%;" type="text" name="email" placeholder=" email...">
-                <br><br>
-
-                <input  style=
-                        "width: 350px;
-                        height: 30px;
-                        font-size: 15px;
-                        border-radius: 25px;
-                        opacity: 80%;" type="text" name="username" placeholder=" username...">
-                <br><br>
-                <input style=
-                       "width: 350px;
-                        height: 30px;
-                        font-size: 15px;
-                        border-radius: 25px;
-                        opacity: 80%;" type="text" name="password" placeholder=" password...">
-                <br><br>
-                <input type="submit" name="submitusername" value="create an account" style="
+                <input type="submit" name="submitusername" value="take me home now!" style="
                         width:200px;
                         height:30px;
                         background-color: #FFCC00;
