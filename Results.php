@@ -414,10 +414,10 @@ $counter++;
             $(".filterOption").on("click", function () {
                 $filterGroup = this.dataset.filterOpt;
                 $filterID = this.dataset.id;
-                if($filterGroup == "location"){
+                if ($filterGroup == "location") {
                     $locationFilterSQL = "AND locationID is " + $filterID;
                     <?php $locationFilterSQL = "AND LocationID is "?>
-                } else if($filterGroup == "material"){
+                } else if ($filterGroup == "material") {
                     $materialFilter = $filterID
                 }
             });
