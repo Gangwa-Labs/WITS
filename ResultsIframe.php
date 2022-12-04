@@ -147,6 +147,7 @@ $JSONTools = json_encode($toolObj);
             border: 3px solid #F0F0F0;
             filter: drop-shadow(0px 4px 4px #000000);
             border-radius: 15px;
+            padding: 0;
 
         }
 
@@ -295,13 +296,14 @@ $JSONTools = json_encode($toolObj);
             height: 1750px;
             float:right;
             padding-right: 75px;
+            border: none;
         }
 
     </style>
 </head>
 <body id="mainContainer">
 <?php include('header.php') ?>
-<form>
+<form id="iframeForm" name="iframeForm" action="toolResultsContent.php" method="post" target="toolSearch">
     <div id="searchContainer">
         <div id="searchBar">
             <div id="searchFormDiv"><input type="text" id="searchForm" name="search"></div>
@@ -310,69 +312,7 @@ $JSONTools = json_encode($toolObj);
         </button>
     </div>
 </form>
-<iframe id="resultsIframe" title="results"> </iframe>
-<div id="result">
-    <div id="resultTitle">
-        YOUR RESSULTS FFOR...
-    </div>
-    <div id="searchedTool">
-        <?php echo '"' . $_REQUEST['search'] . '"' ?>
-    </div>
-    <div id="searchSide">
-        <script>
-            for (let i = 0; i < jsonResult.length; i++) {
-
-            }
-        </script>
-        <div class='toolSearchResult'>
-            <div id="tool0" class='toolTitle'></div>
-            <div class="toolDetails">
-                <div class="toolPic"></div>
-                <div id="tool0info" class="toolInfo">
-                    <p>Location: </p>
-                    <p>Tool Type:</p>
-                    <p>Material:</p>
-                    <p>Quantity:</p>
-                    <p>Details:</p>
-                </div>
-            </div>
-        </div>
-        <div class='toolSearchResult'>
-            <div id="tool1" class='toolTitle'></div>
-            <div class="toolDetails">
-                <div class="toolPic"></div>
-                <div id="tool1info" class="toolInfo">
-                    <p>Location: </p>
-                    <p>Tool Type:</p>
-                    <p>Material:</p>
-                    <p>Quantity:</p>
-                    <p>Details:</p>
-                </div>
-            </div>
-        </div>
-        <div class='toolSearchResult'>
-            <div id="tool2" class='toolTitle'></div>
-            <div class="toolDetails">
-                <div class="toolPic"></div>
-                <div id="tool2info" class="toolInfo">
-                    <p>Location: </p>
-                    <p>Tool Type:</p>
-                    <p>Material:</p>
-                    <p>Quantity:</p>
-                    <p>Details:</p>
-                </div>
-            </div>
-        </div>
-        <div id="pageSelect">
-            <div class='pageButton'>
-                <div><</div>
-            </div>
-            <div class='pageButton'>
-                <div>></div>
-            </div>
-        </div>
-    </div>
-</div>
+<iframe src="toolResultsContent.php" id="resultsIframe" name="toolSearch"> </iframe>
 </div>
 </div>
 <script>
@@ -396,27 +336,7 @@ $JSONTools = json_encode($toolObj);
     console.log(toolFill(0, jsonResult.length, 0));
 </script>
 <div id="filters">
-    <form id="filterForm">
-    </form>
-    <div class="filterCategory">
-        I REQUUIRE...
-
-        <div class="filterType">
-            <button type="button" class="filterOption" name="tools" form="filterForm">
-                <div>TOOLS</div>
-            </button>
-            <button type="button" class="filterOption" name="printing">
-                <div>PRINTING</div>
-            </button>
-            <button type="button" class="filterOption" name="materials">
-                <div>MATERIALS</div>
-            </button>
-            <button type="button" class="filterOption" name="help">
-                <div>HELP</div>
-            </button>
-        </div>
-    </div>
-    <div class="filterCategory">
+    <div class="filterCategory" style="margin-top: 75px">
         MATEERIAL
         <div class="filterType">
             <?php
@@ -428,8 +348,8 @@ $JSONTools = json_encode($toolObj);
                 exit();
             }
             while ($currentrow = $materialResults->fetch_assoc()) {
-                echo "<div data-filter-name = '" . $currentrow["material"] . "' data-filter-opt = 'material' data-id= " . $currentrow["materialID"] . " class='filterOption'>
-                <div>" . strtoupper($currentrow["material"]) . "</div></div>";
+                echo "<button formmethod='get' name = 'material' class='filterOption' form = 'iframeForm' type='submit' value = '".$currentrow["materialID"]."'>
+                <div>" . strtoupper($currentrow["material"]) . "</div></button>";
             }
             ?>
         </div>
@@ -446,37 +366,30 @@ $JSONTools = json_encode($toolObj);
                 exit();
             }
             while ($currentrow = $locationResults->fetch_assoc()) {
-                echo "<div data-filter-name = '" . $currentrow["location"] . "' data-filter-opt = 'location' data-id = " . $currentrow['locationID'] . " class='filterOption'>
-                <div>" . strtoupper($currentrow["location"]) . "</div></div>";
+                echo "<button name = 'location' class='filterOption' form = 'iframeForm' type='submit' value = '".$currentrow["locationID"]."'>
+                <div>" . strtoupper($currentrow["location"]) . "</div></button>";
             }
             ?>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $(".filterOption").on("click", function () {
-                let filterTable = this.dataset.filterOpt;
-                let filterID = this.dataset.id;
-                let filterName = this.dataset.filterName;
-                console.log(filterTable + " " + filterID + " " + filterName);
-                if (filterTable == "material") {
-                    for (var i = 0; i < jsonResult.length; i++) {
-                        if (jsonResult[i].material == filterName) {
-                            console.log(jsonResult[i]);
-                        }
-                    }
-                }
-                if (filterTable == "location") {
-                    for (var i = 0; i < jsonResult.length; i++) {
-                        if (jsonResult[i].location == filterName) {
-                            console.log(jsonResult[i]);
-                        }
-                    }
-                }
-            });
-        });
-    </script>
-    <div class="FilterCategory" style="margin-top: 50px; text-align: center;">MAP</div>
+    <div class="filterCategory">
+        TOOL TYPE
+        <div class="filterType">
+            <?php
+            $toolType = "SELECT * FROM toolType";
+            $toolTypeResults = $mysql->query($toolType);
+            if (!$toolTypeResults) {
+                echo "DB Query Problem <hr>";
+                echo $mysql->error;
+                exit();
+            }
+            while ($currentrow = $toolTypeResults->fetch_assoc()) {
+                echo "<button name = 'toolType' class='filterOption' form = 'iframeForm' type='submit' value = '".$currentrow["typeID"]."'>
+                <div>" . strtoupper($currentrow["toolType"]) . "</div></button>";
+            }
+            ?>
+        </div>
+    </div>
 </div>
 </body>
 </html>

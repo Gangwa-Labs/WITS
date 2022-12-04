@@ -1,10 +1,48 @@
+<?php
+
+$host = "webdev.iyaclasses.com";
+$userid = "ebird_JimJobBob";
+$userpw = "Treesap3#";
+$db = "ebird_WITS1";
+
+$mysql = new mysqli(
+    $host,
+    $userid,
+    $userpw,
+    $db
+);
+
+if ($mysql->errno) {
+    echo "DB Connection Error <br>";
+    echo $mysql->connect_error;
+    exit();
+}
+if($_REQUEST["location"] != null ){
+    $locationFilterSql = "AND locationID = ". $_REQUEST["location"];
+}
+if($_REQUEST["material"] != null){
+    $materialFilterSql = "AND materialID = ". $_REQUEST["material"];
+}
+if($_REQUEST["toolType"] != null){
+    $toolTypeFilterSql = "AND typeID = ". $_REQUEST["toolType"];
+}
+
+
+$sql = "SELECT * FROM allTools WHERE toolName like '%" . $_REQUEST["search"] . "%'" . $locationFilterSql. $materialFilterSql . $toolTypeFilterSql;
+$results = $mysql->query($sql);
+if (!$results) {
+    echo "DB Query Problem <hr>";
+    echo $mysql->error;
+    exit();
+}
+?>
 <html>
 <head>
     <style>
 
-        div {
-            border: 1px solid red;
-        }
+        /*div {*/
+        /*    border: 1px solid red;*/
+        /*}*/
         @font-face {
             font-family: 'StretchProBasic';
             src: url("stretch-probasic.otf") format("opentype");
@@ -46,9 +84,6 @@
             color: #FFCC00;
 
         }
-
-
-\
 
         .toolSearchResult {
             display: flex;
@@ -131,53 +166,65 @@
     <?php echo '"' . $_REQUEST['search'] . '"' ?>
 </div>
 <div id="searchSide">
-    <div class='toolSearchResult'>
-        <div id="tool0" class='toolTitle'></div>
-        <div class="toolDetails">
-            <div class="toolPic"></div>
-            <div id="tool0info" class="toolInfo">
-                <p>Location: </p>
-                <p>Tool Type:</p>
-                <p>Material:</p>
-                <p>Quantity:</p>
-                <p>Details:</p>
-            </div>
-        </div>
+    <?php
+    if (empty($_REQUEST["start"])) {
+        $start = 1;
+    } else {
+        $start = $_REQUEST["start"];
+    }
+    $end = $start + 2;
+    if ($results->num_rows < $end) {
+        $end = $results->num_rows;
+    }
+    $counter = $start;
+    $results->data_seek($start - 1);
+    $searchstring = "&search=" . $_REQUEST["search"];
+    while ($currentrow = $results->fetch_assoc()) {
+    if ($counter > $end) {
+        break;
+    }
+    echo "<div class ='toolSearchResult'>";
+    echo "<div class ='toolTitle'>";
+    echo $currentrow["toolName"];
+    ?>
+</div>
+<div class="toolDetails">
+    <div class="toolPic"></div>
+    <div class="toolInfo">
+        <?php
+        echo "<p>Location: " . $currentrow["location"] . "</p>";
+        echo "<p>Tool Type: " . $currentrow["toolType"] . "</p>";
+        echo "<p>Material: " . $currentrow["material"] . "</p>";
+        echo "<p>Quantity: " . $currentrow["quantity"] . "</p>";
+        echo "<p>Description: " . $currentrow["details"] . "</p>";
+        ?>
     </div>
-    <div class='toolSearchResult'>
-        <div id="tool1" class='toolTitle'></div>
-        <div class="toolDetails">
-            <div class="toolPic"></div>
-            <div id="tool1info" class="toolInfo">
-                <p>Location: </p>
-                <p>Tool Type:</p>
-                <p>Material:</p>
-                <p>Quantity:</p>
-                <p>Details:</p>
-            </div>
-        </div>
-    </div>
-    <div class='toolSearchResult'>
-        <div id="tool2" class='toolTitle'></div>
-        <div class="toolDetails">
-            <div class="toolPic"></div>
-            <div id="tool2info" class="toolInfo">
-                <p>Location: </p>
-                <p>Tool Type:</p>
-                <p>Material:</p>
-                <p>Quantity:</p>
-                <p>Details:</p>
-            </div>
-        </div>
-    </div>
-    <div id="pageSelect">
-        <div class='pageButton'>
-            <div><</div>
-        </div>
-        <div class='pageButton'>
-            <div>></div>
-        </div>
-    </div>
+</div>
+</div>
+
+<?php
+$counter++;
+}
+?>
+<div id="pageSelect">
+    <?php
+    if ($start != 1) {
+        echo "<a href='toolResultsContent.php?start=" . ($start - 3) .
+            $searchstring .
+            "'><div class='pageButton'>
+                <div><</div>
+            </div></a>";
+    }
+    ?>
+    <?php
+    if ($end < $results->num_rows) {
+        echo "<a href='toolResultsContent.php?start=" . ($start + 3) .
+            $searchstring .
+            "'><div class='pageButton'>
+                <div>></div>
+            </div></a>";
+    }
+    ?>
 </div>
 </body>
 </html>
