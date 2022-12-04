@@ -144,6 +144,7 @@ if ($mysql->errno) {
 <div id="outercontainer">
 
     <?php
+    session_destroy();
     include('header.php');
     ?>
     <div id="logintext">
@@ -153,7 +154,7 @@ if ($mysql->errno) {
     </div>
     <div id="searchbar">
         <form>
-            <input class="textfield" type="text" name="username" placeholder=" username..." required>
+            <input class="textfield" type="text" name="email" placeholder=" email..." required>
             <br><br>
             <input class="textfield" type="text" name="password" placeholder=" password..." required>
             <br><br>
@@ -171,8 +172,8 @@ if ($mysql->errno) {
         </script>
     </div>
     <?php
-    if ($_REQUEST["username"] != null && $_REQUEST["password"] != null) {
-        $sql = "SELECT * FROM user WHERE username = '" . $_REQUEST["username"] . "' AND password = '" . $_REQUEST["password"] . "'";
+    if ($_REQUEST["email"] != null && $_REQUEST["password"] != null) {
+        $sql = "SELECT * FROM user WHERE email = '" . $_REQUEST["email"] . "' AND password = '" . $_REQUEST["password"] . "'";
         $results = $mysql->query($sql);
         if (!$results) {
             echo "DB Query Problem <hr>";
@@ -180,19 +181,18 @@ if ($mysql->errno) {
             exit();
         }
         $currentRow = $results->fetch_assoc();
-        if ($currentRow["username"] == $_REQUEST["username"] && $currentRow["password"] == $_REQUEST["password"]) {
+        if ($currentRow["email"] == $_REQUEST["email"] && $currentRow["password"] == $_REQUEST["password"]) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['userID'] = $currentRow["userID"];
             $_SESSION['username'] = $currentRow["username"];
             echo "<script>
-            document.querySelector('#navList').style.display = 'inherit';
                     document.querySelector('#searchbar').style.display = 'none';
                     document.querySelector('#columnholder').style.display = 'none';
                     document.querySelector('#loginText').innerHTML = 'Find Your Tools <br><br>'
                 </script>";
             echo "<a style='text-decoration: none' href='WITS-frontpage.php'><div id='frontPagePortal'><div>WITS?</div></div></a>";
         } else {
-            echo "<div id='errorMessage'><div id='errorText'>Incorrect Username or Password</div></div>";
+            echo "<div id='errorMessage'><div id='errorText'>Incorrect Email or Password</div></div>";
         }
     }
     ?>
