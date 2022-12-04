@@ -12,7 +12,7 @@ $db = "ebird_WITS1";
     <link href="https://fonts.cdnfonts.com/css/stretch-pro" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
 
-    <title>Edit Database | WITS </title>
+    <title>Add Database | WITS </title>
 </head>
 
 <style>
@@ -56,10 +56,15 @@ $db = "ebird_WITS1";
         background-color: #FFCC00;
         font-size: 100px;
         color: #000000;
-        margin-top: 5%;
-        padding:10px;
         margin-left: 10%;
         width: 80%;
+        border-style: hidden;
+    }
+    #textcontainer{
+        background-color: #FFCC00;
+        height:150px;
+        padding-top: 100px;
+
     }
 
     #footer {
@@ -77,10 +82,9 @@ $db = "ebird_WITS1";
         font-family: 'Stretch Pro';
         font-size: 50px;
         color: #F0F0F0;
-        position: absolute;
         text-align: left;
-        margin-top: 1%;
         margin-left: 10%;
+        margin-bottom: 1%;
     }
 
     #submit {
@@ -107,107 +111,101 @@ $db = "ebird_WITS1";
         padding-top: 1.5%;
     }
 
-    #searchbar {
-        position: absolute;
-        margin-left: 500px;
-        margin-top: 630px;
-    }
-
     hr{
         color: #FFCC00;
     }
 
-    @media only screen and (max-width: 868px) {
-        #outercontainer {
-            background-color: #202020;
-            height: 980px;
-            font-family: 'Lora';
-        }
+    /*@media only screen and (max-width: 868px) {*/
+    /*    #outercontainer {*/
+    /*        background-color: #202020;*/
+    /*        height: 980px;*/
+    /*        font-family: 'Lora';*/
+    /*    }*/
 
-        #footer {
-            font-family: 'Stretch Pro';
-            background-color: #5B5B5B;
-            width: 100%;
-            padding-top:10px;
-            padding-bottom:10px;
-            position: absolute;
-            color: #ffffff;
-            text-align: center;
-            margin-top: 950px;
-            font-size: 10px;
-        }
+    /*    #footer {*/
+    /*        font-family: 'Stretch Pro';*/
+    /*        background-color: #5B5B5B;*/
+    /*        width: 100%;*/
+    /*        padding-top:10px;*/
+    /*        padding-bottom:10px;*/
+    /*        position: absolute;*/
+    /*        color: #ffffff;*/
+    /*        text-align: center;*/
+    /*        margin-top: 950px;*/
+    /*        font-size: 10px;*/
+    /*    }*/
 
-        #totext {
-            font-family: 'Stretch Pro';
-            font-size: 40px;
-            color: #F0F0F0;
-            position: absolute;
-            text-align: left;
-            margin-top: 495px;
-            margin-left: 80px;
-        }
+    /*    #totext {*/
+    /*        font-family: 'Stretch Pro';*/
+    /*        font-size: 40px;*/
+    /*        color: #F0F0F0;*/
+    /*        position: absolute;*/
+    /*        text-align: left;*/
+    /*        margin-top: 490px;*/
+    /*        margin-left: 80px;*/
+    /*    }*/
 
-        #submit {
-            font-family: 'Stretch Pro';
-            font-size: 20px;
-            color: #000000;
-            background-color: #FFCC00;
-            border-radius: 20px;
-            border-color: white;
-            padding: 5px;
-            margin-top: 630px;
-            margin-left:80px;
-        }
+    /*    #submit {*/
+    /*        font-family: 'Stretch Pro';*/
+    /*        font-size: 20px;*/
+    /*        color: #000000;*/
+    /*        background-color: #FFCC00;*/
+    /*        border-radius: 20px;*/
+    /*        border-color: white;*/
+    /*        padding: 5px;*/
+    /*        margin-top: 630px;*/
+    /*        margin-left:80px;*/
+    /*    }*/
 
-        #logoimage {
-            position: absolute;
-            width: 80px;
-            float: left;
-        }
+    /*    #logoimage {*/
+    /*        position: absolute;*/
+    /*        width: 80px;*/
+    /*        float: left;*/
+    /*    }*/
 
-        #searchicon {
-            position: absolute;
-            width: 10px;
-            float: right;
-            margin-left: 465px;
-            margin-top: 26px;
-        }
+    /*    #searchicon {*/
+    /*        position: absolute;*/
+    /*        width: 10px;*/
+    /*        float: right;*/
+    /*        margin-left: 465px;*/
+    /*        margin-top: 26px;*/
+    /*    }*/
 
-        #navbar {
-            height: 150px;
-            font-family: 'Stretch Pro';
-            font-size: 5px;
-            color: #F0F0F0;
-            position: absolute;
-            margin-top: 30px;
-            margin-left: 150px;
-            word-spacing: 40px;
-        }
+    /*    #navbar {*/
+    /*        height: 150px;*/
+    /*        font-family: 'Stretch Pro';*/
+    /*        font-size: 5px;*/
+    /*        color: #F0F0F0;*/
+    /*        position: absolute;*/
+    /*        margin-top: 30px;*/
+    /*        margin-left: 150px;*/
+    /*        word-spacing: 40px;*/
+    /*    }*/
 
-        #largetextblack {
-            font-family: 'Stretch Pro';
-            background-color: #FFCC00;
-            font-size: 40px;
-            color: #000000;
-            position: absolute;
-            margin-top: 550px;
-            padding-top:10px;
-            padding-bottom:10px;
-            width: 80%;
-            margin-left: 80px;
-        }
+    /*    #largetextblack {*/
+    /*        font-family: 'Stretch Pro';*/
+    /*        background-color: #FFCC00;*/
+    /*        font-size: 40px;*/
+    /*        color: #000000;*/
+    /*        position: absolute;*/
+    /*        margin-top: 550px;*/
+    /*        padding-top:10px;*/
+    /*        padding-bottom:10px;*/
+    /*        width: 80%;*/
+    /*        margin-left: 80px;*/
+    /*    }*/
 
 
-        #largetextwhite {
-            font-family: 'Stretch Pro';
-            font-size: 40px;
-            color: #F0F0F0;
-            position: absolute;
-            text-align: left;
-            margin-top: 400px;
-            margin-left: 80px;
-        }
-    }
+    /*    #largetextwhite {*/
+    /*        font-family: 'Stretch Pro';*/
+    /*        font-size: 40px;*/
+    /*        color: #F0F0F0;*/
+    /*        position: absolute;*/
+    /*        text-align: left;*/
+    /*        margin-top: 400px;*/
+    /*        margin-left: 80px;*/
+    /*    }*/
+    /*}*/
 
 </style>
 
@@ -215,24 +213,23 @@ $db = "ebird_WITS1";
 
 <div id="outercontainer">
 
-    <img id="logoimage" src="witslogo.png">
-    <img id="searchicon" src="search.svg">
-    <div id="navbar">
-        account edit contact catalog search
-    </div>
-
+    <?php
+    include('header.php');
+    $_SESSION["loggedIn"] = false;
+    ?>
     <div id="largetextwhite">
-        EDIT <br> "OPTION 1"
+      EDIT "OPTION 1" <br>
     </div>
 
     <div id="totext">
         TO
     </div>
-
-    <input type="text" id="largetextblack">
-
+    <br>
+    <div id="textcontainer">
+        <input type="text" id="largetextblack" placeholder="type here...">
+    </div>
     <input type="submit" id="submit" value="confirm">
-    
+
     <div id="footer">
         this site is powered by the graciousness of cohort 8
     </div>
