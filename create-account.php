@@ -91,15 +91,16 @@ if ($mysql->errno) {
     <?php
     include ('header.php');
     ?>
+    <script>
+        document.querySelector('#navList').style.display = 'none';
+    </script>
     <div id="createtext">
         CRREATE AN ACCOUNNT
     </div>
     <div id="searchbar">
         <?php
         if($_REQUEST["loggedIn"] != "1"){
-            echo " ";
             ?>
-
         <br><br>
             <form>
                 <input type="hidden" name="loggedIn" value="1">
@@ -162,8 +163,6 @@ if ($mysql->errno) {
 
             }
         }
-
-
         ?>
     </div>
 </div>

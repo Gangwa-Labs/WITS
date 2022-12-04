@@ -1,8 +1,18 @@
+<?php
+session_start();
+?>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="fogo.ico">
     <style>
+        @font-face {
+            font-family: 'StretchProBasic';
+            src: url("stretch-probasic.otf") format("opentype");
+        }@font-face {
+            font-family: 'Stretch Pro';
+            src: url("StretchPro.otf") format("opentype");
+        }
         #navbar {
-            font-family: "Stretch Pro";
             font-size: 16px;
             color: white;
             width: 100%;
@@ -11,7 +21,6 @@
             justify-content: flex-end;
             gap: 20px;
             padding-top: 20px;
-            float: top;
         }
 
         #navList {
@@ -20,6 +29,7 @@
         }
 
         .navItem {
+            font-family: 'StretchProBasic';
         }
 
         .navItem:hover {
@@ -32,6 +42,7 @@
             text-decoration: none;
 
         }
+
         #logoimage {
             position: absolute;
             width: 250px;
@@ -47,14 +58,19 @@
 
 <ul id="navList">
     <div id="navbar">
-        <div class="navItem" >
+        <div class="navItem">
             <li><a href="WITS-frontpage.php">SEARCH</a></li>
         </div>
         <div class="navItem">
             <li><a href="Results.php">CATALOG</a></li>
         </div>
         <div class="navItem">
-            <li><a href="account-info.php">ACCOUNT</a></li>
+            <li><a href="account-info.php"><?php
+                    if ($_SESSION['loggedIn'] == true) {
+                        echo "ACCOUNT-". $_SESSION["username"];
+                    } else {
+                        echo "ACCOUNT";
+                    } ?></a></li>
         </div>
         <div class="navItem" style="padding-right: 20px">
             <li><a href="infopage.php">INFO</a></li>

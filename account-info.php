@@ -82,7 +82,47 @@ if ($mysql->errno) {
             color:white;
             font-family: Lora;
         }
+        #submitButton {
+            border: none;
+            width: 200px;
+            height: 30px;
+            background-color: #FFCC00;
+            border-radius: 15px;
+            font-family: Lora;
+            font-size: 14pt;
+            font-weight: bold;
+        }
 
+        #submitButton:hover {
+            background-color: white;
+        }
+
+        .textfield {
+            border: none;
+            width: 350px;
+            height: 30px;
+            font-size: 15px;
+            border-radius: 25px;
+            opacity: 80%;
+        }
+
+        #errorMessage {
+            color: red;
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #errorText {
+            border-radius: 20px;
+            background-color: black;
+            padding: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body style="margin: 0">
@@ -109,59 +149,16 @@ if ($mysql->errno) {
             <br><br><br>
             <form>
                 <input type="hidden" name="loggedIn" value="1">
-                <input  style=
-                        "width: 350px;
-                        height: 30px;
-                        font-size: 15px;
-                        border-radius: 25px;
-                        opacity: 80%;" type="text" name="email" placeholder=" email...">
+                <input class="textfield" type="text" name="email" placeholder=" email...">
                 <br><br>
 
-                <input  style=
-                        "width: 350px;
-                        height: 30px;
-                        font-size: 15px;
-                        border-radius: 25px;
-                        opacity: 80%;" type="text" name="username" placeholder=" username...">
+                <input class="textfield" type="text" name="username" placeholder=" username...">
                 <br><br>
-                <input style=
-                       "width: 350px;
-                        height: 30px;
-                        font-size: 15px;
-                        border-radius: 25px;
-                        opacity: 80%;" type="text" name="password" placeholder=" password...">
+                <input class="textfield" type="text" name="password" placeholder=" password...">
                 <br><br><br>
-                <input type="submit" name="submitusername" value="update details" style="
-                        width:200px;
-                        height:30px;
-                        background-color: #FFCC00;
-                        border-radius: 15px;">
+                <input id="submitButton" type="submit" name="submitusername" value="update details">
             </form>
             <?php
-        } else {
-            if($_REQUEST["username"] != null && $_REQUEST["password"] != null){
-                $sql = "SELECT * FROM user WHERE username = '". $_REQUEST["username"] ."' AND password = '".$_REQUEST["password"]."'";
-                $results = $mysql -> query($sql);
-                if(!$results){
-                    echo "DB Query Problem <hr>";
-                    echo $db -> error;
-                    exit();
-                }
-                $currentRow = $results->fetch_assoc();
-                if($currentRow["userID"] == null){
-                    echo "user not found";
-                }else{
-                    echo "user Id found<br><br>";
-                    $_SESSION["username"] = $currentRow["username"];
-                    $_SESSION["sessionID"] = $currentRow["userID"];
-                    echo $_SESSION["sessionID"];
-                }
-            }
-            if($_SESSION["username"] != null) {
-                $login =  "logged in as: " . $_SESSION["username"];
-
-                echo "<div id='displayUsername'>".$login."</div>";
-            }
         }
         ?>
     </div>

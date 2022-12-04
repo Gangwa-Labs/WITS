@@ -1,5 +1,4 @@
 <?php
-session_start();
 $host = "webdev.iyaclasses.com";
 $userid = "ebird_JimJobBob";
 $userpw = "Treesap3#";
@@ -130,7 +129,8 @@ if ($mysql->errno) {
             align-items: center;
             justify-content: center;
         }
-        #errorText{
+
+        #errorText {
             border-radius: 20px;
             background-color: black;
             padding: 10px;
@@ -166,6 +166,9 @@ if ($mysql->errno) {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="WITS-frontpage.php" target="_new">admin login</a>
         </div>
+        <script>
+            document.querySelector('#navList').style.display = 'none';
+        </script>
     </div>
     <?php
     if ($_REQUEST["username"] != null && $_REQUEST["password"] != null) {
@@ -178,7 +181,11 @@ if ($mysql->errno) {
         }
         $currentRow = $results->fetch_assoc();
         if ($currentRow["username"] == $_REQUEST["username"] && $currentRow["password"] == $_REQUEST["password"]) {
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['userID'] = $currentRow["userID"];
+            $_SESSION['username'] = $currentRow["username"];
             echo "<script>
+            document.querySelector('#navList').style.display = 'inherit';
                     document.querySelector('#searchbar').style.display = 'none';
                     document.querySelector('#columnholder').style.display = 'none';
                     document.querySelector('#loginText').innerHTML = 'Find Your Tools <br><br>'
