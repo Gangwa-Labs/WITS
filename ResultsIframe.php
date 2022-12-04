@@ -49,6 +49,13 @@ $JSONTools = json_encode($toolObj);
 <head>
     <title>results</title>
     <style>
+        @font-face {
+            font-family: 'StretchProBasic';
+            src: url("stretch-probasic.otf") format("opentype");
+        }@font-face {
+            font-family: 'Stretch Pro';
+            src: url("StretchPro.otf") format("opentype");
+        }
         #mainContainer {
             background-color: #202020;
             height: 100%;
@@ -283,6 +290,13 @@ $JSONTools = json_encode($toolObj);
             text-decoration: none;
             color: black;
         }
+        #resultsIframe{
+            width: 50%;
+            height: 1750px;
+            float:right;
+            padding-right: 75px;
+        }
+
     </style>
 </head>
 <body id="mainContainer">
@@ -296,7 +310,7 @@ $JSONTools = json_encode($toolObj);
         </button>
     </div>
 </form>
-
+<iframe id="resultsIframe" title="results"> </iframe>
 <div id="result">
     <div id="resultTitle">
         YOUR RESSULTS FFOR...
