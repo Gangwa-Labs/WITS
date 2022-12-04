@@ -57,11 +57,6 @@ if ($mysql->errno) {
             text-align: center;
             background-color: black;
             height: 100%;
-            margin-left: -10px;
-            margin-bottom: -10px;
-            margin-right: -10px;
-            padding-top: 20px;
-            padding-bottom: 30px;
         }
 
         .toolimage {
@@ -109,9 +104,12 @@ if ($mysql->errno) {
 </head>
 
 <body style="margin: 0px;">
-
+<?php
+include ('login_Auth.php');
+?>
 <div id="outercontainer">
     <?php
+
     include('header.php');
     ?>
     <div id="middletext">

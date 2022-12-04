@@ -21,79 +21,89 @@ if ($mysql->errno) {
 <head>
     <title>Log in</title>
     <style>
-        #displayUsername{
+        #displayUsername {
             background-color: black;
             width: 10vw;
             color: white;
             float: right;
         }
-        #outercontaineraccount{
-            width:100%;
+
+        #outercontaineraccount {
+            width: 100%;
             background-image: url("makerspace1.png");
             background-size: 100%;
             background-repeat: no-repeat;
             background-color: black;
-            height:100%;
+            height: 100%;
         }
+
         #createtext {
             font-family: "Stretch Pro";
             font-size: 60px;
             color: #FFFFFF;
             text-align: center;
             margin: auto;
-            padding-top:15%;
-            width:50%;
+            padding-top: 15%;
+            width: 50%;
         }
-        #searchbar{
+
+        #searchbar {
             margin: auto;
             align-content: center;
             text-align: center;
 
         }
-        #footer{
+
+        #footer {
             background-color: #5B5B5B;
             text-align: center;
             font-family: "Stretch Pro";
             font-size: 12pt;
-            height:45px;
-            color:white;
+            height: 45px;
+            color: white;
         }
-        #columnholder{
-            height:50px;
-            text-align: center ;
+
+        #columnholder {
+            height: 50px;
+            text-align: center;
             padding-bottom: 340px;
             color: white;
         }
-        #columnholder a{
+
+        #columnholder a {
             text-decoration: underline;
             list-style-type: none;
             color: inherit;
         }
-        #columnholder a:hover{
+
+        #columnholder a:hover {
             text-decoration: underline;
             list-style-type: none;
             color: #FFCC00;
         }
-        #accountparagraph{
-            width:1000px;
+
+        #accountparagraph {
+            width: 1000px;
             font-size: 18pt;
             text-align: center;
-            margin:auto;
-            color:white;
+            margin: auto;
+            color: white;
             font-family: Lora;
         }
-        #submitButton {
+
+        .submitButton {
             border: none;
-            width: 200px;
+            width: 175px;
             height: 30px;
             background-color: #FFCC00;
             border-radius: 15px;
             font-family: Lora;
             font-size: 14pt;
             font-weight: bold;
+
         }
 
-        #submitButton:hover {
+        .submitButton:hover {
             background-color: white;
         }
 
@@ -123,6 +133,10 @@ if ($mysql->errno) {
             padding: 10px;
             font-weight: bold;
         }
+
+        #accountButtons {
+            gap: 10px;
+        }
     </style>
 </head>
 <body style="margin: 0">
@@ -130,7 +144,7 @@ if ($mysql->errno) {
 
 <div id="outercontaineraccount">
     <?php
-    include ('header.php');
+    include('header.php');
     ?>
 
     <div id="createtext">
@@ -143,25 +157,31 @@ if ($mysql->errno) {
 
     <div id="searchbar">
         <?php
-        if($_REQUEST["loggedIn"] != "1"){
-            echo " ";
-            ?>
-            <br><br><br>
-            <form>
-                <input type="hidden" name="loggedIn" value="1">
-                <input class="textfield" type="text" name="email" placeholder=" email...">
-                <br><br>
-
-                <input class="textfield" type="text" name="username" placeholder=" username...">
-                <br><br>
-                <input class="textfield" type="text" name="password" placeholder=" password...">
-                <br><br><br>
-                <input id="submitButton" type="submit" name="submitusername" value="update details">
-            </form>
-            <?php
-        }
+        if ($_REQUEST["loggedIn"] != "1") {
+        echo " ";
         ?>
+        <br><br><br>
+        <form>
+            <input type="hidden" name="loggedIn" value="1">
+            <input class="textfield" type="text" name="email" placeholder=" email...">
+            <br><br>
+
+            <input class="textfield" type="text" name="username" placeholder=" username...">
+            <br><br>
+            <input class="textfield" type="text" name="password" placeholder=" password...">
+            <br><br><br>
+            <div id="accountButtons">
+                <input class="submitButton" type="submit" name="submitusername" value="update details">
+            </form>
+            <br><br>
+            <form action="login.php">
+            <button id="logOffButton" class="submitButton">Log Out</button>
+            </form>
     </div>
+<?php
+}
+?>
+</div>
 </div>
 <div id="footer">
     <br>
