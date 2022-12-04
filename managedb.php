@@ -122,7 +122,7 @@ include(‘header . php’)
     .dbdiv{
         background-color: #c5c5c5;
         width: 100%;
-        height: 350px;
+        height: 250px;
         padding: 10px;
         border: white 4px solid;
 
@@ -155,9 +155,9 @@ include(‘header . php’)
     <img id="logoimage" src="witslogo.png">
     <div class="dbdiv"><div class="tooltitle" style="float: right; margin-right: 40px">MATERIALS</div></div>
     <div class="dbdiv"  ><div class="tooltitle" style="float: left; margin-left: 40px" >LOCATION</div> </div>
-    <div class="dbdiv"><div class="tooltitle" style="float: right; margin-right: 40px">TOOL TYPE</div></div>
+    <div class="dbdiv"><div class="tooltitle" style="float: right; margin-right: 40px">T00L TYPE</div></div>
     <div class="dbdiv" ><div class="tooltitle" style="float: left; margin-left: 40px ">USERSS</div></div>
-    <div class="dbdiv"><div class="tooltitle" style="float: right; margin-right: 40px">TOOLS</div></div>
+    <div class="dbdiv"><div class="tooltitle" style="float: right; margin-right: 40px">T00LS</div></div>
 
 
 
