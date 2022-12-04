@@ -1,18 +1,14 @@
-<?php
-session_start();
-?>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="fogo.ico">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <style>
-        @font-face {
-            font-family: 'StretchProBasic';
-            src: url("stretch-probasic.otf") format("opentype");
-        }@font-face {
-            font-family: 'Stretch Pro';
-            src: url("StretchPro.otf") format("opentype");
+        body{
+            background-color: black;
         }
         #navbar {
+            font-family: "Stretch Pro";
             font-size: 16px;
             color: white;
             width: 100%;
@@ -21,6 +17,7 @@ session_start();
             justify-content: flex-end;
             gap: 20px;
             padding-top: 20px;
+            float: top;
         }
 
         #navList {
@@ -29,12 +26,11 @@ session_start();
         }
 
         .navItem {
-            font-family: 'StretchProBasic';
         }
 
         .navItem:hover {
             color: #FFCC00;
-
+            transition: 1s;
         }
 
         .navItem a {
@@ -42,35 +38,43 @@ session_start();
             text-decoration: none;
 
         }
-
         #logoimage {
             position: absolute;
-            width: 250px;
+            width: 500px;
             float: left;
-            top: 0;
+            left: -180px;
+            top: -180px;
             z-index: 1;
         }
+        #logoimagediv{
 
+        }
     </style>
 </head>
 <body>
-<img id="logoimage" src="witslogo.png">
+
+<script>
+    $(document).ready(function(){
+        $("#logoimagediv").onclick(function(){
+            $(this).rotate(90);
+        });
+    });
+</script>
+
+<div id="logoimagediv">
+    <img id="logoimage" src="fogo.svg">
+</div>
 
 <ul id="navList">
     <div id="navbar">
-        <div class="navItem">
+        <div class="navItem" >
             <li><a href="WITS-frontpage.php">SEARCH</a></li>
         </div>
         <div class="navItem">
             <li><a href="Results.php">CATALOG</a></li>
         </div>
         <div class="navItem">
-            <li><a href="account-info.php"><?php
-                    if ($_SESSION['loggedIn'] == true) {
-                        echo "ACCOUNT-". $_SESSION["username"];
-                    } else {
-                        echo "ACCOUNT";
-                    } ?></a></li>
+            <li><a href="account-info.php">ACCOUNT</a></li>
         </div>
         <div class="navItem" style="padding-right: 20px">
             <li><a href="infopage.php">INFO</a></li>

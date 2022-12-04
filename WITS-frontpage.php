@@ -46,6 +46,7 @@ if ($mysql->errno) {
             padding-bottom: 340px;
             flex-direction: row;
             gap: 15px;
+            border: none;
         }
 
         #featuredtools {
@@ -101,13 +102,15 @@ if ($mysql->errno) {
             background-size: auto;
             background-position: center;
         }
+        #searchButton:hover{
+            background-color: white;
+        }
     </style>
 </head>
 
 <body style="margin: 0px;">
 
 <div id="outercontainer">
-
     <?php
     include('header.php');
     ?>
@@ -116,7 +119,7 @@ if ($mysql->errno) {
     </div>
     <form action="Results.php" style="list-style-type:none; margin: 0">
         <div id="searchbar">
-            <div><input style="width: 680px;height: 50px;font-size: 25px; border-radius: 25px;opacity: 80%;"
+            <div><input style="width: 680px;height: 50px;font-size: 25px; border-radius: 25px;opacity: 80%; border: none;"
                         type="text" name="search">
             </div>
             <div>
