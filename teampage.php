@@ -87,7 +87,9 @@ if($mysql -> errno){
 </head>
 
 <body style="margin: 0">
-
+<?php
+include ('login_Auth.php');
+?>
 <div id="outercontainer">
 
     <?php

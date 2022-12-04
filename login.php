@@ -144,8 +144,8 @@ if ($mysql->errno) {
 <div id="outercontainer">
 
     <?php
-    session_destroy();
     include('header.php');
+    $_SESSION["loggedIn"] = false;
     ?>
     <div id="logintext">
         LOGGIN

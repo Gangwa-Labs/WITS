@@ -35,7 +35,7 @@ if ($_SESSION["loggedIn"] == false) {
 
 
             #portalButton {
-                width: 30%;
+                width: 200px;
                 height: 75px;
                 background-color: #FFCC00;
                 font-size: 24pt;
@@ -54,15 +54,20 @@ if ($_SESSION["loggedIn"] == false) {
             #portalButton:hover {
                 background-color: white;
             }
+            #loginLink{
+                text-decoration: none;
+            }
         </style>
     </head>
-    <body>
+    <body style="margin: 0">
     <div id="outercontainer">
         <div id="centeredMsgBox">
             <div id="redirectMsg">Please Log in to Browse</div>
+            <a href="login.php" id="loginLink">
             <div id="portalButton">
-                <a href="login.php"><div>Log In</div></a>
+               <div>Log In</div>
             </div>
+            </a>
         </div>
         <?php
         exit();
