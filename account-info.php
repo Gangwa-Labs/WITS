@@ -1,5 +1,4 @@
 <?php
-session_start();
 $host = "webdev.iyaclasses.com";
 $userid = "ebird_JimJobBob";
 $userpw = "Treesap3#";
@@ -163,12 +162,11 @@ if ($mysql->errno) {
         <br><br><br>
         <form>
             <input type="hidden" name="loggedIn" value="1">
-            <input class="textfield" type="text" name="email" placeholder=" email...">
+            <input class="textfield" type="text" name="email" placeholder=" email..." required>
             <br><br>
-
-            <input class="textfield" type="text" name="username" placeholder=" username...">
+            <input class="textfield" type="text" name="username" placeholder=" username..." required>
             <br><br>
-            <input class="textfield" type="text" name="password" placeholder=" password...">
+            <input class="textfield" type="text" name="password" placeholder=" password..." required>
             <br><br><br>
             <div id="accountButtons">
                 <input class="submitButton" type="submit" name="submitusername" value="update details">

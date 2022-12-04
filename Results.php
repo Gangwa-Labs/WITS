@@ -17,7 +17,8 @@ if ($mysql->errno) {
     echo $mysql->connect_error;
     exit();
 }
-$sql = "SELECT * FROM allTools WHERE toolName like '%" . $_REQUEST["search"] . "%'";
+$locationFilterSQL = null;
+$sql = "SELECT * FROM allTools WHERE toolName like '%" . $_REQUEST["search"] . "%'" . $locationFilterSQL;
 $results = $mysql->query($sql);
 
 if (!$results) {
@@ -110,7 +111,7 @@ if (!$results) {
             font-family: 'Lora';
             font-style: normal;
             font-weight: 700;
-            font-size: 25px;
+            font-size: 20px;
             line-height: 32px;
             text-align: center;
             display: flex;
@@ -123,6 +124,13 @@ if (!$results) {
             border-radius: 15px;
 
         }
+
+        .filterOption:hover {
+            background-color: #FFCC00;
+            color: black;
+            border-color: #FFCC00;
+        }
+
 
         .toolSearchResult {
             display: flex;
@@ -177,11 +185,6 @@ if (!$results) {
             color: #F0F0F0;
         }
 
-        .filterOption:hover {
-            background-color: #FFCC00;
-            color: black;
-            border-color: #FFCC00;
-        }
 
         #searchContainer {
             width: 45%;
@@ -215,9 +218,11 @@ if (!$results) {
             background-size: auto;
             background-position: center;
         }
-        #searchButton:hover{
+
+        #searchButton:hover {
             background-color: white;
         }
+
         #searchForm {
             font-size: 25pt;
             border-radius: 40px;
@@ -248,8 +253,6 @@ if (!$results) {
             justify-content: center;
             height: 100%;
             width: 65px;
-            align-items: center;
-            justify-content: center;
             border-radius: 20px;
         }
 
@@ -257,7 +260,8 @@ if (!$results) {
             background-color: #FFCC00;
             color: white;
         }
-        #pageSelect a{
+
+        #pageSelect a {
             text-decoration: none;
             color: black;
         }
@@ -305,24 +309,24 @@ if (!$results) {
         echo $currentrow["toolName"];
         ?>
     </div>
-        <div class="toolDetails">
-            <div class="toolPic"></div>
-            <div class="toolInfo">
-                <?php
-                echo "<p>Location: " . $currentrow["location"] . "</p>";
-                echo "<p>Tool Type: " . $currentrow["toolType"] . "</p>";
-                echo "<p>Material: " . $currentrow["material"] . "</p>";
-                echo "<p>Quantity: " . $currentrow["quantity"] . "</p>";
-                echo "<p>Description: " . $currentrow["details"] . "</p>";
-                ?>
-            </div>
+    <div class="toolDetails">
+        <div class="toolPic"></div>
+        <div class="toolInfo">
+            <?php
+            echo "<p>Location: " . $currentrow["location"] . "</p>";
+            echo "<p>Tool Type: " . $currentrow["toolType"] . "</p>";
+            echo "<p>Material: " . $currentrow["material"] . "</p>";
+            echo "<p>Quantity: " . $currentrow["quantity"] . "</p>";
+            echo "<p>Description: " . $currentrow["details"] . "</p>";
+            ?>
         </div>
     </div>
+</div>
 
-    <?php
-    $counter++;
-    }
-    ?>
+<?php
+$counter++;
+}
+?>
 <div id="pageSelect">
     <?php
     if ($start != 1) {
@@ -354,7 +358,7 @@ if (!$results) {
         I REQUUIRE...
 
         <div class="filterType">
-            <button type="button" class="filterOption" name = "tools" form="filterForm">
+            <button type="button" class="filterOption" name="tools" form="filterForm">
                 <div>TOOLS</div>
             </button>
             <button type="button" class="filterOption" name="printing">
@@ -363,49 +367,63 @@ if (!$results) {
             <button type="button" class="filterOption" name="materials">
                 <div>MATERIALS</div>
             </button>
-            <button type="button" class="filterOption" name = "help">
+            <button type="button" class="filterOption" name="help">
                 <div>HELP</div>
             </button>
-
         </div>
-
     </div>
     <div class="filterCategory">
         MATEERIAL
         <div class="filterType">
-            <div class="filterOption">
-                <div>WOOD</div>
-            </div>
-            <div class="filterOption">
-                <div>METAL</div>
-            </div>
-            <div class="filterOption">
-                <div>FABRIC</div>
-            </div>
-            <div class="filterOption">
-                <div>PLASTIC</div>
-            </div>
+            <?php
+            $material = "SELECT * FROM material";
+            $materialResults = $mysql->query($material);
+            if (!$materialResults) {
+                echo "DB Query Problem <hr>";
+                echo $mysql->error;
+                exit();
+            }
+            while ($currentrow = $materialResults->fetch_assoc()) {
+                echo "<div data-filter-opt = 'material' data-id= " . $currentrow["materialID"] . " class='filterOption'>
+                <div>" . strtoupper($currentrow["material"]) . "</div></div>";
+            }
+            ?>
         </div>
     </div>
     <div class="filterCategory">
         LOCATION
         <div class="filterType">
-            <div class="filterOption">
-                <div>MAIN ROOM</div>
-            </div>
-            <div class="filterOption">
-                <div>CAGE</div>
-            </div>
-            <div class="filterOption">
-                <div>PRINT LAB</div>
-            </div>
-            <div class="filterOption">
-                <div>WOODSHOP</div>
-            </div>
+            <?php
+            $location = "SELECT * FROM location";
+            $locationResults = $mysql->query($location);
+            if (!$locationResults) {
+                echo "DB Query Problem <hr>";
+                echo $mysql->error;
+                exit();
+            }
+            while ($currentrow = $locationResults->fetch_assoc()) {
+                echo "<div data-filter-opt = 'location' data-id = " . $currentrow['locationID'] . " class='filterOption'>
+                <div>" . strtoupper($currentrow["location"]) . "</div></div>";
+            }
+            ?>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".filterOption").on("click", function () {
+                $filterGroup = this.dataset.filterOpt;
+                $filterID = this.dataset.id;
+                if($filterGroup == "location"){
+                    $locationFilterSQL = "AND locationID is " + $filterID;
+                    <?php $locationFilterSQL = "AND LocationID is "?>
+                } else if($filterGroup == "material"){
+                    $materialFilter = $filterID
+                }
+            });
+        });
+    </script>
     <div class="FilterCategory" style="margin-top: 50px; text-align: center;">MAP</div>
-
 </div>
 </body>
 </html>
