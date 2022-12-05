@@ -200,8 +200,9 @@ if ($mysql->errno) {
                 } else {
                     echo "<div id='errorMessage' style='color: green'><div id='errorText'>account created with email:" . $_REQUEST["email"] . "</div></div>";
                     $_SESSION['loggedIn'] = true;
-                    $_SESSION['userID'] = $_REQUEST["userID"];
+                    $_SESSION['userID'] = $newAccountResults["userID"];
                     $_SESSION['username'] = $_REQUEST["username"];
+                    $_SESSION['email'] = $_REQUEST["email"];
                     echo "<script>
                     document.querySelector('#searchbar').style.display = 'none';
                     document.querySelector('#createtext').innerHTML = 'Find Your Tools <br><br>'
