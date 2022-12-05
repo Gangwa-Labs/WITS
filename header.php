@@ -26,6 +26,8 @@ session_start();
         #navList {
             list-style-type: none;
             margin: 0;
+            background-color: black;
+
         }
 
         .navItem {
@@ -67,6 +69,18 @@ session_start();
 
 <ul id="navList">
     <div id="navbar">
+        <?php
+        if($_SESSION['typeID'] == 2){
+            ?>
+            <div class="navItem">
+                <li><a href="admin/analytics.php">ANALYTICS</a></li>
+            </div>
+            <div class="navItem">
+                <li><a href="admin/admin_db_nav.php">MANAGE_DATABASE</a></li>
+            </div>
+            <?php
+        }
+        ?>
         <div class="navItem">
             <li><a href="WITS-frontpage.php">SEARCH</a></li>
         </div>
@@ -74,7 +88,7 @@ session_start();
             <li><a href="Results.php">CATALOG</a></li>
         </div>
         <div class="navItem">
-            <li><a href="3dprint.php">3D-PRINT</a></li>
+            <li><a href="vote.php">VOTE</a></li>
         </div>
         <div class="navItem">
             <li><a href="account-info.php"><?php

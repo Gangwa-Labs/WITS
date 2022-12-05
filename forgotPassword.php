@@ -80,9 +80,7 @@ if ($mysql->errno) {
 </head>
 
 <body style="margin: 0">
-<?php
-include('login_Auth.php');
-?>
+
 <div id="outercontainer">
     <?php
     include('header.php');
@@ -112,7 +110,7 @@ include('login_Auth.php');
         } else {
             $passwordResult = $passwordSearchResults->fetch_assoc();
             $message = "your password for WITS is: " . $passwordResult["password"];
-            $to = "ezrajbird0@gmail.com";
+            $to = $_SESSION["email"];
             $subject = "WITS Password Recovery";
             $from = $_REQUEST["email"];
             $headers = "From: $from";

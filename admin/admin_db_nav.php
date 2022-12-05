@@ -1,6 +1,3 @@
-<?php
-include(‘header . php’)
-?>
 <html>
 <title>Manage Database</title>
 <style>
@@ -50,9 +47,10 @@ include(‘header . php’)
         display: flex;
         align-items: center;
         border: none;
-        height: 20%;
+        height: 100%;
     }
-    .dbdiv:hover *{
+
+    .dbdiv:hover * {
         color: #202020;
         transition: .3s;
 
@@ -117,13 +115,18 @@ include(‘header . php’)
         background-color: black;
         height: 50px;
     }
-    #flexNav{
+
+    #flexNav {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
         height: 91%;
         flex-direction: column;
+    }
+    #flexNav form{
+        width: inherit;
+        height: 20%;
     }
 </style>
 <body>
@@ -134,25 +137,45 @@ include(‘header . php’)
         include('admin_header.php');
         ?>
     </div>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
     <div id="flexNav">
-            <button class="dbdiv" id="option1">
+        <form action="admin_filtered_db_nav.php">
+            <button class="dbdiv" id="option1" type="submit">
                 <div class="tooltitle" style="float: right; margin-right: 40px">MATERIALS</div>
             </button>
-            <button class="dbdiv" id="option2">
+            <input type="hidden" name="databaseName" value="material">
+            <input type="hidden" name="dataID" value="materialID">
+            <input type="hidden" name="title" value="Material">
+        </form>
+        <form action="admin_filtered_db_nav.php">
+            <button class="dbdiv" id="option2" type="submit">
                 <div class="tooltitle" style="float: left; margin-left: 40px">LOCATION</div>
             </button>
-            <button class="dbdiv" id="option3">
+            <input type="hidden" name="databaseName" value="location">
+            <input type="hidden" name="dataID" value="locationID">
+            <input type="hidden" name="title" value="Location">
+        </form>
+        <form action="admin_filtered_db_nav.php">
+            <button class="dbdiv" id="option3" type="submit">
                 <div class="tooltitle" style="float: right; margin-right: 40px">T00L TYPE</div>
+                <input type="hidden" name="databaseName" value="toolType">
+                <input type="hidden" name="dataID" value="typeID">
+                <input type="hidden" name="title" value="Tool Type">
             </button>
-            <button class="dbdiv" id="option4">
-                <div class="tooltitle" style="float: left; margin-left: 40px ">USERSS</div>
+        </form>
+        <form action="admin_tool_db_nav.php">
+            <button class="dbdiv" id="option4" type="submit">
+                <div class="tooltitle" style="float: left; margin-left: 40px">T00LS</div>
+                <input type="hidden" name="databaseName" value="tool">
+                <input type="hidden" name="dataID" value="toolID">
+                <input type="hidden" name="title" value="Tool">
             </button>
-            <button class="dbdiv" id="option5">
-                <div class="tooltitle" style="float: right; margin-right: 40px">T00LS</div>
-            </button>
+        </form>
     </div>
     <div id="footer">
-        <div>        this site is powered by the graciousness of cohort 8
+        <div> this site is powered by the graciousness of cohort 8
         </div>
     </div>
 

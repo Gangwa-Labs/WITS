@@ -78,10 +78,13 @@ if ($mysql->errno) {
         #dataimg{
             width:100%
             height:500px;
-            background-image: url("makerspace1.png");
+            background-image: url("IYA/Semester 3 - 2022/Dev II/PhpStorm/WITS/makerspace1.png");
             background-size: auto;
             background-repeat: no-repeat;
 
+        }
+        #dataimage{
+            text-align: center;
         }
     </style>
 </head>
@@ -91,20 +94,20 @@ if ($mysql->errno) {
 <div id="outercontainer">
 
     <?php
-    session_destroy();
-    include('header.php');
+    include('admin_header.php');
+    include('admin_Login_Auth.php');
     ?>
     <div id="analytictext">
         PAGGE ANALYTICCS
-        <br><br>        <br><br>
-
+        <br><br>
     </div>
-        <img src="makerspace1.png" width="100%" height="500">
-    <div id="footer">
-        <br>
-        this site is powered by the graciousness of cohort 8
+    <div id="dataimage">
+        <img src="analytics.png" height="60%">
     </div>
 </div>
-
+<div id="footer">
+    <br>
+    this site is powered by the graciousness of cohort 8
+</div>
 </body>
 </html>

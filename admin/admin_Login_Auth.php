@@ -10,7 +10,6 @@ if ($_SESSION["typeID"] != 2) {
                 background-image: url("../makerspace1.png");
                 background-size: 100%;
                 background-repeat: no-repeat;
-                background-color: black;
                 height: 100%;
                 display: flex;
                 align-items: center;
@@ -60,6 +59,11 @@ if ($_SESSION["typeID"] != 2) {
         </style>
     </head>
     <body style="margin: 0">
+    <script>
+        document.querySelector('#navList').style.display = 'none';
+        document.querySelector('#logoimage').style.display = 'none';
+
+    </script>
     <div id="outercontainer">
         <div id="centeredMsgBox">
             <div id="redirectMsg">Please Log in to Browse</div>
