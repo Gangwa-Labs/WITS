@@ -24,31 +24,17 @@ $db = "ebird_WITS1";
     #outercontainer {
         background-color: #202020;
         height: 100%;
+        width: 100%;
         font-family: 'Lora';
     }
 
-    @font-face {
-        font-family: 'Stretch Pro';
-
-    }
-    #navbar {
-        height: 150px;
-        font-family: 'Stretch Pro';
-        font-size: 16px;
-        color: #F0F0F0;
-        padding-top: 2%;
-        text-align: right;
-        padding-right: 10%;
-        word-spacing: 40px;
-    }
-
     #largetextwhite {
-        font-family: 'Stretch Pro';
+        font-family: 'StretchProBasic';
         font-size: 100px;
         color: #F0F0F0;
+        margin-top: 250px;
         text-align: left;
-        padding-top: 5%;
-        padding-left: 10%
+        padding-left: 50px;
     }
 
     #largetextblack {
@@ -56,156 +42,52 @@ $db = "ebird_WITS1";
         background-color: #FFCC00;
         font-size: 100px;
         color: #000000;
-        margin-left: 10%;
+        margin-left: 50px;
         width: 80%;
+
         border-style: hidden;
     }
     #textcontainer{
         background-color: #FFCC00;
         height:150px;
-        padding-top: 100px;
-
+        display: flex;
+        align-items: center;
     }
 
-    #footer {
-        font-family: 'Stretch Pro';
+    #footer{
         background-color: #5B5B5B;
-        width: 100%;
-        padding-top:10px;
-        padding-bottom:10px;
-        color: #ffffff;
         text-align: center;
-        margin-top: 12%;
+        font-family: "Stretch Pro";
+        font-size: 12pt;
+        height:45px;
+        color:white;
+        position: absolute;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
     }
-
-    #totext {
-        font-family: 'Stretch Pro';
-        font-size: 50px;
-        color: #F0F0F0;
-        text-align: left;
-        margin-left: 10%;
-        margin-bottom: 1%;
-    }
-
-    #submit {
-        font-family: 'Stretch Pro';
-        font-size: 20px;
-        color: #000000;
+    .submitButton {
+        border: none;
+        width: 175px;
+        height: 50px;
         background-color: #FFCC00;
-        border-radius: 20px;
-        border-color: white;
-        padding: 6px;
-        margin-left: 10%;
-        margin-top: 2%
+        border-radius: 25px;
+        font-family: Lora;
+        font-size: 20pt;
+        font-weight: bold;
+        margin-left: 30px;
+        font-weight: bold;
     }
 
-    #logoimage {
-        width: 250px;
-        float: left;
+    .submitButton:hover {
+        background-color: white;
     }
-
-    #searchicon {
-        width: 35px;
-        float: right;
-        padding-right: 5%;
-        padding-top: 1.5%;
-    }
-
     hr{
         color: #FFCC00;
     }
 
-    /*@media only screen and (max-width: 868px) {*/
-    /*    #outercontainer {*/
-    /*        background-color: #202020;*/
-    /*        height: 980px;*/
-    /*        font-family: 'Lora';*/
-    /*    }*/
-
-    /*    #footer {*/
-    /*        font-family: 'Stretch Pro';*/
-    /*        background-color: #5B5B5B;*/
-    /*        width: 100%;*/
-    /*        padding-top:10px;*/
-    /*        padding-bottom:10px;*/
-    /*        position: absolute;*/
-    /*        color: #ffffff;*/
-    /*        text-align: center;*/
-    /*        margin-top: 950px;*/
-    /*        font-size: 10px;*/
-    /*    }*/
-
-    /*    #totext {*/
-    /*        font-family: 'Stretch Pro';*/
-    /*        font-size: 40px;*/
-    /*        color: #F0F0F0;*/
-    /*        position: absolute;*/
-    /*        text-align: left;*/
-    /*        margin-top: 490px;*/
-    /*        margin-left: 80px;*/
-    /*    }*/
-
-    /*    #submit {*/
-    /*        font-family: 'Stretch Pro';*/
-    /*        font-size: 20px;*/
-    /*        color: #000000;*/
-    /*        background-color: #FFCC00;*/
-    /*        border-radius: 20px;*/
-    /*        border-color: white;*/
-    /*        padding: 5px;*/
-    /*        margin-top: 630px;*/
-    /*        margin-left:80px;*/
-    /*    }*/
-
-    /*    #logoimage {*/
-    /*        position: absolute;*/
-    /*        width: 80px;*/
-    /*        float: left;*/
-    /*    }*/
-
-    /*    #searchicon {*/
-    /*        position: absolute;*/
-    /*        width: 10px;*/
-    /*        float: right;*/
-    /*        margin-left: 465px;*/
-    /*        margin-top: 26px;*/
-    /*    }*/
-
-    /*    #navbar {*/
-    /*        height: 150px;*/
-    /*        font-family: 'Stretch Pro';*/
-    /*        font-size: 5px;*/
-    /*        color: #F0F0F0;*/
-    /*        position: absolute;*/
-    /*        margin-top: 30px;*/
-    /*        margin-left: 150px;*/
-    /*        word-spacing: 40px;*/
-    /*    }*/
-
-    /*    #largetextblack {*/
-    /*        font-family: 'Stretch Pro';*/
-    /*        background-color: #FFCC00;*/
-    /*        font-size: 40px;*/
-    /*        color: #000000;*/
-    /*        position: absolute;*/
-    /*        margin-top: 550px;*/
-    /*        padding-top:10px;*/
-    /*        padding-bottom:10px;*/
-    /*        width: 80%;*/
-    /*        margin-left: 80px;*/
-    /*    }*/
-
-
-    /*    #largetextwhite {*/
-    /*        font-family: 'Stretch Pro';*/
-    /*        font-size: 40px;*/
-    /*        color: #F0F0F0;*/
-    /*        position: absolute;*/
-    /*        text-align: left;*/
-    /*        margin-top: 400px;*/
-    /*        margin-left: 80px;*/
-    /*    }*/
-    /*}*/
 
 </style>
 
@@ -215,20 +97,22 @@ $db = "ebird_WITS1";
 
     <?php
     include('header.php');
-    $_SESSION["loggedIn"] = false;
     ?>
+    <form>
     <div id="largetextwhite">
         ARE YOU SURE <br>YOU WANT TO  <br>DELETE?
     </div>
 
     <div id="textcontainer">
-        <input type="text" id="largetextblack" placeholder='"OBJECT 1"'>
+        <div id="largetextblack"><div>test</div></div>
     </div>
-    <input type="submit" id="submit" value="confirm">
-
+        <br>
+    <button type="submit" class="submitButton" value="confirm">confirm</button>
+    </form>
     <div id="footer">
-        this site is powered by the graciousness of cohort 8
+       <div>this site is powered by the graciousness of cohort 8</div>
     </div>
+
 
 </div>
 </body>

@@ -46,9 +46,6 @@ if($mysql -> errno){
             font-family: "Stretch Pro";
             font-size: 12pt;
             height:45px;
-            margin-left: -10px;
-            margin-bottom: -10px;
-            margin-right:-10px;
             color:white;
         }
     </style>
