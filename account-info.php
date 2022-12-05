@@ -140,7 +140,7 @@ if ($mysql->errno) {
 </head>
 <body style="margin: 0">
 <?php
-include ('login_Auth.php');
+include('login_Auth.php');
 ?>
 
 <div id="outercontaineraccount">
@@ -155,32 +155,74 @@ include ('login_Auth.php');
     <div id="accountparagraph">
         Update any of your account information below:
     </div>
-
     <div id="searchbar">
-        <?php
-        if ($_REQUEST["loggedIn"] != "1") {
-        echo " ";
-        ?>
         <br><br><br>
-        <form>
+        <form action="">
             <input type="hidden" name="loggedIn" value="1">
-            <input class="textfield" type="text" name="email" placeholder=" email..." required>
+            <input class="textfield" type="text" name="email" placeholder="<?php echo $_SESSION["email"]; ?>" required>
             <br><br>
-            <input class="textfield" type="text" name="username" placeholder=" username..." required>
+            <input class="textfield" type="text" name="username" placeholder="<?php echo $_SESSION["username"]; ?>"
+                   required>
             <br><br>
-            <input class="textfield" type="text" name="password" placeholder=" password..." required>
+            <input class="textfield" type="text" name="password" placeholder="password..." required>
             <br><br><br>
             <div id="accountButtons">
                 <input class="submitButton" type="submit" name="submitusername" value="update details">
-            </form>
-            <br><br>
-            <form action="login.php">
+        </form>
+        <br><br>
+        <form action="login.php">
             <button id="logOffButton" class="submitButton">Log Out</button>
-            </form>
+        </form>
     </div>
-<?php
-}
-?>
+    <?php
+    if ($_REQUEST['loggedIn'] == 1) {
+        $email = $_REQUEST["email"];
+        $user = $_REQUEST["username"];
+        $pass = $_REQUEST["password"];
+        if ($email == $_SESSION["email"]) {
+            $updateInfo = "UPDATE user SET
+                email = '" . $email . "',username='" . $user . "',password ='" . $pass . "' WHERE userID =" . $_SESSION["userID"];
+            $updateResults = $mysql->query($updateInfo);
+            if (!$updateResults) {
+                echo "DB Query Problem <hr>";
+                echo $db->error;
+                exit();
+            } else {
+                echo "<div id='errorMessage' style='color: green'><div id='errorText'> account information updated with <br> email: " . $_REQUEST["email"] . "<br> username: " . $_REQUEST["username"] . "</div></div>";
+                $_SESSION['username'] = $user;
+                $_SESSION['email'] = $email;
+            }
+        } else {
+            echo "<script>console.log('new email')</script>";
+            $emailDupCheck = "SELECT * FROM user WHERE email = '" . $_REQUEST["email"] . "'";
+            $dupCheckResults = $mysql->query($emailDupCheck);
+            if (!$dupCheckResults) {
+                echo "DB Query Problem <hr>";
+                echo $db->error;
+                exit();
+            } else {
+                $emailRow = $dupCheckResults->fetch_assoc();
+                if ($emailRow["email"] == null) {
+                    $updateInfo = "UPDATE user SET
+                email = '" . $email . "',username='" . $user . "',password ='" . $pass . "' WHERE userID =" . $_SESSION["userID"];
+                    $updateResults = $mysql->query($updateInfo);
+                    if (!$updateResults) {
+                        echo "DB Query Problem <hr>";
+                        echo $db->error;
+                        exit();
+                    } else {
+                        echo "<div id='errorMessage' style='color: green'><div id='errorText'> account information updated with <br> email: " . $_REQUEST["email"] . "<br> username: " . $_REQUEST["username"] . "</div></div>";
+                        $_SESSION['username'] = $user;
+                        $_SESSION['email'] = $email;
+                    }                } else {
+                    echo "<div id='errorMessage'><div id='errorText'>account already associated with email: " . $_REQUEST["email"] . "</div></div>";
+                }
+
+            }
+        }
+    }
+    ?>
+
 </div>
 </div>
 <div id="footer">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION["loggedIn"] == false) {
+if ($_SESSION["userID"] == null) {
     ?>
     <html>
     <head>
