@@ -4,65 +4,15 @@ include(‘header . php’)
 <html>
 <title>Manage Database</title>
 <style>
-    #outercontainer2{
-        width:100%;
-        background-size: 100%;
-        background-repeat: no-repeat;
-        margin-left: -10px;
-        margin-top: -10px;
-        padding-right: 20px;
-        background-color: white;
+    *
+    {
+        margin: 0px;
+        padding: 0px;
     }
-    #logoimage {
-        position: absolute;
-        width: 250px;
-        float: left;
-    }
-    #middletext {
-        font-family: "Stretch Pro";
-        font-size: 80px;
-        color: #FFFFFF;
-        text-align: center;
-        margin: auto;
-        padding-top:20%;
-    }
-    #searchbar{
-        margin: auto;
-        align-content: center;
-        text-align: center;
-        padding-bottom: 340px;
-
-    }
-
-    #featuredtools{
-        font-family: "Stretch Pro";
-        font-size: 30px;
-        color: #FFCC00;
-        align-content: center;
-        text-align: center;
-        background-color: black;
+    #outercontainer{
+        background-color: #202020;
         height: 100%;
-        margin-left: -10px;
-        margin-bottom: -10px;
-        margin-right:-10px;
-        padding-top:20px;
-        padding-bottom: 30px;
-    }
-    .toolimage {
-        font-family: "Lora";
-        width: 29%;
-        margin:2%;
-        text-align: center;
-        align-content: center;
-        color: #FFFFFF;
-        float:left;
-
-    }
-    .toolimageimage {
-        width: 400px;
-        height:500px;
-        border-radius: 21px;
-        border: #5B5B5B 20px solid;
+        font-family: 'Lora';
     }
     #footer{
         background-color: #5B5B5B;
@@ -85,38 +35,6 @@ include(‘header . php’)
     }
     .tooltitle:hover{
         color: #202020;
-    }
-    .addbutton{
-        background-color: #FFCC00;
-        color: #202020;
-        font-family: Lora;
-        font-size: 21px;
-        border-radius: 20px;
-        text-align: center;
-        width: 177px;
-        height: 35px;
-        font-weight: bolder;
-        margin: auto;
-        padding-top: 10px;
-    }
-    .optionbox{
-        background-color: #FFCC00;
-        color: #202020;
-        background-size: 100%;
-        font-family: "Stretch Pro";
-        height: 150px;
-        margin: 20px;
-        font-size: 100px;
-        padding: 10px;
-
-
-    }
-    .buttonbox{
-        background-color:white;
-        width: 300px;
-        height: 150px;
-        float: right;
-
     }
     .dbdiv{
         width: 100%;
@@ -171,16 +89,20 @@ include(‘header . php’)
         transition: .3s;
         cursor: pointer;
     }
-
+    #black{
+        background-color: black;
+        height:50px;
+    }
 </style>
 <body>
 
-<div id="outercontainer2">
+<div id="outercontainer">
+    <div id="black">
     <?php
     include('header.php');
     $_SESSION["loggedIn"] = false;
     ?>
-
+    </div>
     <a href="WITS-frontpage.php"><div class="dbdiv" id="option1"><div class="tooltitle" style="float: right; margin-right: 40px">MATERIALS</div></div></a>
     <a href="WITS-frontpage.php"> <div class="dbdiv"  id="option2"><div class="tooltitle" style="float: left; margin-left: 40px" >LOCATION</div> </div></a>
     <a href="WITS-frontpage.php"> <div class="dbdiv" id="option3"><div class="tooltitle" style="float: right; margin-right: 40px">T00L TYPE</div></div></a>
