@@ -18,7 +18,7 @@ if ($mysql->errno) {
 ?>
 <html>
 <head>
-    <title>Log in</title>
+    <title>Analytics</title>
     <style>
 
         #outercontainer {

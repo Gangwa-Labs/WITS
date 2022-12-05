@@ -31,17 +31,17 @@ include(‘header . php’)
         font-family:"Stretch Pro";
         color: white;
         text-align: center;
-        padding-top: 10%;
+        padding-top: 3%;
     }
     .tooltitle:hover{
         color: #202020;
     }
     .dbdiv{
         width: 100%;
-        height: 250px;
+        height: 16.5%;
         padding: 10px;
         border: white 4px solid;
-        margin-top: -5px;
+        margin-top: -10px;
 
     }
     #option1{
