@@ -17,6 +17,9 @@ if ($mysql->errno) {
     echo $mysql->connect_error;
     exit();
 }
+$databaseName = $_REQUEST["databaseName"];
+$dataID = $_REQUEST["dataID"];
+$title = $_REQUEST["title"];
 
 ?>
 <html>
@@ -108,7 +111,7 @@ if ($mysql->errno) {
 <body>
 <?php
 if ($_REQUEST["submitAttempt"] == 1) {
-    $sql = "SELECT * FROM " . $_REQUEST["database"] . " WHERE " . $_REQUEST["database"] . " = '" . $_REQUEST["newData"] . "'";
+    $sql = "SELECT * FROM " . $_REQUEST["databaseName"] . " WHERE " . $_REQUEST["databaseName"] . " = '" . $_REQUEST["newData"] . "'";
     $results = $mysql->query($sql);
     if (!$results) {
         echo "DB Query Problem <hr>";
@@ -117,12 +120,12 @@ if ($_REQUEST["submitAttempt"] == 1) {
     } else {
         $dup = false;
         while ($currentrow = $results->fetch_assoc()) {
-            if ($currentrow["location"] == $_REQUEST["newData"]) {
+            if ($currentrow[$databaseName] == $_REQUEST["newData"]) {
                 $dup = true;
             }
         }
         if($dup == false){
-            $insertNew = "INSERT INTO " . $_REQUEST["database"] . " (".$_REQUEST["database"].") VALUES ('".$_REQUEST["newData"]."')";
+            $insertNew = "INSERT INTO " . $_REQUEST["databaseName"] . " (".$_REQUEST["databaseName"].") VALUES ('".$_REQUEST["newData"]."')";
             $results = $mysql->query($insertNew);
             if (!$results) {
                 echo "DB Query Problem <hr>";
@@ -130,7 +133,6 @@ if ($_REQUEST["submitAttempt"] == 1) {
                 exit();
             }
             echo "<script>alert('data: " . $_REQUEST["newData"] . " has been added')</script>";
-            header('Location: locationwits.php');
         } else {
             echo "<script>alert('data: " . $_REQUEST["newData"] . " already in database')</script>";
         }
@@ -144,7 +146,7 @@ if ($_REQUEST["submitAttempt"] == 1) {
     ?>
 
     <div id="largetextwhite">
-        SUBMIT NEW <br> <?php echo $_REQUEST["database"] ?>
+        SUBMIT NEW <br> <?php echo $_REQUEST["databaseName"] ?>
     </div>
     <br>
     <form>
@@ -154,7 +156,9 @@ if ($_REQUEST["submitAttempt"] == 1) {
         </div>
         <br>
         <input type="submit" class="submitButton" value="submit">
-        <input type="hidden" name="database" value= <?php echo $_REQUEST["database"] ?>>
+        <input type="hidden" name="databaseName" value= <?php echo $databaseName?>>
+        <input type="hidden" name="dataID" value= <?php echo $dataID?>>
+        <input type="hidden" name="title" value= <?php echo $title?>>
 
     </form>
     <div id="footer">
