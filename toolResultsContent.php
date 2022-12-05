@@ -112,6 +112,9 @@ if (!$results) {
             height: 330px;
             flex: 0 0 280px;
         }
+        .toolPic img {
+            height: inherit;
+        }
 
         .toolInfo {
             height: 85%;
@@ -189,7 +192,8 @@ if (!$results) {
     ?>
 </div>
 <div class="toolDetails">
-    <div class="toolPic"></div>
+    <div class="toolPic"><img src="toolImgs/<?php echo $currentrow["photourl"]?> ">
+    </div>
     <div class="toolInfo">
         <?php
         echo "<p>Location: " . $currentrow["location"] . "</p>";

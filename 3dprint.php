@@ -114,8 +114,8 @@ include('login_Auth.php');
             $subject = "3D print";
             $from = "me";
             $headers = "From: $from";
-            move_uploaded_file($_FILES["attachment"]["tmp_name"], $_SERVER['CONTEXT_DOCUMENT_ROOT'] . "/WITS/emailUploads/" . $_FILES["attachment"]["name"]);
-            echo $_SERVER['CONTEXT_DOCUMENT_ROOT'] . "/WITS/emailUploads/" . $_FILES["attachment"]["name"];
+            move_uploaded_file($_FILES["attachment"]["tmp_name"], $_SERVER['CONTEXT_DOCUMENT_ROOT'] . "/WITS/toolImgs/" . $_FILES["attachment"]["name"]);
+            echo $_SERVER['CONTEXT_DOCUMENT_ROOT'] . "/WITS/toolImgs/" . $_FILES["attachment"]["name"];
 //        mail($to, $subject, $message, $headers);
         }
     }

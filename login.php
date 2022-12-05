@@ -186,6 +186,7 @@ if ($mysql->errno) {
             $_SESSION['userID'] = $currentRow["userID"];
             $_SESSION['username'] = $currentRow["username"];
             $_SESSION['email'] = $_REQUEST["email"];
+            $_SESSION['typeID'] = $currentRow["typeID"];
             echo "<script>
                     document.querySelector('#searchbar').style.display = 'none';
                     document.querySelector('#columnholder').style.display = 'none';
