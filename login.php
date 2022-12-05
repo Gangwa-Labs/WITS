@@ -163,7 +163,7 @@ if ($mysql->errno) {
         <div id="columnholder">
             <a href="create-account.php" target="_new">create an account</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="WITS-frontpage.php" target="_new">forgot password?</a>
+            <a href="forgotPassword.php" target="_new">forgot password?</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="WITS-frontpage.php" target="_new">admin login</a>
         </div>

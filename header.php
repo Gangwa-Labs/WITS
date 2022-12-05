@@ -69,7 +69,7 @@ session_start();
         </div>
         <div class="navItem">
             <li><a href="account-info.php"><?php
-                    if ($_SESSION['loggedIn'] == true) {
+                    if ($_SESSION['userID'] != null) {
                         echo "ACCOUNT-". $_SESSION["username"];
                     } else {
                         echo "ACCOUNT";
