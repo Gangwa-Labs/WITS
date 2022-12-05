@@ -136,13 +136,11 @@ if (!$results) {
     <?php
     include('admin_Login_Auth.php');
     ?>
-    <div class="tooltitle"><?php echo $title?></div>
+    <div class="tooltitle">Tools</div>
     <form>
         <div id="flexButtonFix">
-            <button class="submitButton" type="submit" formaction="admin_single_add.php" name="databaseName" value="<?php echo $databaseName?>">add <?php echo $title?></button>
+            <button class="submitButton" type="submit" formaction="admin_complex_add.php" name="databaseName" value="<?php echo $databaseName?>">add tool</button>
         </div>
-        <input type="hidden" name="dataID" value="<?php echo $dataID?>">
-        <input type="hidden" name="title" value="<?php echo $title?>">
     </form>
     <form>
         <input type="hidden" name="databaseName" value="<?php echo $databaseName?>">
@@ -151,13 +149,13 @@ if (!$results) {
         <?php
         while ($currentrow = $results->fetch_assoc()) {
             echo "<div class='optionbox'>
-            <div class='optionTitle'>" . $currentrow[$databaseName] . "</div>
+            <div class='optionTitle' style='font-family: StretchProBasic'>" . $currentrow["toolName"] . "</div>
             <div class='buttonbox'>
                 <div>
-                    <button class='optionButton' type='submit' formaction = 'admin_single_edit.php' name='editID' value='" . $currentrow[$dataID] . "'>edit</button>
+                    <button class='optionButton' type='submit' formaction = 'admin_complex_edit.php' name='editID' value='" . $currentrow[$dataID] . "'>edit</button>
                 </div>
                 <div>
-                    <button class='optionButton' type='submit' formaction = 'admin_delete.php' name='editID' value='" . $currentrow[$dataID] . "'>delete</button>
+                    <button class='optionButton' type='submit' formaction = 'admin_complex_delete.php' name='editID' value='" . $currentrow[$dataID] . "'>delete</button>
                 </div>
             </div>
         </div><br>";

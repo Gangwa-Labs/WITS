@@ -16,7 +16,7 @@ if ($mysql->errno) {
     echo $mysql->connect_error;
     exit();
 }
-if ($_REQUEST["conf"] != "yes") {
+
 ?>
 
 <html>
@@ -58,6 +58,7 @@ if ($_REQUEST["conf"] != "yes") {
         padding-left: 20px;
         border-style: hidden;
     }
+
     #largetextdropdown {
         font-family: 'Stretch Pro';
         background-color: #FFCC00;
@@ -67,21 +68,25 @@ if ($_REQUEST["conf"] != "yes") {
         padding-left: 20px;
         border-style: hidden;
     }
+
     ::-webkit-file-upload-button {
         display: none;
     }
+
     #textcontainer {
         background-color: #FFCC00;
         height: 150px;
         display: flex;
         align-items: center;
     }
-    #text{
+
+    #text {
         color: white;
         font-family: "Stretch Pro";
         font-size: 40pt;
         background-color: #202020;
     }
+
     #footer2 {
         background-color: #5B5B5B;
         text-align: center;
@@ -123,7 +128,7 @@ if ($_REQUEST["conf"] != "yes") {
 <body>
 <?php
 if ($_REQUEST["submitAttempt"] == 1) {
-    $sql = "SELECT * FROM " . $_REQUEST["database"] . " WHERE " . $_REQUEST["database"] . " = '" . $_REQUEST["newData"] . "'";
+    $sql = "SELECT * FROM tool WHERE toolName = '".$_REQUEST["toolName"] . "'";
     $results = $mysql->query($sql);
     if (!$results) {
         echo "DB Query Problem <hr>";
@@ -132,22 +137,22 @@ if ($_REQUEST["submitAttempt"] == 1) {
     } else {
         $dup = false;
         while ($currentrow = $results->fetch_assoc()) {
-            if ($currentrow["location"] == $_REQUEST["newData"]) {
+            if ($currentrow["toolName"] == $_REQUEST["toolName"]) {
                 $dup = true;
             }
         }
         if($dup == false){
-            $insertNew = "INSERT INTO " . $_REQUEST["database"] . " (".$_REQUEST["database"].") VALUES ('".$_REQUEST["newData"]."')";
+            $insertNew = "INSERT INTO tool (toolName, quantity, details, locationID, materialID, typeID, photourl) values ('".$_REQUEST["toolName"]."','".$_REQUEST["quantity"]."','".$_REQUEST["details"]."','".$_REQUEST["locationID"]."','".$_REQUEST["materialID"]."','".$_REQUEST["typeID"]."','".$_FILES["photourl"]["name"]."')";
             $results = $mysql->query($insertNew);
             if (!$results) {
                 echo "DB Query Problem <hr>";
                 echo $mysql->error;
                 exit();
             }
-            echo "<script>alert('data: " . $_REQUEST["newData"] . " has been added')</script>";
-            header('Location: locationwits.php');
+            move_uploaded_file($_FILES["photourl"]["tmp_name"], $_SERVER['CONTEXT_DOCUMENT_ROOT'] . "/WITS/toolImgs/" . $_FILES["photourl"]["name"]);
+            echo "<script>alert('sucessfully added: " . $_REQUEST["toolName"] . " to the database')</script>";
         } else {
-            echo "<script>alert('data: " . $_REQUEST["newData"] . " already in database')</script>";
+            echo "<script>alert('data: " . $_REQUEST["toolName"] . " already in database')</script>";
         }
     }
 }
@@ -157,23 +162,27 @@ if ($_REQUEST["submitAttempt"] == 1) {
     <?php
     include('admin_header.php');
     ?>
-    <div id="largetextwhite">
-        SUBMIT NEW INFO<br>
-        <?php echo $_REQUEST["database"] ?>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
+    <div id="largetextwhite" style="font-family: StretchProBasic; margin-top: 200px;">
+        ADD TOOL<br>
     </div>
     <br>
-    <form id="text" action>
-        <input type="hidden" name="conf" value="yes">
+    <form id="text" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="submitAttempt" value="1">
         &nbsp; IMAGE UPLOAD:
-        <input type="file" id="largetextblack" name="filename" accept=".png,.jpg, .jpeg" "><br><br>
+        <input type="file" id="largetextblack" name="photourl" accept=".png,.jpg, .jpeg"><br><br>
         &nbsp; T00L NAME:
-        <input name="toolName" type="text" id="largetextblack"><br><br>
+        <input name="toolName" type="text" required id="largetextblack" style="font-family: 'StretchProBasic'"><br><br>
         &nbsp; QUANTITY:
-        <input name="quantity" type="number" id="largetextblack"><br><br>
+        <input name="quantity" type="number" required id="largetextblack"
+               style="font-family: 'StretchProBasic'" ><br><br>
         &nbsp; DETAILS:
-        <input name="details" type="text" id="largetextblack"><br><br>
+        <input name="details" type="text" required id="largetextblack" style="font-family: 'StretchProBasic'"
+               "><br><br>
         &nbsp; LOCATION:
-        <select name="locationID" id="largetextdropdown" >
+        <select name="locationID" id="largetextdropdown" required>
             <?php
             $sql = "SELECT * FROM location";
             $results = $mysql->query($sql);
@@ -183,8 +192,8 @@ if ($_REQUEST["submitAttempt"] == 1) {
                 echo $mysql->error;
                 exit();
             }
-            while($currentRow = $results->fetch_assoc()){
-                echo "<option value='".$currentRow["locationID"]."'>".$currentRow["location"]."</option>";
+            while ($currentRow = $results->fetch_assoc()) {
+                echo "<option value='" . $currentRow["locationID"] . "'>" . $currentRow["location"] . "</option>";
             }
             ?>
         </select><br><br>
@@ -199,8 +208,8 @@ if ($_REQUEST["submitAttempt"] == 1) {
                 echo $mysql->error;
                 exit();
             }
-            while($currentRow = $results->fetch_assoc()){
-                echo "<option value='".$currentRow["materialID"]."'>".$currentRow["material"]."</option>";
+            while ($currentRow = $results->fetch_assoc()) {
+                    echo "<option value='" . $currentRow["materialID"] . "'>" . $currentRow["material"] . "</option>";
             }
             ?>
         </select><br><br>
@@ -215,28 +224,28 @@ if ($_REQUEST["submitAttempt"] == 1) {
                 echo $mysql->error;
                 exit();
             }
-            while($currentRow = $results->fetch_assoc()){
-                echo "<option value='".$currentRow["typeID"]."'>".$currentRow["toolType"]."</option>";
+            while ($currentRow = $results->fetch_assoc()) {
+                    echo "<option value='" . $currentRow["typeID"] . "'>" . $currentRow["toolType"] . "</option>";
             }
             ?>
         </select><br><br>
+        <input type="hidden" name="editID" value="<?php echo $_REQUEST["editID"] ?>">
         <input type="submit" class="submitButton" value="SUBMIT">
 
     </form>
     <?php
-    } else {$sql = "INSERT INTO tool (toolName, quantity, details, locationID, materialID, typeID) VALUES ('".$_REQUEST["toolName"]."',".$_REQUEST["quantity"].",'".$_REQUEST["details"]."',".$_REQUEST["locationID"].",".$_REQUEST["materialID"].",".$_REQUEST["typeID"].")";
-        $results = $mysql -> query($sql);
-        if(!$results){
-            echo "DB Query Problem <hr>";
-            echo $db -> error;
-            exit();
-        }else{
-            echo "<br><br>tool added Successfully<br><br>";
-            echo "<a href='WITS-admin.php'>Back to Admin Page</a>";
-        }
-    }
-    ?>
-    </form>
+    //    $sql = "INSERT INTO tool (toolName, quantity, details, locationID, materialID, typeID) VALUES ('".$_REQUEST["toolName"]."',".$_REQUEST["quantity"].",'".$_REQUEST["details"]."',".$_REQUEST["locationID"].",".$_REQUEST["materialID"].",".$_REQUEST["typeID"].")";
+    //        $results = $mysql -> query($sql);
+    //        if(!$results){
+    //            echo "DB Query Problem <hr>";
+    //            echo $db -> error;
+    //            exit();
+    //        }else{
+    //            echo "<br><br>tool added Successfully<br><br>";
+    //            header('Location: admin_db_nav.php?');
+    //        }
+    //
+    //    ?>
     <div id="footer2">
         this site is powered by the graciousness of cohort 8
     </div>

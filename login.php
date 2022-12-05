@@ -145,7 +145,8 @@ if ($mysql->errno) {
 
     <?php
     include('header.php');
-    $_SESSION["loggedIn"] = false;
+    session_destroy();
+    session_start();
     ?>
     <div id="logintext">
         LOGGIN

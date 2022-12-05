@@ -31,7 +31,7 @@ if (!$results) {
 }
 while ($currentrow = $results->fetch_assoc()) {
     if ($currentrow[$dataID] == $_REQUEST["editID"]) {
-        $editValue = $currentrow[$databaseName];
+        $editValue = $currentrow["toolName"];
     }
 }
 
@@ -121,13 +121,6 @@ while ($currentrow = $results->fetch_assoc()) {
 </style>
 
 <body>
-
-<?php
-include('admin_header.php');
-?>
-<?php
-include('admin_Login_Auth.php');
-?>
 <?php
 if ($_REQUEST["submitAttempt"] == 1) {
     $sql = "DELETE FROM " . $databaseName . " WHERE " . $dataID . "= " . $_REQUEST["editID"];
@@ -148,25 +141,28 @@ if ($_REQUEST["submitAttempt"] == 1) {
     <?php
     include('admin_header.php');
     ?>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
     <form>
-    <div id="largetextwhite">
-        ARE YOU SURE <br>YOU WANT TO  <br>DELETE?
-    </div>
+        <div id="largetextwhite">
+            ARE YOU SURE <br>YOU WANT TO  <br>DELETE?
+        </div>
 
-    <div id="textcontainer">
-        <input type="hidden" name="submitAttempt" value="1">
-        <div id="largetextblack"><div><?php echo $editValue?></div></div>
-    </div>
+        <div id="textcontainer">
+            <input type="hidden" name="submitAttempt" value="1">
+            <div id="largetextblack"><div><?php echo $editValue?></div></div>
+        </div>
         <br>
 
-    <button type="submit" class="submitButton" value="confirm">confirm</button>
+        <button type="submit" class="submitButton" value="confirm">confirm</button>
         <input type="hidden" name="editID" value= <?php echo $_REQUEST["editID"]?>>
         <input type="hidden" name="databaseName" value= <?php echo $databaseName?>>
         <input type="hidden" name="dataID" value= <?php echo $dataID?>>
         <input type="hidden" name="title" value= <?php echo $title?>>
     </form>
     <div id="footer">
-       <div>this site is powered by the graciousness of cohort 8</div>
+        <div>this site is powered by the graciousness of cohort 8</div>
     </div>
 
 

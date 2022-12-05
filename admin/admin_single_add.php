@@ -109,6 +109,12 @@ $title = $_REQUEST["title"];
 
 <body>
 <?php
+include('admin_header.php');
+?>
+<?php
+include('admin_Login_Auth.php');
+?>
+<?php
 if ($_REQUEST["submitAttempt"] == 1) {
     $sql = "SELECT * FROM " . $_REQUEST["databaseName"] . " WHERE " . $_REQUEST["databaseName"] . " = '" . $_REQUEST["newData"] . "'";
     $results = $mysql->query($sql);

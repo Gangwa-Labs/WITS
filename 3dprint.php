@@ -107,7 +107,7 @@ include('login_Auth.php');
             echo "<div id='errorMessage'><div id='errorText'>File Upload Error</div></div>";
         } else {
             echo  "file was named <strong>" . $_FILES["attachment"]["name"] . "</strong>";
-            echo  "file was saved as a temp file at <strong>" .
+            echo  " file was saved as a temp file at <strong>" .
                 $_FILES["attachment"]["tmp_name"] .  "</strong><br><br>";
             $message = $_REQUEST["message"];
             $to = "ezrajbird0@gmail.com";
