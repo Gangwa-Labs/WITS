@@ -56,7 +56,6 @@ if ($mysql->errno) {
         color: #000000;
         margin-left: 50px;
         width: 80%;
-
         border-style: hidden;
     }
 

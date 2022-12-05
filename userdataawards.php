@@ -78,7 +78,6 @@ if ($mysql->errno) {
 <div id="outercontainer">
 
     <?php
-    session_destroy();
     include('header.php');
     ?>
     <div id="analytictext">
