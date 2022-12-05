@@ -18,7 +18,7 @@ if ($mysql->errno) {
 ?>
 <html>
 <head>
-    <title>Log in</title>
+    <title>Vote</title>
     <style>
 
         #outercontainer {
@@ -98,42 +98,116 @@ if ($mysql->errno) {
     <?php
     include('login_Auth.php');
     include('header.php');
+    if($_REQUEST["voteCheck"] == 1){
+        $sql = "INSERT INTO vote (vote, userID) VALUES ('".$_REQUEST["submitvote"]."', '".$_SESSION["userID"]."')";
+        $results = $mysql->query($sql);
+        if (!$results) {
+            echo "DB Query Problem <hr>";
+            echo $db->error;
+            exit();
+        }
+        else{
+            echo "<script>alert('Vote Cast!')</script>";
+        }
+    }
     ?>
     <div id="analytictext">
         USSER DDATA AWARRDS:<br>
         VOTE FOR YOUR FAVOURITE T00LS
     </div>
+    <form>
+        <input type="hidden" name="voteCheck" value="1">
     <div class="column">
         <img src="drillpress.jpeg" width="100%" height="350px">
         <h1 id="numdesc" >Drill Press</h1>
-        <input type="submit" class="submitvote" value="VOTE">
+        <input type="submit" class="submitvote" name="submitvote" value="1">
+        <?php
+        $sql = "SELECT SUM(vote) AS votes FROM vote WHERE vote = 1";
+        $results = $mysql->query($sql);
+        if (!$results) {
+            echo "DB Query Problem <hr>";
+            echo $db->error;
+            exit();
+        }
+        $votes = $results->fetch_assoc();
+        ?>
+        <h1 id="numdesc" >Num Votes: <?php echo $votes["votes"]?></h1>
+
 
     </div>
     <div class="column">
         <img src="hassdrill.png" width="100%" height="350px">
         <h1 id="numdesc" >HAAS Mill</h1>
-        <input type="submit" class="submitvote" value="VOTE">
+        <input type="submit" class="submitvote" name="submitvote"  value="2">
+        <?php
+        $sql = "SELECT SUM(vote) AS votes FROM vote WHERE vote = 2";
+        $results = $mysql->query($sql);
+        if (!$results) {
+            echo "DB Query Problem <hr>";
+            echo $db->error;
+            exit();
+        }
+        $votes = $results->fetch_assoc();
+        ?>
+        <h1 id="numdesc" >Num Votes: <?php echo $votes["votes"]?></h1>
+
 
     </div>
     <div class="column">
         <img src="earthauger.jpeg" width="100%" height="350px">
         <h1 id="numdesc" >Earth Auger</h1>
-        <input type="submit" class="submitvote" value="VOTE">
+        <input type="submit" class="submitvote" name="submitvote"  value="3">
+        <?php
+        $sql = "SELECT SUM(vote) AS votes FROM vote WHERE vote = 3";
+        $results = $mysql->query($sql);
+        if (!$results) {
+            echo "DB Query Problem <hr>";
+            echo $db->error;
+            exit();
+        }
+        $votes = $results->fetch_assoc();
+        ?>
+        <h1 id="numdesc" >Num Votes: <?php echo $votes["votes"]?></h1>
+
 
     </div>
     <div class="column">
         <img src="eggbdrill2.jpeg" width="100%" height="350px">
         <h1 id="numdesc" >Egg Beater Drill</h1>
-        <input type="submit" class="submitvote" value="VOTE">
+        <input type="submit" class="submitvote" name="submitvote"  value="4">
+        <?php
+        $sql = "SELECT SUM(vote) AS votes FROM vote WHERE vote = 4";
+        $results = $mysql->query($sql);
+        if (!$results) {
+            echo "DB Query Problem <hr>";
+            echo $db->error;
+            exit();
+        }
+        $votes = $results->fetch_assoc();
+        ?>
+        <h1 id="numdesc" >Num Votes: <?php echo $votes["votes"]?></h1>
+
 
     </div>
     <div class="column">
         <img src="wishdrill.png" width="100%" height="350px">
         <h1 id="numdesc" >Wish.com Drill</h1>
-        <input type="submit" class="submitvote" value="VOTE">
+        <input type="submit" class="submitvote" name="submitvote"  value="5">
+        <?php
+        $sql = "SELECT SUM(vote) AS votes FROM vote WHERE vote = 5";
+        $results = $mysql->query($sql);
+        if (!$results) {
+            echo "DB Query Problem <hr>";
+            echo $db->error;
+            exit();
+        }
+        $votes = $results->fetch_assoc();
+        ?>
+        <h1 id="numdesc" >Num Votes: <?php echo $votes["votes"]?></h1>
+
 
     </div>
-
+    </form>
     <div id="footer">
         <br>
         this site is powered by the graciousness of cohort 8
