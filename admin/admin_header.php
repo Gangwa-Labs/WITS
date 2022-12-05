@@ -3,7 +3,7 @@ session_start();
 ?>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="fogo.ico">
+    <link rel="icon" type="image/x-icon" href="../fogo.ico">
     <style>
         @font-face {
             font-family: 'StretchProBasic';
@@ -59,13 +59,19 @@ session_start();
 <ul id="navList">
     <div id="navbar">
         <div class="navItem">
+            <li><a href="analytics.php">ANALYTICS</a></li>
+        </div>
+        <div class="navItem">
+            <li><a href="admin_db_nav.php">MANAGE_DATABASE</a></li>
+        </div>
+        <div class="navItem">
             <li><a href="../WITS-frontpage.php">SEARCH</a></li>
         </div>
         <div class="navItem">
             <li><a href="../Results.php">CATALOG</a></li>
         </div>
         <div class="navItem">
-            <li><a href="../3dprint.php">3D-PRINT</a></li>
+            <li><a href="../vote.php">VOTE</a></li>
         </div>
         <div class="navItem">
             <li><a href="../account-info.php"><?php

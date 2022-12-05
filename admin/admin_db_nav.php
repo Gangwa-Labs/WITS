@@ -137,6 +137,9 @@
         include('admin_header.php');
         ?>
     </div>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
     <div id="flexNav">
         <form action="admin_filtered_db_nav.php">
             <button class="dbdiv" id="option1" type="submit">

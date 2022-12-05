@@ -141,6 +141,9 @@ if ($_REQUEST["submitAttempt"] == 1) {
     <?php
     include('admin_header.php');
     ?>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
     <form>
         <div id="largetextwhite">
             ARE YOU SURE <br>YOU WANT TO  <br>DELETE?

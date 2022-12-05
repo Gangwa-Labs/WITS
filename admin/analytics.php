@@ -78,7 +78,7 @@ if ($mysql->errno) {
         #dataimg{
             width:100%
             height:500px;
-            background-image: url("makerspace1.png");
+            background-image: url("IYA/Semester 3 - 2022/Dev II/PhpStorm/WITS/makerspace1.png");
             background-size: auto;
             background-repeat: no-repeat;
 
@@ -94,15 +94,15 @@ if ($mysql->errno) {
 <div id="outercontainer">
 
     <?php
-    session_destroy();
-    include('header.php');
+    include('admin_header.php');
+    include('admin_Login_Auth.php');
     ?>
     <div id="analytictext">
         PAGGE ANALYTICCS
         <br><br>
     </div>
     <div id="dataimage">
-        <img src="Screen%20Shot%202022-12-04%20at%2021.43.42.png" height="60%">
+        <img src="analytics.png" height="60%">
     </div>
 </div>
 <div id="footer">

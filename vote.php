@@ -96,6 +96,7 @@ if ($mysql->errno) {
 <div id="outercontainer">
 
     <?php
+    include('login_Auth.php');
     include('header.php');
     ?>
     <div id="analytictext">

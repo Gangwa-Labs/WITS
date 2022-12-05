@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $host = "webdev.iyaclasses.com";
 $userid = "ebird_JimJobBob";
 $userpw = "Treesap3#";
@@ -105,13 +108,10 @@ if ($mysql->errno) {
 
 <body style="margin: 0px;">
 <?php
+include('header.php');
 include ('login_Auth.php');
 ?>
 <div id="outercontainer">
-    <?php
-
-    include('header.php');
-    ?>
     <div id="middletext">
         WHHAT IS IN THEE SSHOP?
     </div>

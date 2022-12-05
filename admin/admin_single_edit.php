@@ -140,6 +140,9 @@ if ($_REQUEST["submitAttempt"] == 1) {
     <?php
     include('admin_header.php');
     ?>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
 
     <div id="largetextwhite">
         EDIT "<?php if($_REQUEST["editedName"] == null){

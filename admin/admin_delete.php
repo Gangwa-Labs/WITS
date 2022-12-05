@@ -121,6 +121,13 @@ while ($currentrow = $results->fetch_assoc()) {
 </style>
 
 <body>
+
+<?php
+include('admin_header.php');
+?>
+<?php
+include('admin_Login_Auth.php');
+?>
 <?php
 if ($_REQUEST["submitAttempt"] == 1) {
     $sql = "DELETE FROM " . $databaseName . " WHERE " . $dataID . "= " . $_REQUEST["editID"];

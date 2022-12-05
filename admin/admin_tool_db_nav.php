@@ -133,6 +133,9 @@ if (!$results) {
     <?php
     include('admin_header.php');
     ?>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
     <div class="tooltitle">Tools</div>
     <form>
         <div id="flexButtonFix">

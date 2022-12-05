@@ -158,6 +158,9 @@ if ($_REQUEST["submitAttempt"] == 1) {
     <?php
     include('admin_header.php');
     ?>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
     <div id="largetextwhite" style="margin-top: 200px;">
         EDIT<br>
         <?php echo $editTool["toolName"] ?>

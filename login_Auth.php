@@ -60,6 +60,10 @@ if ($_SESSION["userID"] == null) {
         </style>
     </head>
     <body style="margin: 0">
+    <script>
+        document.querySelector('#navList').style.display = 'none';
+        document.querySelector('#logoimage').style.display = 'none';
+    </script>
     <div id="outercontainer">
         <div id="centeredMsgBox">
             <div id="redirectMsg">Please Log in to Browse</div>

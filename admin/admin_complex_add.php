@@ -142,13 +142,14 @@ if ($_REQUEST["submitAttempt"] == 1) {
             }
         }
         if($dup == false){
-            $insertNew = "INSERT INTO tool (toolName, quantity, details, locationID, materialID, typeID) values ('".$_REQUEST["toolName"]."','".$_REQUEST["quantity"]."','".$_REQUEST["details"]."','".$_REQUEST["locationID"]."','".$_REQUEST["materialID"]."','".$_REQUEST["typeID"]."')";
+            $insertNew = "INSERT INTO tool (toolName, quantity, details, locationID, materialID, typeID, photourl) values ('".$_REQUEST["toolName"]."','".$_REQUEST["quantity"]."','".$_REQUEST["details"]."','".$_REQUEST["locationID"]."','".$_REQUEST["materialID"]."','".$_REQUEST["typeID"]."','".$_FILES["photourl"]["name"]."')";
             $results = $mysql->query($insertNew);
             if (!$results) {
                 echo "DB Query Problem <hr>";
                 echo $mysql->error;
                 exit();
             }
+            move_uploaded_file($_FILES["photourl"]["tmp_name"], $_SERVER['CONTEXT_DOCUMENT_ROOT'] . "/WITS/toolImgs/" . $_FILES["photourl"]["name"]);
             echo "<script>alert('sucessfully added: " . $_REQUEST["toolName"] . " to the database')</script>";
         } else {
             echo "<script>alert('data: " . $_REQUEST["toolName"] . " already in database')</script>";
@@ -161,11 +162,14 @@ if ($_REQUEST["submitAttempt"] == 1) {
     <?php
     include('admin_header.php');
     ?>
+    <?php
+    include('admin_Login_Auth.php');
+    ?>
     <div id="largetextwhite" style="font-family: StretchProBasic; margin-top: 200px;">
         ADD TOOL<br>
     </div>
     <br>
-    <form id="text" action>
+    <form id="text" method="post" enctype="multipart/form-data">
         <input type="hidden" name="submitAttempt" value="1">
         &nbsp; IMAGE UPLOAD:
         <input type="file" id="largetextblack" name="photourl" accept=".png,.jpg, .jpeg"><br><br>
