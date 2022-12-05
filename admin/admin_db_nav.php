@@ -162,14 +162,12 @@
                 <input type="hidden" name="title" value="Tool Type">
             </button>
         </form>
-        <form>
-            <button class="dbdiv" id="option4">
-                <div class="tooltitle" style="float: left; margin-left: 40px ">USERSS</div>
-            </button>
-        </form>
-        <form>
-            <button class="dbdiv" id="option5">
-                <div class="tooltitle" style="float: right; margin-right: 40px">T00LS</div>
+        <form action="admin_tool_db_nav.php">
+            <button class="dbdiv" id="option4" type="submit">
+                <div class="tooltitle" style="float: left; margin-left: 40px">T00LS</div>
+                <input type="hidden" name="databaseName" value="tool">
+                <input type="hidden" name="dataID" value="toolID">
+                <input type="hidden" name="title" value="Tool">
             </button>
         </form>
     </div>

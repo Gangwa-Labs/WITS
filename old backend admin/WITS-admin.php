@@ -38,7 +38,7 @@ if ($mysql->errno) {
 <a href='admin-delete.php?toolID=" . $currentRow["toolID"] . "'>DELETE</a>
 <br><br><hr>";
     }
-    echo "<a href = 'admin-add.php'> ADD to Tools database<br></a>";
+    echo "<a href = '../admin/admin_complex_add.php'> ADD to Tools database<br></a>";
     echo " Materials Database:";
     echo "<a href = 'about:blank'> ADD, </a>";
     echo "<a href = 'about:blank'> EDIT, </a>";
