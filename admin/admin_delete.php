@@ -17,7 +17,11 @@ if ($mysql->errno) {
     echo $mysql->connect_error;
     exit();
 }
-$sql = "SELECT * FROM " . $_REQUEST["database"];
+$databaseName = $_REQUEST["databaseName"];
+$dataID = $_REQUEST["dataID"];
+$title = $_REQUEST["title"];
+
+$sql = "SELECT * FROM " . $databaseName;
 $results = $mysql->query($sql);
 
 if (!$results) {
@@ -26,8 +30,8 @@ if (!$results) {
     exit();
 }
 while ($currentrow = $results->fetch_assoc()) {
-    if ($currentrow["locationID"] == $_REQUEST["editID"]) {
-        $editValue = $currentrow["location"];
+    if ($currentrow[$dataID] == $_REQUEST["editID"]) {
+        $editValue = $currentrow[$databaseName];
     }
 }
 
@@ -119,7 +123,7 @@ while ($currentrow = $results->fetch_assoc()) {
 <body>
 <?php
 if ($_REQUEST["submitAttempt"] == 1) {
-    $sql = "DELETE FROM " . $_REQUEST["database"] . " WHERE " . $_REQUEST["database"] . "ID = " . $_REQUEST["editID"];
+    $sql = "DELETE FROM " . $databaseName . " WHERE " . $dataID . "= " . $_REQUEST["editID"];
     $results = $mysql->query($sql);
     if (!$results) {
         echo "DB Query Problem <hr>";
@@ -127,7 +131,7 @@ if ($_REQUEST["submitAttempt"] == 1) {
         exit();
     } else {
         echo "<script>alert('data: " . $editValue . " has been deleted')</script>";
-        header('Location: locationwits.php');
+        header('Location: admin_db_nav.php?');
     }
 }
 ?>
@@ -149,8 +153,10 @@ if ($_REQUEST["submitAttempt"] == 1) {
         <br>
 
     <button type="submit" class="submitButton" value="confirm">confirm</button>
-        <input type="hidden" name="database" value= <?php echo $_REQUEST["database"]?>>
         <input type="hidden" name="editID" value= <?php echo $_REQUEST["editID"]?>>
+        <input type="hidden" name="databaseName" value= <?php echo $databaseName?>>
+        <input type="hidden" name="dataID" value= <?php echo $dataID?>>
+        <input type="hidden" name="title" value= <?php echo $title?>>
     </form>
     <div id="footer">
        <div>this site is powered by the graciousness of cohort 8</div>
