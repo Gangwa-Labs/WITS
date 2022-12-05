@@ -210,13 +210,13 @@ $db = "ebird_WITS1";
 </style>
 
 <body>
+<?php
+include('header.php');
+?>
 
 <div id="outercontainer">
 
-    <?php
-    include('header.php');
-    $_SESSION["loggedIn"] = false;
-    ?>
+
     <div id="largetextwhite">
       EDIT "OPTION 1" <br>
     </div>
