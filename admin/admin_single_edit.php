@@ -17,7 +17,11 @@ if ($mysql->errno) {
     echo $mysql->connect_error;
     exit();
 }
-$sql = "SELECT * FROM " . $_REQUEST["database"];
+$databaseName = $_REQUEST["databaseName"];
+$dataID = $_REQUEST["dataID"];
+$title = $_REQUEST["title"];
+
+$sql = "SELECT * FROM " . $databaseName;
 $results = $mysql->query($sql);
 
 if (!$results) {
@@ -26,8 +30,8 @@ if (!$results) {
     exit();
 }
 while ($currentrow = $results->fetch_assoc()) {
-    if ($currentrow["locationID"] == $_REQUEST["editID"]) {
-        $editValue = $currentrow["location"];
+    if ($currentrow[$dataID] == $_REQUEST["editID"]) {
+        $editValue = $currentrow[$databaseName];
     }
 }
 ?>
@@ -36,7 +40,7 @@ while ($currentrow = $results->fetch_assoc()) {
     <link href="https://fonts.cdnfonts.com/css/stretch-pro" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
 
-    <title>Add Database | WITS </title>
+    <title>Edit Database | WITS </title>
 </head>
 
 <style>
@@ -120,7 +124,7 @@ while ($currentrow = $results->fetch_assoc()) {
 <body>
 <?php
 if ($_REQUEST["submitAttempt"] == 1) {
-    $sql = "UPDATE " . $_REQUEST["database"] . " SET " . $_REQUEST["database"] . "= '" . $_REQUEST["editedName"] . "' WHERE ".$_REQUEST["database"]."ID ='" .$_REQUEST["editID"]. "'";
+    $sql = "UPDATE " . $databaseName . " SET " . $databaseName . "= '" . $_REQUEST["editedName"] . "' WHERE ".$dataID. "='" .$_REQUEST["editID"]. "'";
     $results = $mysql->query($sql);
     if (!$results) {
         echo "DB Query Problem <hr>";
@@ -152,8 +156,10 @@ if ($_REQUEST["submitAttempt"] == 1) {
         </div>
         <br>
         <input type="submit" class="submitButton" value="submit">
-        <input type="hidden" name="database" value= <?php echo $_REQUEST["database"]?>>
+        <input type="hidden" name="databaseName" value= <?php echo $databaseName?>>
         <input type="hidden" name="editID" value= <?php echo $_REQUEST["editID"]?>>
+        <input type="hidden" name="dataID" value= <?php echo $dataID?>>
+        <input type="hidden" name="title" value= <?php echo $title?>>
 
     </form>
     <div id="footer">
