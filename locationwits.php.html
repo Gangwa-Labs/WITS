@@ -18,63 +18,6 @@
         width: 250px;
         float: left;
     }
-    #middletext {
-        font-family: "Stretch Pro";
-        font-size: 80px;
-        color: #FFFFFF;
-        text-align: center;
-        margin: auto;
-        padding-top:20%;
-    }
-    #searchbar{
-        margin: auto;
-        align-content: center;
-        text-align: center;
-        padding-bottom: 340px;
-
-    }
-
-    #featuredtools{
-        font-family: "Stretch Pro";
-        font-size: 30px;
-        color: #FFCC00;
-        align-content: center;
-        text-align: center;
-        background-color: black;
-        height: 100%;
-        margin-left: -10px;
-        margin-bottom: -10px;
-        margin-right:-10px;
-        padding-top:20px;
-        padding-bottom: 30px;
-    }
-    .toolimage {
-        font-family: "Lora";
-        width: 29%;
-        margin:2%;
-        text-align: center;
-        align-content: center;
-        color: #FFFFFF;
-        float:left;
-
-    }
-    .toolimageimage {
-        width: 400px;
-        height:500px;
-        border-radius: 21px;
-        border: #5B5B5B 20px solid;
-    }
-    #footer{
-        background-color: #5B5B5B;
-        text-align: center;
-        font-family: "Stretch Pro";
-        font-size: 12pt;
-        height:45px;
-        margin-left: -10px;
-        margin-bottom: -10px;
-        margin-right:-10px;
-        color:white;
-    }
     .tooltitle{
         margin: auto;
         font-size: 100px ;
@@ -127,7 +70,7 @@
 <div class="tooltitle">LOCATION</div>
     <div class="addbutton">add location</div>
     <div class="optionbox">
-        <div class="buttonbox">
+        <div class="buttonbox"></div>
             <div class="addbutton" style="margin: 20px;>
                <a href="" </a>edit</div>
             <div class="addbutton" style="margin: 20px; >
