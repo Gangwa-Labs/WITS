@@ -20,7 +20,7 @@ if ($mysql->errno) {
 ?>
 <html>
 <body>
-<?php include ('admin_Login_Auth.php'); ?>
+<?php include('admin_Login_Auth.php'); ?>
 <?php include('admin_header.php') ?>
 <form>
     <?php

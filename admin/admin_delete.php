@@ -5,6 +5,31 @@ $userid = "ebird_JimJobBob";
 $userpw = "Treesap3#";
 $db = "ebird_WITS1";
 
+$mysql = new mysqli(
+    $host,
+    $userid,
+    $userpw,
+    $db
+);
+
+if ($mysql->errno) {
+    echo "DB Connection Error <br>";
+    echo $mysql->connect_error;
+    exit();
+}
+$sql = "SELECT * FROM " . $_REQUEST["database"];
+$results = $mysql->query($sql);
+
+if (!$results) {
+    echo "DB Query Problem <hr>";
+    echo $mysql->error;
+    exit();
+}
+while ($currentrow = $results->fetch_assoc()) {
+    if ($currentrow["locationID"] == $_REQUEST["editID"]) {
+        $editValue = $currentrow["location"];
+    }
+}
 
 ?>
 <html>
@@ -12,7 +37,7 @@ $db = "ebird_WITS1";
     <link href="https://fonts.cdnfonts.com/css/stretch-pro" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
 
-    <title>Add Database | WITS </title>
+    <title>Delete Database | WITS </title>
 </head>
 
 <style>
@@ -38,7 +63,7 @@ $db = "ebird_WITS1";
     }
 
     #largetextblack {
-        font-family: 'StretchProBasic';
+        font-family: 'Stretch Pro';
         background-color: #FFCC00;
         font-size: 100px;
         color: #000000;
@@ -92,27 +117,45 @@ $db = "ebird_WITS1";
 </style>
 
 <body>
+<?php
+if ($_REQUEST["submitAttempt"] == 1) {
+    $sql = "DELETE FROM " . $_REQUEST["database"] . " WHERE " . $_REQUEST["database"] . "ID = " . $_REQUEST["editID"];
+    $results = $mysql->query($sql);
+    if (!$results) {
+        echo "DB Query Problem <hr>";
+        echo $mysql->error;
+        exit();
+    } else {
+        echo "<script>alert('data: " . $editValue . " has been deleted')</script>";
+        header('Location: locationwits.php');
+    }
+}
+?>
 
 <div id="outercontainer">
+
     <?php
-    include('header.php');
+    include('admin_header.php');
     ?>
+    <form>
     <div id="largetextwhite">
-        SUBMIT NEW <br> LOCATION
+        ARE YOU SURE <br>YOU WANT TO  <br>DELETE?
     </div>
 
-    <div id="totext">
-        AS
-    </div>
     <div id="textcontainer">
-        <input type="text" id="largetextblack" placeholder="type here...">
+        <input type="hidden" name="submitAttempt" value="1">
+        <div id="largetextblack"><div><?php echo $editValue?></div></div>
     </div>
-    <br>
-    <input type="submit" class="submitButton" value="confirm">
+        <br>
 
+    <button type="submit" class="submitButton" value="confirm">confirm</button>
+        <input type="hidden" name="database" value= <?php echo $_REQUEST["database"]?>>
+        <input type="hidden" name="editID" value= <?php echo $_REQUEST["editID"]?>>
+    </form>
     <div id="footer">
-        this site is powered by the graciousness of cohort 8
+       <div>this site is powered by the graciousness of cohort 8</div>
     </div>
+
 
 </div>
 </body>

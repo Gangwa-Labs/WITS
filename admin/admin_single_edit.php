@@ -5,7 +5,31 @@ $userid = "ebird_JimJobBob";
 $userpw = "Treesap3#";
 $db = "ebird_WITS1";
 
+$mysql = new mysqli(
+    $host,
+    $userid,
+    $userpw,
+    $db
+);
 
+if ($mysql->errno) {
+    echo "DB Connection Error <br>";
+    echo $mysql->connect_error;
+    exit();
+}
+$sql = "SELECT * FROM " . $_REQUEST["database"];
+$results = $mysql->query($sql);
+
+if (!$results) {
+    echo "DB Query Problem <hr>";
+    echo $mysql->error;
+    exit();
+}
+while ($currentrow = $results->fetch_assoc()) {
+    if ($currentrow["locationID"] == $_REQUEST["editID"]) {
+        $editValue = $currentrow["location"];
+    }
+}
 ?>
 <html>
 <head>
@@ -16,11 +40,11 @@ $db = "ebird_WITS1";
 </head>
 
 <style>
-    *
-    {
+    * {
         margin: 0px;
         padding: 0px;
     }
+
     #outercontainer {
         background-color: #202020;
         height: 100%;
@@ -47,20 +71,21 @@ $db = "ebird_WITS1";
 
         border-style: hidden;
     }
-    #textcontainer{
+
+    #textcontainer {
         background-color: #FFCC00;
-        height:150px;
+        height: 150px;
         display: flex;
         align-items: center;
     }
 
-    #footer{
+    #footer {
         background-color: #5B5B5B;
         text-align: center;
         font-family: "Stretch Pro";
         font-size: 12pt;
-        height:45px;
-        color:white;
+        height: 45px;
+        color: white;
         position: absolute;
         width: 100%;
         display: flex;
@@ -68,6 +93,7 @@ $db = "ebird_WITS1";
         justify-content: center;
         bottom: 0;
     }
+
     .submitButton {
         border: none;
         width: 175px;
@@ -78,13 +104,13 @@ $db = "ebird_WITS1";
         font-size: 20pt;
         font-weight: bold;
         margin-left: 30px;
-        font-weight: bold;
     }
 
     .submitButton:hover {
         background-color: white;
     }
-    hr{
+
+    hr {
         color: #FFCC00;
     }
 
@@ -92,27 +118,44 @@ $db = "ebird_WITS1";
 </style>
 
 <body>
-
+<?php
+if ($_REQUEST["submitAttempt"] == 1) {
+    $sql = "UPDATE " . $_REQUEST["database"] . " SET " . $_REQUEST["database"] . "= '" . $_REQUEST["editedName"] . "' WHERE ".$_REQUEST["database"]."ID ='" .$_REQUEST["editID"]. "'";
+    $results = $mysql->query($sql);
+    if (!$results) {
+        echo "DB Query Problem <hr>";
+        echo $mysql->error;
+        exit();
+    } else {
+        echo "<script>alert('data: " . $editValue . " changed to: " . $_REQUEST["editedName"] . "')</script>";
+    }
+}
+?>
 <div id="outercontainer">
 
     <?php
-    include('header.php');
+    include('admin_header.php');
     ?>
 
     <div id="largetextwhite">
-      EDIT "OPTION 1" <br>
-    </div>
-
-    <div id="totext">
-        TO
-    </div>
-    <br>
-    <div id="textcontainer">
-        <input type="text" id="largetextblack" placeholder="type here...">
+        EDIT "<?php if($_REQUEST["editedName"] == null){
+            echo $editValue;
+        } else {
+            echo $_REQUEST["editedName"];
+        } ?>" <br> to
     </div>
     <br>
-    <input type="submit" class="submitButton" value="confirm">
+    <form>
+        <div id="textcontainer">
+            <input type="hidden" name="submitAttempt" value="1">
+            <input type="text" id="largetextblack" placeholder="type here..." name="editedName" required>
+        </div>
+        <br>
+        <input type="submit" class="submitButton" value="submit">
+        <input type="hidden" name="database" value= <?php echo $_REQUEST["database"]?>>
+        <input type="hidden" name="editID" value= <?php echo $_REQUEST["editID"]?>>
 
+    </form>
     <div id="footer">
         this site is powered by the graciousness of cohort 8
     </div>
