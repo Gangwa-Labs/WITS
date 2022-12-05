@@ -173,7 +173,7 @@ if ($mysql->errno) {
             <br><br>
             <input class="textfield" type="text" name="password" placeholder=" password..." required>
             <br><br>
-            <input id="submitButton" type="submit" name="submitusername" value="create an account" required>
+            <input id="submitButton" type="submit" required>
         </form>
     </div>
 
