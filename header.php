@@ -53,6 +53,15 @@ session_start();
 
     </style>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-23X0F923MP"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-23X0F923MP');
+</script>
 <body>
 <img id="logoimage" src="witslogo.png">
 
