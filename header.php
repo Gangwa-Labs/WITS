@@ -65,6 +65,9 @@ session_start();
             <li><a href="Results.php">CATALOG</a></li>
         </div>
         <div class="navItem">
+            <li><a href="3dprint.php">3D-PRINT</a></li>
+        </div>
+        <div class="navItem">
             <li><a href="account-info.php"><?php
                     if ($_SESSION['loggedIn'] == true) {
                         echo "ACCOUNT-". $_SESSION["username"];
