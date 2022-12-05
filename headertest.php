@@ -38,7 +38,8 @@
             text-decoration: none;
 
         }
-        #logoimage {
+
+        .w3-center {
             position: absolute;
             width: 500px;
             float: left;
@@ -46,24 +47,18 @@
             top: -180px;
             z-index: 1;
         }
-        #logoimagediv{
-
+        #rotated {
+            position: absolute;
+            width: 500px;
+            float: left;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
 
-<script>
-    $(document).ready(function(){
-        $("#logoimagediv").onclick(function(){
-            $(this).rotate(90);
-        });
-    });
-</script>
 
-<div id="logoimagediv">
-    <img id="logoimage" src="fogo.svg">
-</div>
+    <div class="w3-center"><img src="fogo.svg" height="500" /></div>
 
 <ul id="navList">
     <div id="navbar">
@@ -81,6 +76,23 @@
         </div>
     </div>
 </ul>
+<script>
+    $(document).ready(function(){
+        $(".w3-center").onmouseover(function rotateImage(-90) {
+        $(".w3-center").animate({
+            transform: -90;
+        }, {
+            step: function(now, fx) {
+                $(this).css({
+                    '-webkit-transform': 'rotate(' + now + 'deg)',
+                    '-moz-transform': 'rotate(' + now + 'deg)',
+                    'transform': 'rotate(' + now + 'deg)'
+                });
+            }
+        });
+    }
 
+    });
+</script>
 </body>
 </html>
