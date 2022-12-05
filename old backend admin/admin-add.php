@@ -16,82 +16,232 @@ if ($mysql->errno) {
     echo $mysql->connect_error;
     exit();
 }
-
 if ($_REQUEST["conf"] != "yes") {
-?>e
+?>
+
 <html>
+
+<head>
+    <link href="https://fonts.cdnfonts.com/css/stretch-pro" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+
+    <title>Add Database | WITS </title>
+</head>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #outercontainer {
+        background-color: #202020;
+        height: 100%;
+        width: 100%;
+        font-family: 'Lora';
+    }
+
+    #largetextwhite {
+        font-family: "Stretch Pro";
+        font-size: 100px;
+        color: #F0F0F0;
+        text-align: left;
+        padding-left: 50px;
+    }
+
+    #largetextblack {
+        font-family: 'Stretch Pro';
+        background-color: #FFCC00;
+        font-size: 100px;
+        color: #000000;
+        width: 100%;
+        padding-left: 20px;
+        border-style: hidden;
+    }
+    #largetextdropdown {
+        font-family: 'Stretch Pro';
+        background-color: #FFCC00;
+        font-size: 100px;
+        color: #000000;
+        width: 100%;
+        padding-left: 20px;
+        border-style: hidden;
+    }
+    ::-webkit-file-upload-button {
+        display: none;
+    }
+    #textcontainer {
+        background-color: #FFCC00;
+        height: 150px;
+        display: flex;
+        align-items: center;
+    }
+    #text{
+        color: white;
+        font-family: "Stretch Pro";
+        font-size: 40pt;
+        background-color: #202020;
+    }
+    #footer2 {
+        background-color: #5B5B5B;
+        text-align: center;
+        font-family: "Stretch Pro";
+        font-size: 12pt;
+        height: 45px;
+        color: white;
+        position: absolute;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .submitButton {
+        border: none;
+        width: 205px;
+        height: 50px;
+        background-color: #FFCC00;
+        border-radius: 25px;
+        font-family: "Stretch Pro";
+        font-size: 20pt;
+        font-weight: bold;
+        margin-left: 30px;
+        margin-bottom: 20px;
+    }
+
+    .submitButton:hover {
+        background-color: white;
+    }
+
+    hr {
+        color: #FFCC00;
+    }
+
+
+</style>
+
 <body>
-<form action>
-    <input type="hidden" name="conf" value="yes">
-    toolName:
-    <input name="toolName" type="text"><br><br>
-    Quantity:
-    <input name="quantity" type="number"><br><br>
-    Details:
-    <input name="details" type="text"><br><br>
-    Location:
-    <select name="locationID">
-        <?php
-        $sql = "SELECT * FROM location";
-        $results = $mysql->query($sql);
-
-        if (!$results) {
-            echo "DB Query Problem <hr>";
-            echo $mysql->error;
-            exit();
-        }
-        while($currentRow = $results->fetch_assoc()){
-        echo "<option value='".$currentRow["locationID"]."'>".$currentRow["location"]."</option>";
-        }
-        ?>
-    </select><br><br>
-    Material:
-    <select name="materialID">
-        <?php
-        $sql = "SELECT * FROM material";
-        $results = $mysql->query($sql);
-
-        if (!$results) {
-            echo "DB Query Problem <hr>";
-            echo $mysql->error;
-            exit();
-        }
-        while($currentRow = $results->fetch_assoc()){
-            echo "<option value='".$currentRow["materialID"]."'>".$currentRow["material"]."</option>";
-        }
-        ?>
-    </select><br><br>
-    Tool Type:
-    <select name="typeID">
-        <?php
-        $sql = "SELECT * FROM toolType";
-        $results = $mysql->query($sql);
-
-        if (!$results) {
-            echo "DB Query Problem <hr>";
-            echo $mysql->error;
-            exit();
-        }
-        while($currentRow = $results->fetch_assoc()){
-            echo "<option value='".$currentRow["typeID"]."'>".$currentRow["toolType"]."</option>";
-        }
-        ?>
-    </select><br><br>
-    <input type="submit">
-
-</form>
 <?php
-} else {$sql = "INSERT INTO tool (toolName, quantity, details, locationID, materialID, typeID) VALUES ('".$_REQUEST["toolName"]."',".$_REQUEST["quantity"].",'".$_REQUEST["details"]."',".$_REQUEST["locationID"].",".$_REQUEST["materialID"].",".$_REQUEST["typeID"].")";
-$results = $mysql -> query($sql);
-if(!$results){
-    echo "DB Query Problem <hr>";
-    echo $db -> error;
-    exit();
-}else{
-    echo "<br><br>tool added Successfully<br><br>";
-    echo "<a href='WITS-admin.php'>Back to Admin Page</a>";
-}
+if ($_REQUEST["submitAttempt"] == 1) {
+    $sql = "SELECT * FROM " . $_REQUEST["database"] . " WHERE " . $_REQUEST["database"] . " = '" . $_REQUEST["newData"] . "'";
+    $results = $mysql->query($sql);
+    if (!$results) {
+        echo "DB Query Problem <hr>";
+        echo $mysql->error;
+        exit();
+    } else {
+        $dup = false;
+        while ($currentrow = $results->fetch_assoc()) {
+            if ($currentrow["location"] == $_REQUEST["newData"]) {
+                $dup = true;
+            }
+        }
+        if($dup == false){
+            $insertNew = "INSERT INTO " . $_REQUEST["database"] . " (".$_REQUEST["database"].") VALUES ('".$_REQUEST["newData"]."')";
+            $results = $mysql->query($insertNew);
+            if (!$results) {
+                echo "DB Query Problem <hr>";
+                echo $mysql->error;
+                exit();
+            }
+            echo "<script>alert('data: " . $_REQUEST["newData"] . " has been added')</script>";
+            header('Location: locationwits.php');
+        } else {
+            echo "<script>alert('data: " . $_REQUEST["newData"] . " already in database')</script>";
+        }
+    }
 }
 ?>
+
+<div id="outercontainer">
+    <?php
+    include('admin_header.php');
+    ?>
+    <div id="largetextwhite">
+        SUBMIT NEW INFO<br>
+        <?php echo $_REQUEST["database"] ?>
+    </div>
+    <br>
+    <form id="text" action>
+        <input type="hidden" name="conf" value="yes">
+        &nbsp; IMAGE UPLOAD:
+        <input type="file" id="largetextblack" name="filename" accept=".png,.jpg, .jpeg" "><br><br>
+        &nbsp; T00L NAME:
+        <input name="toolName" type="text" id="largetextblack"><br><br>
+        &nbsp; QUANTITY:
+        <input name="quantity" type="number" id="largetextblack"><br><br>
+        &nbsp; DETAILS:
+        <input name="details" type="text" id="largetextblack"><br><br>
+        &nbsp; LOCATION:
+        <select name="locationID" id="largetextdropdown" >
+            <?php
+            $sql = "SELECT * FROM location";
+            $results = $mysql->query($sql);
+
+            if (!$results) {
+                echo "DB Query Problem <hr>";
+                echo $mysql->error;
+                exit();
+            }
+            while($currentRow = $results->fetch_assoc()){
+                echo "<option value='".$currentRow["locationID"]."'>".$currentRow["location"]."</option>";
+            }
+            ?>
+        </select><br><br>
+        &nbsp; MATERIAL:
+        <select name="materialID" id="largetextdropdown">
+            <?php
+            $sql = "SELECT * FROM material";
+            $results = $mysql->query($sql);
+
+            if (!$results) {
+                echo "DB Query Problem <hr>";
+                echo $mysql->error;
+                exit();
+            }
+            while($currentRow = $results->fetch_assoc()){
+                echo "<option value='".$currentRow["materialID"]."'>".$currentRow["material"]."</option>";
+            }
+            ?>
+        </select><br><br>
+        &nbsp; T00L TYPE:
+        <select name="typeID" id="largetextdropdown">
+            <?php
+            $sql = "SELECT * FROM toolType";
+            $results = $mysql->query($sql);
+
+            if (!$results) {
+                echo "DB Query Problem <hr>";
+                echo $mysql->error;
+                exit();
+            }
+            while($currentRow = $results->fetch_assoc()){
+                echo "<option value='".$currentRow["typeID"]."'>".$currentRow["toolType"]."</option>";
+            }
+            ?>
+        </select><br><br>
+        <input type="submit" class="submitButton" value="SUBMIT">
+
+    </form>
+    <?php
+    } else {$sql = "INSERT INTO tool (toolName, quantity, details, locationID, materialID, typeID) VALUES ('".$_REQUEST["toolName"]."',".$_REQUEST["quantity"].",'".$_REQUEST["details"]."',".$_REQUEST["locationID"].",".$_REQUEST["materialID"].",".$_REQUEST["typeID"].")";
+        $results = $mysql -> query($sql);
+        if(!$results){
+            echo "DB Query Problem <hr>";
+            echo $db -> error;
+            exit();
+        }else{
+            echo "<br><br>tool added Successfully<br><br>";
+            echo "<a href='WITS-admin.php'>Back to Admin Page</a>";
+        }
+    }
+    ?>
+    </form>
+    <div id="footer2">
+        this site is powered by the graciousness of cohort 8
+    </div>
+
+</div>
 </body>
+
 </html>

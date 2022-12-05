@@ -83,6 +83,9 @@ if ($mysql->errno) {
             background-repeat: no-repeat;
 
         }
+        #dataimage{
+            text-align: center;
+        }
     </style>
 </head>
 <body style="margin: 0">
@@ -96,15 +99,15 @@ if ($mysql->errno) {
     ?>
     <div id="analytictext">
         PAGGE ANALYTICCS
-        <br><br>        <br><br>
-
+        <br><br>
     </div>
-        <img src="makerspace1.png" width="100%" height="500">
-    <div id="footer">
-        <br>
-        this site is powered by the graciousness of cohort 8
+    <div id="dataimage">
+        <img src="Screen%20Shot%202022-12-04%20at%2021.43.42.png" height="60%">
     </div>
 </div>
-
+<div id="footer">
+    <br>
+    this site is powered by the graciousness of cohort 8
+</div>
 </body>
 </html>
